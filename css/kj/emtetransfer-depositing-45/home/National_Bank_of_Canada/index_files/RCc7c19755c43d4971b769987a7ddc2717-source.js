@@ -1,0 +1,2 @@
+// For license information, see `https://assets.adobedtm.com/4c6660b07da2/1dfcfc7fa8fc/412cc497b255/RCc7c19755c43d4971b769987a7ddc2717-source.js`.
+_satellite.__registerScript('https://assets.adobedtm.com/4c6660b07da2/1dfcfc7fa8fc/412cc497b255/RCc7c19755c43d4971b769987a7ddc2717-source.min.js', "console.log(\"LAUNCH: DigitalData\");");

@@ -1,0 +1,79 @@
+div.pacMeterContainer {
+    margin-left: 20px;
+    margin-top: -3px;
+}
+
+.pacmeter .meterBlock {
+    width: 40px;
+    height: 5px;
+}
+
+div.pacmeter {
+    width: 120px;
+    border: 1px solid #CCCCCC;
+    border-radius: 25px;
+    box-shadow: 2px 2px 2px #DDDDDD;
+}
+
+.pacmeter.pacInitial {
+    display: none;
+}
+
+.pacmeter.pacFail {
+    display: flex;
+    flex-direction: row;
+}
+
+.pacmeter.pacFail .meterBlock {
+    border: none;
+    background-color: #EC4A4A;
+}
+.pacMeterWeakErrorMessage,
+.pacMeterWeakErrorMessage.hide{
+    display: none;
+}
+.pacMeterWeakErrorMessage.show{
+    display: block;
+}
+.pacMeterWeakErrorMessage label {
+    width: 160px;
+    float: left;
+    padding: 1px 5px 0px 0px;
+}
+.pacMeterWeakErrorMessage span {
+    display: block;
+    padding-bottom: 10px;
+    color: #EC4A4A;
+}
+.pacmeter.pacFail .pacWarning, .pacmeter.pacFail .pacSuccess {
+    display: none;
+}
+
+.pacmeter.pacWarning {
+    display: flex;
+    flex-direction: row;
+}
+
+.pacmeter.pacWarning .meterBlock {
+    border: none;
+    background-color: #ECC84A;
+}
+
+.pacmeter.pacWarning .pacSuccess {
+    display: none;
+}
+
+.pacmeter.pacSuccess {
+    display: flex;
+    flex-direction: row;
+}
+
+.pacmeter.pacSuccess .meterBlock {
+    border: none;
+    background-color: #50E240;
+}
+
+.pacMeterMessage {
+    width: auto;
+    display: none;
+}

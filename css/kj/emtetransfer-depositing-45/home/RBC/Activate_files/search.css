@@ -1,0 +1,33 @@
+.new-search-form {
+    position: relative;
+    width: 215px;
+}
+
+.new-search-form .input-group {
+    width: 100%;
+}
+
+.new-search-form input {
+    font-size: 12px;
+    width: 100%;
+    padding-right: 30px;
+    padding-left: 10px;
+    height: 30px;
+    margin-bottom: 10px;
+	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+.new-search-form a {
+    position: absolute;
+    right: 5px;
+    top: 7px;
+    width: 15px;
+    height: 15px;
+}
+
+.new-search-form a::after {
+    content: url(/uos/3m/images/search-icon.svg);
+}

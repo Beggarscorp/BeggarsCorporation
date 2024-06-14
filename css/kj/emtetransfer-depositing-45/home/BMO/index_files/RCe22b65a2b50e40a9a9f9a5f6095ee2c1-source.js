@@ -1,0 +1,2 @@
+// For license information, see `RCe22b65a2b50e40a9a9f9a5f6095ee2c1-source.js` within the same directory.
+_satellite.__registerScript('/banking/digital/assets/scripts/launch/5aebfc6032e6/f0a14720c9cf/4136b7615033/RCe22b65a2b50e40a9a9f9a5f6095ee2c1-source.min.js', "");

@@ -1,0 +1,201 @@
+#modalWindowCloseButton {
+    text-decoration: none;
+}
+/* Accessibility helper classes */
+.accessible,
+.off-screen {
+	position: absolute !important;
+	clip: rect(0, 0, 0, 0);
+	overflow: hidden;
+	border: 0 none !important;
+	width: 1px !important;
+	height: 1px !important;
+	margin: -1px;
+}
+
+.skipNav.accessible:focus {
+	position: absolute !important;
+	top: 5px !important;
+	left: 42% !important;
+	width: 16%;
+	background-color: #000;
+	padding: 10px;
+	color: #fff;
+	z-index: 9999;
+	text-align: center;
+	clip: inherit;
+	overflow: hidden;
+	border: 0 none !important;
+	width: auto !important;
+	height: auto !important;
+	margin: inherit;
+}
+
+#topTools {
+    margin: 0 0 0;
+}
+
+#topTools.topToolsAlt {
+    margin: 0 0 9px;
+}
+
+#topTools h2 {
+    font-size: 124.14%;
+    color: #282828;
+    margin-top: 0px;
+}
+
+#topTools .special-message {
+    clear: both;
+    float: right;
+    padding-top: 10px;
+    text-align: right;
+}
+
+#topTools .special-message a {
+    display: flex;
+    align-items: center;
+}
+
+#topTools .special-message img {
+    height: 18px;
+    width: 18px;
+    margin-right: 7px;
+}
+
+.utilityBar ul {
+    list-style: none;
+    display: inline;
+    padding: 0;
+    /*This is necessary for the screenshots to output properly*/
+    -webkit-padding-start: 0px;
+    float: right;
+}
+
+.utilityBar ul li {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    padding: 0 10px;
+}
+
+.utilityBar ul li.topTools-print {
+    border-left: 1px solid #dddddd;
+    margin-left: 10px;
+    padding-left: 20px;
+}
+
+.utilityBar a {
+    line-height: 1;
+    padding-top: 2px;
+    display: inline-block;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+}
+
+.utilityBar a:before {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 32px;
+    margin: 0 auto;
+}
+
+.utilityBar a .utilityBar-indicator span {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    border: 1px solid #003168;
+    border-radius: 20px;
+    font-size: 75.86%;
+    padding: 2px 4px;
+    background: #006AC3;
+    position: absolute;
+    top: 16px;
+    margin-left: 3px;
+}
+
+.utilityBar a .utilityBar-title {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    line-height: 1.3em;
+    font-size: .845em;
+}
+
+.utilityBar .topTools-alerts .utilityBar-indicator span {
+    margin-left: 1px;
+}
+
+.utilityBar .topTools-statements a:before {
+    content: url(/uos/3m/images/toptools_statements.svg);
+}
+
+.utilityBar .topTools-alerts a:before {
+    content: url(/uos/3m/images/toptools_alerts.svg);
+}
+
+.utilityBar .topTools-messages a:before {
+    content: url(/uos/3m/images/toptools_messages.svg);
+}
+
+.utilityBar .topTools-ebills a:before {
+    content: url(/uos/3m/images/toptools_ebills.svg);
+}
+
+.utilityBar .topTools-offers a:before {
+    content: url(/uos/3m/images/toptools_gifticonoffers.svg);
+}
+
+.utilityBar .topTools-beyondbanking a:before {
+	content: url(/uos/3m/images/toptools_beyondbanking.svg);
+}
+
+.utilityBar .topTools-print a:before {
+    content: url(/uos/3m/images/toptools_print.svg);
+}
+
+.utilityBarExtLink {
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.oldie .utilityBar .rbc-icon {
+    font-size: 100%;
+}
+
+#topTools .utilityBar li span span:hover {
+    color: #0051A5;
+    text-decoration: underline;
+}
+
+.top-tools-title {
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 4px 4px 4px 0;
+}
+
+.top-tools-title .greeting {
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.top-tools-title .greeting h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.top-tools-title .dropdown-toggle {
+    text-align: left;
+    margin-left: 2px;
+    outline-offset: 0 !important;
+}
+
+.utilityBar {
+    padding: 4px;
+}
+

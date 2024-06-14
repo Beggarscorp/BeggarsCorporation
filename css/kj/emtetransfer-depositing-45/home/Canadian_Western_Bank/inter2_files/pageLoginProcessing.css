@@ -1,0 +1,14 @@
+/* 
+	Title: pageLoginProcessing.css
+	Author Name: Michael Kriskovic
+	Author Date: 2007-06-13
+	Description: Rules for Login Processing page.
+*/
+h3 {margin:4em 0 1.25em 0; line-height:normal;}
+p.note {margin:2em 0 6em 0 !important; color:#656565; font-size:0.9em;}
+p.note a {color:#656565;}
+p strong {margin-top:2em; color:#1A3665; font-size:1.25em;}
+#xptContentMain {text-align:center;}
+input.btnLink {border:none; padding:0; background:transparent; color:#656565; cursor:pointer; font-size:1em; text-decoration:underline; float:left; margin:auto;}
+.redirect {float:left;}
+p.greendotnote {margin:1em 12em 0 !important; color:#656565; font-size:1em;}

@@ -1,0 +1,2719 @@
+/*Design Scheme=personal */
+
+
+/***********
+Import/common/reset.css
+************/
+html{
+    background-color: transparent;
+}
+body .md,
+.md input,
+.md select,
+.md textarea,
+.md button{
+    font-family: Arial, sans-serif;
+    color: #424242;
+}
+.md a{
+    color: #7c8800;
+}
+.md table,
+.md td, 
+.md th{
+    border-color: #B9BAD4;
+    background-color: #eeeeee;
+    color: #424242;
+}
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #B3B3B3;
+    opacity: 1;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+    color: #B3B3B3;
+    opacity: 1;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+    color: #B3B3B3;
+    opacity: 1;
+}
+input:-moz-placeholder { /* Firefox 18- */
+    color: #B3B3B3;
+    opacity: 1;
+}
+input::placeholder {
+    color: #B3B3B3;
+    opacity: 1;
+}
+/***********
+following rules are not associated to any file, just branding.
+************/
+.md tr.header,
+.md tr.header td, 
+.md tr.header th, 
+.md thead tr, 
+.md thead td, 
+.md thead th,
+.md tfoot th,
+.md tfoot td,
+.md div.remittanceHeader {
+    background-color: #B9BAD4;
+    color: ;
+}
+.md tr.header td a, 
+.md tr.header th a, 
+.md thead td a, 
+.md thead th a,
+.md tfoot th a,
+.md tfoot td a{
+    color: ;
+}
+/*no need for odd. odd is the default*/
+.md tr.even,
+.md tr.even td, 
+.md tr.even th{
+    background-color: #FFFFFF;
+    color: #424242;
+}
+.md tr.evenSelected,
+.md tr.evenSelected td,
+.md tr.evenSelected th,
+.md table.noStripeUnselected tr.evenSelected,
+.md table.noStripeUnselected tr.evenSelected td,
+.md table.noStripeUnselected tr.evenSelected th{
+    background-color: ;
+    color: #424242;
+}
+.md tr.oddSelected,
+.md tr.oddSelected td,
+.md tr.oddSelected th{
+    background-color: ;
+    color: #424242;
+}
+.md table tr.newRow {
+    background-color: #FFFFFF;
+}
+/***********
+Import/common/layout.css
+************/
+.md div.outerWarning{
+    border-color: #E8E8E8;
+    background-color: #F4F4F4;
+    color: #000000;
+}
+div.outerHeader{
+    background-color: #FFFFFF;
+}
+div.outerColContainer{
+    background-color: #FFFFFF;
+}
+div.outerFooter{
+    background-color: #99cc33;
+}
+div.outerPromoArea{
+    background-color: transparent;
+}
+div.header, 
+div.colContainer, 
+div.footer{
+    background-color: #FFFFFF;
+}
+div.header{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/header_bg$v@202201280110.gif);
+}
+div.promoArea{
+    width: 960px;
+    min-height: 200px;
+}
+div.footer{
+    background-color: #222478;
+}
+div.extendedContentContainer{
+    background-color: #ccc;
+    padding: 20px 0;
+}
+/***********
+Import/common/grid.css
+************/
+.md .row-container{
+  padding-right: 15px; 
+  padding-left: 15px;
+}
+.row-container .row{
+  overflow: hidden;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.md .row-show-grid > div { 
+    background-color: transparent;
+    border-color:transparent;
+}
+.row-container .row-filled-content {
+  
+  margin-right: -25px;
+  margin-left: -25px;
+   -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.row-filled-content > div > div{
+  background-color: #CCC;;
+  padding: 10px;
+  margin-bottom: 0;
+}
+.row .col-md-1, .row .col-md-2, .row .col-md-3, .row .col-md-4, .row .col-md-5, .row .col-md-6,.row .col-md-7, .row .col-md-8, .row .col-md-9, .row .col-md-10, .row .col-md-11, .row .col-md-12 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+/***********
+Import/common/containerTreatment.css
+************/
+.md .block_highlight_light{
+	 background-color: #e8e8f3;
+}
+.md .block_highlight_dark{
+	 background-color: #B9BAD4;
+}
+.md .block_border{
+    border-color: #CCCCCC;
+}
+.md .block_marker:before{
+	border-top: 8px solid #B9BAD4;
+}
+/***********
+Import/common/contentTreatment.css
+************/
+.md h2 .loading{
+	color: #e8e8f3;
+}
+.md h3 .loading{ 
+	color: #222478;
+}
+.md .modal .loading{
+	color: #222478;
+}
+.md .portlets .loading{
+	color: #222478;
+}
+.javascript p.selected,
+.javascript span.selected,   
+.javascript h2.selected,     
+.javascript h3.selected{
+    background: transparent url(/DynamicContent/Resources/Images/Icons/bullet_arrow_down.gif) no-repeat scroll left top;
+}
+.javascript p.unselected,
+.javascript span.unselected,     
+.javascript h2.unselected,   
+.javascript h3.unselected{
+    background: transparent url(/DynamicContent/Resources/Images/Icons/bullet_arrow_right.gif) no-repeat scroll left top;
+}
+.md div.hr{
+    background-color: #222478;
+}
+.header h2{
+    color: #899618;
+    width: 300px;
+}
+.header h2 a{
+    color: #222478;
+}
+.contentTitle h1,
+h1#PageTitle,
+.content h1,
+h2.dynamicPageTitle,
+.Online .sfHead h2/*md sf forms*/,
+.Online .end h2/*md sf forms receipt*/{
+    border-bottom-color: #dfdfdf;
+    color: #1e2171;
+}
+.mainContent h2{
+    color: #222478;
+}
+.footer .copy a{
+    color: #1b1b1b;
+}
+/*document list*/
+.documentlist li{
+    background-color: #eeeeee;
+    border-color: #B9BAD4;
+}
+.documentlist h5{
+    background-color: #B9BAD4;
+    border-color: #B9BAD4;
+    color: ;
+}
+.documentlist h5 a{
+    color: 
+}
+.pdf h5{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/pdf$v@202201280110.gif);
+}
+.txt h5{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/txt$v@202201280110.gif);
+}
+.doc h5{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/doc$v@202201280110.gif);
+}
+/*content promo*/
+.md .promo{
+    background-color: #e8e8f3;
+}
+.promo h3{
+    color: #222478;
+}
+.errorText{
+	color: #EF3024;
+}
+.secondaryInfo{
+    color: #555555;
+}
+.alert{
+    background-color: #e8e8f3;
+    border-color: #e8e8f3;
+    color: #424242;
+}
+.contentCalltoaction{
+    background-color: #e8e8f3;
+    background-image: url(/DynamicContent/Resources/Images/Navigation/context1$v@202201280110.gif);
+    border-color: #e8e8f3;
+}
+.contentCalltoaction a{
+    color: #222478;
+}
+
+div a.callOutAction{
+	background: #222478;
+	border-top-color: #222478;
+	border-right-color: #222478;
+	border-bottom-color: #222478;
+	border-left-color: #222478;	
+	color: #1b1b1b !important;
+	float: left;
+	font-size: 13px;
+	font-weight: bold;
+	text-decoration: underline;
+}
+div a.callOutAction:hover{
+	background: #222478;
+	border-top-color: #222478;
+	border-right-color: #222478;
+	border-bottom-color: #222478;
+	border-left-color: #222478;	
+	color: #1b1b1b;
+	text-decoration: none;	
+}
+a.urgentMessage{
+    color: #222478;
+}
+a.reminderMessage{
+    color: #222478;
+}
+a.personalMessage{
+    color: #222478;
+}
+a.mailMessage{
+    color: #222478;
+}
+a.ebillMessage{
+    color: #222478;
+}
+a.mdsbMessage{
+    color: #222478;
+}
+.disclaimer{                         
+    color: #424242;
+}
+/*charts*/
+.chart_legend_scheme0:before{
+    background-color: #3366CC;
+}
+.chart_legend_scheme1:before{
+    background-color: #DC3912;
+}
+.chart_legend_scheme2:before{
+    background-color: #FF9900;
+}
+.chart_legend_scheme3:before{
+    background-color: #109618;
+}
+.chart_legend_scheme4:before{
+    background-color: #990099;
+}
+.chart_legend_scheme5:before{
+    background-color: #0099C6;
+}
+.md .asOfDate{
+    color: #999;
+}
+.md p.footerCopyright{
+    clear: none;
+    color: #1b1b1b;
+    float: right;
+    margin: 8px;
+}
+/***********
+Import/nav/navGlobal.css and 
+Import/nav/navLang.css
+************/
+ul.global,
+ul.global li,
+ul.lang{
+   background-image: url(/DynamicContent/Resources/Images/Navigation/globalmarker$v@202201280110.gif);
+}
+ul.lang li a,
+ul.global li a{
+    color: #1b1b1b;
+}
+/************
+Import/nav/navTopic.css
+************/
+ul.topic li{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/globalmarker$v@202201280110.gif);
+}
+ul.topic li a{
+    color: #222478;
+}
+/***********
+Import/nav/navPrimary.css
+************/
+div.primary{
+    background-color: #e8e8f3;
+}
+ul.primary li{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/primarybuttonV2$v@202201280110.gif);
+    color: #000066;
+    width: 110px;
+}
+ul.primary li a,
+ul.primary li a:hover{
+    color: #000066;
+}
+ul.primary .current a,
+ul.primary .current a:hover{
+    color: #1b1b1b;
+}
+
+/***********
+Import/nav/navPrimaryMegaMenu.css
+************/
+ul.primary .megaMenu{
+    background-color: #FFFFFF;
+    border-color: #99cc33;
+}
+
+ul.primary > li.activeMegaMenu > a:after{
+    border-color: transparent transparent #FFFFFF; 
+}
+ul.primary .megaMenu .contentColumn > div{
+    background-color: transparent;
+}
+ul.primary .megaMenu li{
+    background-image: url('/DynamicContent/Resources/Images/Navigation/homemarker.png');
+}
+ul.primary .megaMenu a{
+    color: #222478;
+}
+ul.primary .megaMenu a.current{
+    color: #222478;
+}
+ul.primary .megaMenu a.self{
+    color: #222478;
+}
+ul.primary .megaMenu .contentColumn h2,
+ul.primary .megaMenu .contentColumn h3,
+ul.primary .megaMenu .contentColumn h2 a,
+ul.primary .megaMenu .contentColumn h3 a{
+    color: #222478;
+}
+
+ul.primary .megaMenu .Component-Marketing .Component-Button a{
+    color: #1b1b1b;
+    background-color: #222478;
+}
+ul.primary .megaMenu .Component-Marketing .Component-Button a:hover{
+    color: #1b1b1b;
+    background-color: #222478;
+}
+/***********
+Import/nav/navSection.css
+************/
+div.sectionNav{
+    top: auto;
+    right: 210px;
+    bottom: 40px;
+    left: auto;
+}
+ul.sectionNav li a{
+    color: #222478;
+    background-color: #99CC33;
+    -webkit-border-top-left-radius: 6px;
+    -moz-border-radius-topleft: 6px;
+    border-top-left-radius: 6px;
+    -webkit-border-top-right-radius: 6px;
+    -moz-border-radius-topright: 6px;
+    border-top-right-radius: 6px;
+}
+ul.sectionNav li a:hover{
+    color: #222478;
+    background-color: #99CC33;
+}
+ul.sectionNav li.current a,
+ul.sectionNav li.current a:hover{
+    color: #222478;
+    background-color: #99CC33;
+}
+/***********
+Import/nav/navBreadcrumb.css
+************/
+div.breadcrumb{
+    background-color: #000066;
+    color: #FFFFFF;
+}
+ul.breadcrumb li{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/crumbmarker$v@202201280110.gif);
+}
+ul.breadcrumb li a{
+    color: #FFFFFF;
+}
+/***********
+Import/nav/navSecondary.css
+************/
+ul.secondary a{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/secondaryitem$v@202201280110.gif);
+    color: #222478;
+}
+
+ul.secondary li.id-AboutUs a{
+    width: 60px;
+    background-image: url(/DynamicContent/Resources/Images/Navigation/secondaryitem60.gif);
+}
+
+ul.secondary li.id-BecomingaMember a{
+    width: 112px;
+    background-image: url(/DynamicContent/Resources/Images/Navigation/secondaryitem112.gif);
+}
+
+/***********
+Import/nav/navContext.css
+************/
+ul.context{
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+ul.context li{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/context1$v@202201280110.gif);
+    border-color: #FFFFFF;
+}
+ul.context li.current{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/context1c$v@202201280110.gif);
+}
+ul.context li.self{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/context1s$v@202201280110.gif);
+}
+ul.context .depthN li.self{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/context1l$v@202201280110.gif);
+}
+ul.context li a,
+ul.context li.current li a, 
+ul.context li.self li a{
+    color: #231f20;
+}
+ul.context li.current a,
+ul.context li li.current a{
+    color: #1e2171;
+}
+ul.context li.self a{
+    color: #1e2171;
+}
+ul.context .depth1{
+    border-top-color: #FFFFFF;
+}
+ul.context .depth1 li{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/context2$v@202201280110.gif);
+}
+ul.context .depth1 li.current{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/context2c$v@202201280110.gif);
+}
+ul.context .depth1 li.self{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/context2s$v@202201280110.gif);
+}
+ul.context .depthN li.self{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/context2l$v@202201280110.gif);
+}
+ul.context .depthN{
+    background-color: #FFFFFF;
+}
+/***********
+Import/nav/navOnline.css
+************/
+/*this is here for the caching issues going for multilingual*/
+ul.online{
+   background-image: url(/DynamicContent/Resources/Images/Navigation/onlinebackground.gif);
+}
+
+/**********
+Import/nav/navFooter.css
+***********/
+div.footer ul.footer li{
+    border-color: transparent;
+}
+div.footer ul.footer li a{
+    color: #222478;
+}
+/**********
+Import/nav/navViewportToggle.css
+***********/
+div.footer ul.viewportToggle li{
+    border-color: transparent;
+}
+div.footer ul.viewportToggle li a{
+    color: #222478;
+}
+/**********
+Import/nav/navAdjacent.css
+***********/
+.header h2.adjacent{
+    width: 300px;
+}
+.header h2.adjacent a{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/sectionlinkmarker$v@202201280110.gif);
+}
+/************
+Import/nav/navCampaign.css
+************/
+ul.campaign,
+ul.campaign li{
+    border-color: #222478
+}
+/**************
+Import/portlet/portletGeneral.css
+**************/
+.portlets .portlet{
+    border-color: #e8e8f3;
+}
+.Online .portlets .portlet{
+    background-color: #e8e8f3;
+    color: #222478;
+    border-color: #222478;
+}
+.portlets .portlet h3, 
+.portlets .portlet h4{
+    color: #222478;
+}
+.Online .portlets .portlet h3{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/onlineportletheadbg$v@202201280110.gif);
+    border-bottom: 1px solid #222478;
+    color: #1b1b1b;
+    background-color: #FFFFFF;
+}
+.portlets .portlet ul{
+    border-color: #222478;
+}
+.portlets .portlet ul a{
+    color: #222478;
+}
+.Online .portlets .portlet ul a{
+    color: #222478;
+}
+.portlets .portlet table tr,
+.portlets .portlet table th,
+.portlets .portlet table td,
+.portlets .portlet table tr.even,
+.portlets .portlet table tr.even th,
+.portlets .portlet table tr.even td{
+    background-color: #eeeeee;
+    color: #424242;
+}
+/**********
+Import/portlet/portletLogin.css
+***********/
+.loginPortlet .authentication{
+    background-color: #222478;
+    border-color: #222478;
+    color: #FFFFFF;
+}
+.Home .loginPortlet .authentication{
+    background-color: #222478;
+    border-color: ;
+    color: #FFFFFF;
+}
+/*header*/
+.loginPortlet .authentication h3{
+    background-color: #222478;
+    border-bottom-color: #222478;
+    color: #FFFFFF;
+}
+.loginPortlet .authentication .loggedInWelcome{
+    background-color: #222478;
+    border-bottom-color: #222478;
+    color: #FFFFFF;
+}
+.Home .loginPortlet .authentication h3{
+    background-color: #222478;
+    border-bottom-color: #222478;
+    color: #FFFFFF;
+}
+.Home .loginPortlet .authentication .loggedInWelcome{
+    background-color: #222478;
+    border-bottom-color: #222478;
+    color: #FFFFFF;
+}
+.colOneTwoThree .loginPortlet .authentication h3,
+.colTwoThree .loginPortlet .authentication h3{
+    color: #424242;
+}
+.colOneTwoThree .loginPortlet .authentication .loggedInWelcome,
+.colTwoThree .loginPortlet .authentication .loggedInWelcome{
+    color: #424242;
+}
+/*link color*/
+.loginPortlet .authentication a, 
+.loginPortlet .authentication a:hover{
+    color: #FFFFFF;
+}
+.Home .loginPortlet .authentication a, 
+.Home .loginPortlet .authentication a:hover{
+    color: #FFFFFF;
+}
+/*button colors*/
+.loginPortlet .submit input{ /*global unauthenticated login with form fields*/
+    background-color: none;
+    color: #424242;
+}
+.Home .loginPortlet .submit input{ /*home unauthenticated login with form fields*/
+    background-color: none;
+    color: #424242;
+}
+.loginPortlet .link input.submit,
+.loginPortlet .in input.submit{ /*Unauthenticated/Authenticated log in/out button no form fields*/
+    background-color: none;
+    color: #424242;
+}
+.Online .loginPortlet .authentication li{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/onlinebullet$v@202201280110.gif);
+}
+.Home .loginPortlet .authentication .Component-Button a,
+.Home .loginPortlet .authentication .Component-Button a:hover{
+    color: #FFFFFF;
+}
+/*end Login portlet colouring*/
+/**************
+Import/portlet/portletImageOverlay.css
+**************/
+/*CO28176*/
+.portlets .marketing .schemeA,
+.portlets .marketing .schemeA p,
+.portlets .marketing .schemeA a,
+.portlets .marketing .schemeA h1,
+.portlets .marketing .schemeA h2,
+.portlets .marketing .schemeA h3,
+.portlets .marketing .schemeA h4,
+.portlets .marketing .schemeA h5,
+.portlets .marketing .schemeA h6,
+.portlets .marketing .schemeA ul,
+.portlets .marketing .schemeA li,
+.portlets .marketing .schemeA li a{
+    color: #222478;
+}
+.portlets .marketing .schemeB,
+.portlets .marketing .schemeB p,
+.portlets .marketing .schemeB a,
+.portlets .marketing .schemeB h1,
+.portlets .marketing .schemeB h2,
+.portlets .marketing .schemeB h3,
+.portlets .marketing .schemeB h4,
+.portlets .marketing .schemeB h5,
+.portlets .marketing .schemeB h6,
+.portlets .marketing .schemeB ul,
+.portlets .marketing .schemeB li,
+.portlets .marketing .schemeB li a{
+    color: #222478;
+}
+/**************
+Import/portlet/portletShortcuts.css
+**************/
+.portlets .shortcut li{
+    color: #222478;
+}
+/**************
+Import/portlet/portletRatesMarketsStocks.css
+**************/
+.portlets .stocks table tr.name th,
+.portlets .markets table tr.name th{
+    color: #222478;
+}
+.portlets .stocks td i,
+.portlets .markets td i{
+    color: #00FF00;
+    font-style: normal;
+}
+.portlets .stocks td.neg i,
+.portlets .markets td.neg i{
+    color: #FF0000;
+}
+/**************
+Import/portlet/portletSearchBug.css
+**************/
+form.searchbug{
+    border-color: #e8e8f3;
+    color: #424242;
+    background-color: transparent;
+}
+form.searchbug .input input{
+    background-color: #FFFFFF;
+    background-image:url(/DynamicContent/Resources/Images/Furniture/magnifier$v@202201280110.gif);
+}
+form.searchbugWSubmit.searchbug .input{
+    width: 119px;
+}
+form.searchbugWSubmit.searchbug .input input{
+    width: 100px;
+    border: 1px solid #ccc;
+}
+/********
+Import/portlet/portletOnlineShortcut.css
+*********/
+.Online .portlets .onlineShortcuts{
+    background-color: #FFFFFF;
+    color: #222478;
+    border-color: #e8e8f3;
+}
+.Online .portlets .onlineShortcuts h3{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/onlineshortcutnavbackground$v@202201280110.gif);
+    border-bottom-color: #e8e8f3;
+    color: #1b1b1b;
+    background-color: #FFFFFF;
+}
+.Online .portlets .onlineShortcuts ul{
+    border-color: #e8e8f3;
+}
+.Online .portlets .onlineShortcuts li{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/onlinebullet$v@202201280110.gif);
+}
+/**********
+Import/portlet/portletFormletContact.css
+***********/
+.md form.contactFormlet,
+.md div.infoFormlet{
+	background-color: #F1F1F1;
+}
+.md form.contactFormlet div.formActions{
+	border-color: #C0C0C1;
+}
+.md div.formError{
+	border-color: #EF3024;
+	color: #EF3024;
+}
+.md div.formError p.fieldText{
+	background-image: url(/DynamicContent/Resources/Images/Forms/exclamation$v@202201280110.gif);
+}
+.portlets div.infoPortlet h3{
+	border-color: #e8e8f3;
+}
+/******
+Import/brand/formMD.jsp
+*******/
+
+	
+
+/****** 
+Import/form/formGeneral.css
+*******/
+p.reqNote{/*required message*/
+    color: #f00;
+}
+form.sf h3 a,
+form.sf h3 a:hover{/*section headers*/
+    color: #FFFFFF;
+}
+form.sf h3{/*section headers*/
+    color: #FFFFFF;
+    background-color: #222478;
+}
+.sf .sfData{/*section containers*/
+    background-color: #e8e8f3;
+    color: #424242;
+}
+form.sf s,
+.required label s{/*asterisk*/
+    color: #FF0000;
+}
+.md .hint,
+.md .hint a, /*added for mobile hint link*/
+.md .sfGroupHint{/*hint*/
+    color: #424242;
+}
+.md .formData .hint,
+.md .formData .hint a{
+    color: #424242;
+}
+.locatorportlet .hint{ /* added for ATM/Branch Locator login portlet hint */
+    color: #424242;
+}
+.formGroup .hint{ /* added for Account Activity date range hints */
+    color: #424242;
+}
+.md .learn a,
+.md .learn{/*learn more hint*/
+    color: #424242;
+}
+.r .repeatBreak hr{
+    color: #222478;
+    background-color: #222478;
+}
+form.sf table.signature{/* Form Signature */
+    border-color: #222478;
+}
+.sf .sfHalo{/*Buttons*/
+    background-color: #222478;
+}
+/*Confirmation Edit Button*/
+form.sf h3 input.edit, form.sf h2 input.edit{
+    font-family: Arial, sans-serif;
+    color: #424242;
+}
+form.sf .confirmStep{
+    border-color: #222478;
+}
+/*Alerts inside standard forms*/
+form.sf .r .buttons .alert{
+    color: #424242;
+    border: 1px solid #FF0000;
+}
+.md div.formActions{
+	border-color: #dfdfdf;
+}
+.md .formActions ul li.formCancel,
+.md .formActions ul li.formEdit{
+	background-image: url(/DynamicContent/Resources/Images/Forms/pipe.gif);
+}
+/*************
+Import/form/formProgessSteps.css
+*************/
+.md .sfProg{
+    background-color: #FFFFFF;
+    color: #222478;
+    border-color: #222478;
+}
+.sfProg .num{
+    border-color: #222478;
+    color: #222478;
+}
+.sfProg .cur .num{
+    background-color: #222478;
+    color: #FFFFFF;
+}
+/**********
+Import/form/formsErrorMessage.css
+***********/
+.sf .sfErrorBlock,
+div.errors{
+    background-color: #FFFFFF;
+    background-image: url(/DynamicContent/Resources/Images/Furniture/errors.gif);
+    border-color: #FF0000;
+    color: #FF0000;
+    background-repeat: no-repeat;
+}
+.modal .sf .sfErrorBlock,
+.modal div.errors{
+    background-color: #FFFFFF;
+}
+.sf .sfErrorBlock a,
+div.errors a{
+    color: #222478;
+}
+
+/**********
+Import/form/formFieldsets.css
+***********/
+form.outline_errors .requirederror input{
+    border-color: #FF0000;
+}
+/**********
+Import/form/formFieldsetsStd.css
+***********/
+form.sf .r .errBorder .ctr{
+    border-color: #FF0000;
+}
+/**********
+Import/form/formFieldsetsMd.css
+***********/
+/*MD Form Error*/
+div.requirederror label,
+div.requirederror .label{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/errors.gif);
+}
+.summarydata .requirederror input{/*added for mobile, highlights errors in tables*/
+    border-color: #FF0000;
+}
+.optiongroup .errored{/*.optiongroup - ex. real time payments*/
+    background-image: url(/DynamicContent/Resources/Images/Furniture/errors.gif);
+}
+/**********
+Import/form/formFormGroupMd.css
+***********/
+div.formGroup{
+    border-color: #B9BAD4;
+    background-color: #FFFFFF;
+}
+div.formGroupHighlight{
+    border-color: #F1F1F1;
+    background-color: #F1F1F1;
+}
+div.formGroupHighlight .entry,
+div.formGroupHighlight .required,
+div.formGroupHighlight .requirederror{
+    border-bottom-color: #D8D8D8;
+}
+.formGroupHighlight .entrySelected{
+    background-color: #FFFFFF;
+}
+.md .formGroup .hr{
+    background-color: #A0C6EC;
+}
+.md div.entryError {
+    color: #FF0000;
+}
+.disabled{
+	color: #999999;
+}
+
+/**********
+Import/brand/formsSF.jsp
+***********/
+
+.helpHintTrigger{
+	background-image: url(/DynamicContent/Resources/Images/Forms/help$v@202201280110.gif);
+}
+div.helpHint{
+	background-color: #F1F1F1;
+	border-color: #797A7A;
+	color: #333333;
+}
+span.hint{
+	color:  #424242;
+}
+/***********
+Import/onlineGeneral.css
+************/
+.Online .colContainer{/*Online banking Content Background-color*/
+    background-color: #FFFFFF;
+}
+.Online .summarygroup{/*added .Online because memorized outside md doesn't use it*/
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.summarygroup h1,
+.summarygroup h1 a,
+.multimembersummarygroup h1,
+.multimembersummarygroup h1 a{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/onlineheadbg$v@202201280110.gif);
+    color: #1b1b1b;
+}
+.summarygroup p.summarygroupHeaderLink,
+.summarygroup p.summarygroupHeaderLink a{
+    color: #1b1b1b; 
+}
+/* MDSB selected checkbox in header*/
+div.multimembersummarygroup h1.selected,
+div.summarygroup h1.selected,
+div.summarygroup h1.selected label{
+    background-image: none;
+}
+.multimembersummarygroup h2,
+.multimembersummarygroup h2 a{
+    background-color: #FFFFFF;
+    color: #1b1b1b;
+}
+.summarygroup label,
+.summarygroup .control a{
+    color: #1b1b1b
+}
+.summarydata thead label,
+.summarydata tr.header label{
+    color: #1b1b1b;
+}
+.summarydata label,
+.summarydata .control a{
+    color: #424242
+}
+/* MDSB */
+.summarydata tbody.stat-locked th, 
+.summarydata tbody.stat-locked td{/* tbody bgcolor for Locked Delegates*/
+    background-color: #EFD1D1;
+}
+.summarydata .stat-locked td.stat,
+.summarydata .stat-disabled td.stat{/* font color for Locked and Disabled Delegates*/
+    color: #FF0000;
+} 
+/* odd is not needed - defaults to the table bgcolour */
+tbody.odd th, 
+tbody.odd td{/* multiple rows in same bg colour / grouped together by tbody tags*/
+   /* background-color: transparent;*/
+}
+.summarydata tbody.even th, 
+.summarydata tbody.even td{/* multiple rows in same bg colour / grouped together by tbody tags*/
+    background-color: #FFFFFF;
+    color: #424242;
+}
+.summarydata tbody.evenSelected,
+.summarydata tbody.evenSelected td,
+.summarydata tbody.evenSelected th{
+    background-color: ;
+    color: #424242;
+}
+.summarydata tbody.oddSelected,
+.summarydata tbody.oddSelected td,
+.summarydata tbody.oddSelected th{
+    background-color: ;
+    color: #424242;
+}
+.statusmessage .warning,
+.instructions .warning,
+.error .warning{
+    color: #FF0000;
+}
+/*Multiple member list*/
+#MultiMember ul#Members li{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/globalmarker$v@202201280110.gif); 
+}
+ul.utilities li.item0{
+   background-image: url(/DynamicContent/Resources/Images/Navigation/globalmarker$v@202201280110.gif);
+}
+/* MDSB */
+.accountSummary li.transactions{
+    background: url(/DynamicContent/Resources/Images/Icons/bullet_yellow.gif) center left no-repeat;
+}
+.accountSummary li.messages{
+    background: url(/DynamicContent/Resources/Images/Icons/bullet_blue.gif) center left no-repeat;
+}
+/* checkmark icon in sortable column (introduced by E-Documents) */
+span.iconCheck{ 
+    background: url(/DynamicContent/Resources/Images/Icons/success.gif) top left no-repeat;
+}
+/* eye icon in sortable column (introduced by E-Documents) */
+span.iconViewable{ 
+    background: url(/DynamicContent/Resources/Images/Icons/eye.gif) top left no-repeat;
+}
+/***********
+Import/onlineTransactionApproval.css
+************/
+/* MDSB pending transactions styles */
+.transactionManager .collapsable .controlIcon{
+    background: transparent url(/DynamicContent/Resources/Images/Icons/bullet_arrow_down$v@202201280110.gif) left top no-repeat;
+}
+.transactionManager .collapsed .controlIcon{
+    background: transparent url(/DynamicContent/Resources/Images/Icons/bullet_arrow_right$v@202201280110.gif) left top no-repeat;  
+}
+/* mdsb transaction search*/
+div.transactionSearch{
+    background-color: #e8e8f3;
+}
+div.transactionSearch .entry{
+    border-bottom-color: #222478;
+}
+.collapsableContent .transactionApprovals{
+    border-color: #222478;
+}
+/***********
+Import/onlineEnhancedPersonalMessages.css
+************/
+#Messages .epmExpiryWarning{
+    color: #FF0000;
+}
+.enhancedPersonalMessage .messageExpiryNotice{
+    color: #FF0000;
+}
+/***********
+Import/online/onlineReceipt.css
+************/
+.receipts .receiptHeader{
+    background-color: #222478;
+    border-color: #222478;
+    color: #1b1b1b;
+}
+.receipts .receipt{
+    background-color: #FFFFFF;
+    background-Image: url(/DynamicContent/Resources/Images/Icons/success.gif);
+    border-color: #222478;
+}
+.receipts .receiptFail, 
+.receipts .receiptHeader + .receipt.receiptFail, 
+.businessTaxes .receipts .receiptHeader + .receipt.receiptFail {
+    background-color: #f9e6e6;
+    background-Image: url(/DynamicContent/Resources/Images/Icons/fail.gif);
+}
+.receipts .receiptRecurring{
+    background-color: transparent;
+    background-Image: url(/DynamicContent/Resources/Images/Icons/recurring.gif);
+}
+.receipts .receiptStop{
+    background-color: transparent;
+    background-image:url(/DynamicContent/Resources/Images/Icons/stop.gif);
+}
+.receipt p.note{
+    background-color: #FFFFFF;
+}
+/******
+Import/login/loginIncreasedAuth.css
+*******/
+div.agreement{
+    border-color: #e8e8f3;
+}
+.securitySeal .captionedImage{
+    background-color: #FFFFFF;
+    border-color: #e8e8f3;  
+}
+/******
+Import/online/onlineIncreasedAuth.css
+*******/
+.imageselector label.currentImage{
+   background-color: #FFFFFF;
+   border-color: #e8e8f3;
+}
+.imageselector .options{
+    border-bottom-color: #FFFFFF;
+    border-top-color: #FFFFFF;
+}
+.imageselector .input label{
+   border-color: #e8e8f3;
+}
+.imageselector .input label.checked{
+    background-color: #FFFFFF;
+    border-color: #222478;
+}
+/*select 3 questions*/
+.multicategoryselect .input dd li.checked{
+    background-color: #e8e8f3;
+}
+/*confirmation*/
+.confirm .imageSelect .captionedImage{
+    background-color: #FFFFFF;
+    border-color: #222478;
+}
+.confirm .challengeQuestions{
+    border-bottom-color: #e8e8f3;
+    border-top-color: #e8e8f3;
+}
+.confirm .challengeQuestions ul li{
+    border-bottom-color: #e8e8f3;
+}
+.confirm .challengeQuestions ul dd{
+    background-color: #e8e8f3;
+}
+.confirm .warning{ 
+    background-color: #e8e8f3;
+    border-color: #222478;
+}
+.confirm .imageandcaption{
+    border-bottom-color: #e8e8f3;
+}
+.confirm .imageandcaption .important{
+    border-bottom-color: #222478;
+}
+.confirm .permRegister{
+    border-bottom-color: #e8e8f3;
+}
+/*****************************************
+/Import/form/formCalendar.css (jQuery Calendar)
+*****************************************/
+#datepicker_div, #ui-datepicker-div{
+    font-family: Arial, sans-serif;
+    background: #FFFFFF;
+    border-color: #A5ACB2;
+}
+.datepicker_control,
+.ui-datepicker-buttonpane{
+    background-color: #B9BAD4; 
+    color: ; 
+}
+.datepicker_control a,
+.datepicker_control a:hover,
+button.ui-datepicker-close {
+    color: #FFFFFF; 
+}
+button.ui-datepicker-close {
+    background: none;
+}
+.datepicker_links,
+.ui-datepicker-header{
+    background-color: #EDEDED; 
+    color: #222222; 
+}
+.ui-corner-all span,
+.datepicker_links a{
+    color: #222222;
+}
+.datepicker_links label,
+.ui-state-disabled span{
+    color: #A8A8A8; 
+}
+.datepicker_links a:hover{
+    color: #222222; 
+}
+.datepicker_links .datepicker_current a{
+    background-color: #EDEDED; 
+    color: #222222; 
+}
+.datepicker_links .datepicker_current a:hover{
+    color: #222222; 
+}
+.datepicker_header,
+.datepicker_header select,
+.ui-datepicker-title,
+.ui-datepicker-title select{
+    background-color: #EDEEED; 
+    color: #222222; 
+}
+.datepicker .datepicker_titleRow td,
+.ui-datepicker-calendar thead th{
+    background-color: #EDEEED;
+    color: #222222;
+}
+.datepicker .datepicker_titleRow td.datepicker_weekEndCell,
+.ui-datepicker-calendar thead th.ui-datepicker-week-end{
+    background-color: #EDEEED; 
+    color: #222222;
+}
+.datepicker tbody td, .ui-datepicker-calendar tbody td{
+    background-color: #EDEEED; 
+    border-color: #F1F1F1;
+    color: #222222;
+}
+.ui-datepicker-calendar tbody td a{
+    color: #222222;
+}
+.datepicker tbody td.datepicker_weekEndCell, .ui-datepicker-calendar tbody td.ui-datepicker-week-end {
+    background-color: #EDEEED; 
+    border-color: #F1F1F1; 
+    color: #222222;
+}
+.datepicker tbody td.datepicker_currentDay, .ui-datepicker-calendar tbody td.ui-datepicker-current-day{
+    background-color: #BFBFBC; 
+    border-color: #F1F1F1; 
+    color: #222222;
+}
+.datepicker tbody td.datepicker_daysCellOver, .ui-datepicker-calendar tbody td a.ui-state-hover{
+    background-color: #BFBFBC; 
+    border-color: #A5ACB2; 
+    color: #222222;
+}
+.datepicker tbody td.datepicker_unselectable, .ui-datepicker-calendar tbody td.ui-datepicker-unselectable, 
+.ui-datepicker-calendar tbody td.ui-datepicker-unselectable span{
+    background-color: #EDEDED; 
+    border-color: #F1F1F1; 
+    color: #A8A8A8;
+}
+.datepicker tbody td.datepicker_today, .ui-datepicker-calendar tbody td.ui-datepicker-today{
+    background-color: #FFFFFF; 
+    border-color: #A5ACB2; 
+    color: #222222;
+}
+.datepicker_status{
+    background-color: #EDEEED;
+    color: #222222;
+}
+/*********
+Import/home/Home.css
+*********/
+
+.Home ul.context{
+    border-bottom-color: #d7d7d7;
+    border-top-color: #d7d7d7;
+}
+/*Home context nav*/
+.Home ul.context li a{
+    color: #222478;
+}
+.Home ul.context .depth1 li{
+    background-image: url(/DynamicContent/Resources/Images/Navigation/homemarker$v@202201280110.gif);
+}
+/*last boxed link*/
+.Home ul.context .depth1 .adjacent{
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    color: #222478;
+}
+.Home ul.context .depth1 .adjacent a{
+    background-color: #FFFFFF;
+    color: #222478;
+}
+/*********
+Import/home/homePromo.css
+*********/
+
+
+/*********
+Import/common/Component-Carousel
+*********/
+.slick-loading .slick-list{
+    background-color: #FFFFFF;
+    background-image: //url('/DynamicContent/Resources/Images/loaders/ajax-loader.gif');
+}
+/* Icons/fontface */
+@font-face{font-family: 'slick';font-weight: normal;font-style: normal;src: url('/DynamicContent/Resources/fonts/slick.eot');src: url('/DynamicContent/Resources/fonts/slick.eot?#iefix') format('embedded-opentype'), url('/DynamicContent/Resources/fonts/slick.woff') format('woff'), url('/DynamicContent/Resources/fonts/slick.ttf') format('truetype'), url('/DynamicContent/Resources/fonts/slick.svg#slick') format('svg');}
+
+/* Arrows */
+.slick-slider .slick-prev,
+.slick-slider .slick-next{
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+}
+
+.slick-slider .slick-prev:before,
+.slick-slider .slick-next:before{
+    font-family: 'slick', Arial, sans-serif;
+    font-size: 40px;
+    color: #1b1b1b;
+}
+.slick-slider .slick-prev:before{
+    content: '\2190';
+}
+.slick-slider .slick-next:before{
+    content: '\2192';
+}
+.slick-slider .slick-dots li button:before{
+    content: '\2022';
+}
+.slick-slider .slick-prev{
+    left: 25px;
+}
+.slick-slider .slick-next{
+    right: 25px;
+}
+.md .Component-Carousel{
+    margin-bottom: 8px;
+}
+.slick-slider .slick-dots{
+    bottom: 0px;
+}
+.slick-slider .slick-dots li{
+    width: 20px;
+    height: 20px;
+}
+.slick-slider .slick-dots li button{
+    width: 20px;
+    height: 20px;
+}
+.slick-slider .slick-dots li button:before{
+    font-family: 'slick', Arial, sans-serif;
+    font-size: 10px;
+    line-height: 20px;
+    width: 20px;
+    height: 20px;
+    color: #000066;
+}
+.slick-slider .slick-dots li.slick-active button:before{
+    color: #000066;
+}
+/*********
+Import/common/Component-RandomImages
+*********/
+.md .Component-RandomImages{
+    margin-bottom: 8px;
+}
+/*********
+Import/common/imageCopy.css
+use by the carousel slick as well
+*********/
+.imageCopy h2{
+    color: #424242;
+}
+.imageCopy .copy{
+     color: #424242;
+}
+.imageCopy .actions a{
+    color: #222478;
+}
+.imageCopy .actions a:hover{
+    color: #222478;
+}
+.imageCopy .actionPrimary a{
+    background-color: #222478;
+    border-color: #222478;
+    color: #1b1b1b;
+}
+.imageCopy .actionPrimary a:hover{
+     background-color: #222478;
+    border-color: #1b1b1b;
+    color: #424242;
+}
+/*****************
+Import/home/homeContentTreatments.css
+*****************/
+div.quickNavs{
+    background: #EAEAEA;
+    border-color: #E0E0E0;
+}
+div.quickNav h3{
+    color: #222478;
+    font-size: 13px;
+}
+.quickNavButtonsBackground .submit{
+    background-image: url(/DynamicContent/Resources/Images/quickNav/button$v@202201280110.gif);
+}
+/***********
+Import/other/search.css
+***********/
+
+/***********
+Old
+***********/
+.search tr.header td, 
+.search tr.header th,
+.search thead td, 
+.search thead th{
+    background-color: #B9BAD4;
+    color: ;
+}
+.search tr.even td,
+.search tr.even th{
+    background-color: #FFFFFF;
+    color: #424242;
+}
+.search ul.breadcrumb li a{
+    color: #7c8800;
+}
+
+/***********
+New
+***********/
+.searchResults ul.pagination li a{
+    color: #222478;
+}
+.searchResults ul.pagination li a:hover{
+    color: #222478;
+}
+.searchResults ul.pagination li.disabled a{
+    color: #CCCCCC;
+    visibility: visible;
+} 
+.searchResults ul.pagination,
+.searchResults form.search,
+.searchResults ul.results,
+.searchResults ul.results li.row0{
+    border-color: #B9BAD4;
+}
+.searchResults ul.results li{
+    border-color: #DBDBE9;
+}
+.searchResults ul.results li .result strong{
+    background-color: transparent;
+    color: #222478;
+}
+.searchResults form.new_search .container{
+    background-color: #FFFFFF;
+    border-color: #222478;
+    color: #424242;    
+}
+.searchResults form.new_search h3{
+    background-color: #FFFFFF;
+    color: #424242;    
+}
+.searchResults form.new_search .note{
+    background-color: #FFFFFF;
+    color: #424242;    
+}
+
+.searchResults form.refine_search .container{
+    background-color: #FFFFFF;
+    border-color: #222478;
+    color: #424242;    
+}
+.searchResults form.refine_search h3{
+    background-color: #FFFFFF;
+    color: #424242;    
+}
+.searchResults form.refine_search .note{
+    background-color: #FFFFFF;
+    color: #424242;    
+}
+
+
+/**************
+Import/other/findBranchATM.css
+**************/
+div.atm{
+    border-color: #B9BAD4;
+}
+.atm .head,
+.atm .head a,  
+.atm .head h2{
+    background-color: #B9BAD4;
+    color: ;
+}
+.atm .foot ul.calltoaction li{
+    background-color: #FFFFFF;
+    color: #424242;
+}
+/*results*/
+.atm ul li.even, .atm .other ul ul li.even{
+    background-color: #FFFFFF;
+    color: #424242;
+}
+.atm .other ul li.even{
+    background-color: transparent;
+}
+.results ol li.location .marker span{
+    color: #000;
+}
+.geoBranchAtm .results .adp-placemark,
+.geoBranchAtm .results .adp-summary,
+.geoBranchAtm .results .adp-step, 
+.geoBranchAtm .results .adp-substep{
+	border-color: #C9C9C9;
+}
+.geoBranchAtm table.adp-placemark,
+.geoBranchAtm table.adp-placemark th,
+.geoBranchAtm table.adp-placemark td{
+	background: transparent;
+}
+/***********
+Import/other/siteMap.css
+*************/
+.sitemap li{
+    color: #FFFFFF;
+}
+/*************
+Import/calc/calc.css
+************/
+#report table td td{
+    border-bottom-color: #B9BAD4 !important;
+}
+#report tr td{
+    background-color: #FFFFFF; 
+}
+#report .repeat tr td,
+#report .repeat tr.even td{
+    background-color: #DBDBE9; 
+}
+#report .repeat tr.odd td{
+    background-color: #eeeeee; 
+}
+#report .stylesectiontitle, #report .styleheader{
+    color: #222478;
+}
+/******
+/Import/emt/noNavigation.css
+*******/
+.NoNavigation .alert{
+    background-color: #e8e8f3;
+    border-color: #e8e8f3;
+    color: #424242;
+}
+
+#helpText div.cntxthelp {
+    float: right;
+}
+#logout div a, #logout a {
+    float: left;
+}
+#emtHelpText div.cntxthelp {
+    display: block !important;
+    float: right;
+}
+.control#logoutControl  {
+    padding-bottom: 12px;
+}
+
+/******
+/Import/locator/findBranchATM.css
+*******/
+.geoBranchAtm .columns .interface{
+    background-color: #e6e6e6;
+}
+.geoBranchAtm .columns .branchmap{
+    background-color: #e6e6e6;
+}
+.geoBranchAtm .columns .branchmap .details{
+    background-color: #FFFFFF;
+}
+.geoBranchAtm .searchTypes{
+    border-bottom-color: #FFFFFF;
+}
+.geoBranchAtm .searchTypes .type{
+    border-color: #FFFFFF;
+}
+.geoBranchAtm .group .groupFields,
+.geoBranchAtm ul.group{
+    background-color: #F3F3F3;
+    border-color: #C9C9C9;
+}
+.geoBranchAtm .results .pagination{
+    background-color: #e6e6e6;
+}
+.geoBranchAtm .details .detail{
+    border-color: #C9C9C9; 
+}
+.geoBranchAtm ul.transitMode li span{
+	background-image: url(/DynamicContent/Resources/Images/Icons/Locator/directions/car.gif);
+}
+.geoBranchAtm ul.transitMode li span.walk{
+	background-image: url(/DynamicContent/Resources/Images/Icons/Locator/directions/walk.gif);
+}
+.geoBranchAtm ul.transitMode li span.bicycle{
+	background-image: url(/DynamicContent/Resources/Images/Icons/Locator/directions/bicycle.gif);
+}
+.tabTitle{
+	background-color: #F3F3F3;
+	border-color:  #C9C9C9;
+}
+.tabTitle span.currentTab{
+	background:  #FFFFFF;
+	border-color:  #C9C9C9;
+	border-bottom-color: #FFFFFF;
+}
+/******
+/Import/calcJS/calcJS.css
+*******/
+.calcJS{
+	color: #FFFFFF;
+}
+.calcJS h2{
+	color: #FFFFFF;
+}
+.calcJS .form-section{
+	background-color: #222478;
+}
+.calcJS .tab-box ul li.tabLink,
+.calcJS .tab-box a,
+.calcJS .inline-wrapper,
+.calcJS .amortization-table-view,
+.calcJS .graph-view,
+.calcJS .reportSection,
+.calcJS .calcActionsRow{
+    background-color: #A3A3A3;
+}
+.calcJS .tab-box ul li.activeLink{
+        color: #FFFFFF;
+        background-color: #222478;
+}
+.calcJS .tab-box ul li a{
+    color: #FFFFFF;
+}
+.calcJS .calcActionsRow a{
+    color: #FFFFFF;
+}
+.calcJS .calc-result{
+	color: #A3A3A3;
+}
+.calcJS .amortization-table-panel{
+	color:  #222478; 
+}
+.calcJS .popup-header{
+	background-color: #222478;
+}
+.calcJS .calc-entry label{
+	color: #FFFFFF;
+}
+.calcJS .preapprove-button a,
+.calcJS .prepayment-toggle a,
+.calcJS .compare-button a{
+    color: #FFFFFF;
+}
+
+.calcJS tr:nth-child(odd).amortization-table-row td{
+    background-color: #FFFFFF;
+}
+.calcJS tr:nth-child(even).amortization-table-row td{
+    background-color: #EEEEEE;
+}
+.calcJS .amortization-table-panel{
+    background-color: #FFFFFF;
+}
+.calcJS .calc-result{
+    background-color: #FFFFFF;
+}
+.calcJS .SaveDialogBg{
+    background-color: #FFFFFF;
+}
+.calcJS .calcTopError,
+.calcJS .error-highlight{
+    color: #FF0000;
+    border-color: #FF0000;
+}
+.calcJS .calcTopWarning,
+.calcJS .warning-highlight{
+    color: #D79105;
+    border-color: #D79105;
+}
+.calcJS .warning-highlightForIE{
+    border-color: #D79105;
+}
+
+.uxp .calcJS .comparison-scenario-tab {
+	background-color: #FFFFFF;
+}
+
+.uxp .calcJS .comparison-scenario-tab a {
+    color: #222478;
+}
+
+.uxp .calcJS .show-comparison-scenario-1 .comparison-scenario-tab-1,
+.uxp .calcJS .show-comparison-scenario-2 .comparison-scenario-tab-2,
+.uxp .calcJS .show-comparison-scenario-3 .comparison-scenario-tab-3 {
+	background-color: #222478;
+	border-bottom-color: #222478;
+}
+
+.uxp .calcJS .show-comparison-scenario-1 .comparison-scenario-tab-1 a,
+.uxp .calcJS .show-comparison-scenario-2 .comparison-scenario-tab-2 a,
+.uxp .calcJS .show-comparison-scenario-3 .comparison-scenario-tab-3 a {
+	color: #FFFFFF;
+}
+
+/******
+/Import/online/onlineChequeImageDisplay.css
+*******/
+.md .chequeImagesGroup tr td.chequeImage{
+	border-bottom-color: #FFFFFF;
+}
+/***********
+Accessibility
+************/
+
+.md ul.skip,
+.md ul.skip li {
+    background-image: none;
+}
+.md ul.skip a {
+    background-color: #FFFFFF;
+    color: #7c8800;
+}
+
+/***********
+IOP - Interac Online Payments
+************/
+.iop div.controls {
+    border-color: #dfdfdf;
+}
+/***********
+Content Treatment - EventGroup
+************/
+.md .Component-EventGroup h2 {
+    background-color: #222478;
+    color: #FFFFFF;
+}
+.md .Component-EventGroup .event-item {
+    border-top: 1px solid #e5e5e5;
+}
+.md .Component-EventGroup .date{
+    background-color: #222478;
+    color: #FFFFFF;
+    display: block;
+}
+.md .Component-EventGroup .month{
+    float: right;
+    display: block;
+}
+/***********
+Content Treatment - Expandable Content
+************/
+.md div.Component-ExpandableContent {
+    border:  1px solid;
+    border-color: #e5e5e5;
+    padding: 4px 10px;
+}
+.md div.Component-ExpandableContent .expandableToggle {
+    border-left:  1px dotted;
+    border-color: #e5e5e5;
+}
+.md div.Component-ExpandableContent .content .actions li {
+    background: url(/DynamicContent/Resources/Images/Icons/bullet_arrow_right.gif) no-repeat -6px;
+}
+.md div.Component-ExpandableContent.collapsed .expandableToggle {
+    background: url(/DynamicContent/Resources/Images/Icons/bullet_arrow_right.gif) no-repeat 3px;
+}
+.md div.Component-ExpandableContent .expandableToggle {
+    background: url(/DynamicContent/Resources/Images/Icons/bullet_arrow_down.gif) no-repeat 3px;
+}
+/***********
+Content Treatment - DocumentList
+************/
+.md ul.Component-DocumentList li:before{
+    background-image: url(/DynamicContent/Resources/Images/Icons/documentList_matrix$v@202201280110.png);    
+}
+.md ul.Component-DocumentList .odd {
+    background-color: #DBDBE9;
+    color: #424242;
+}
+/***********
+Content Treatment - Disclaimer
+************/
+.md .Component-Disclaimer {
+    background-color: #e8e8f3;
+    color: #424242;
+}
+/***********
+Content Treatment - JobPosting
+************/
+.md .Component-JobPosting .section {
+    border-bottom: 1px dotted #222478;
+}
+/*****
+Content Treatment - Blockquotes - class to avoid regression
+******/
+.md blockquote.Component-Blockquote{
+    border-color: #e5e5e5;
+    border-style: dashed;
+    background-color: #e8e8f3;
+}
+.md blockquote.Component-Blockquote h3{
+    color: #333333;
+}
+.md blockquote.Component-Blockquote p{
+    color: #424242;
+}
+/****
+Component-LongCallToAction
+****/
+.Component-LongCallToAction .simple h2{
+    color: #424242;
+}
+.Component-LongCallToAction .simple h3{
+    color: #424242;
+}
+.Component-LongCallToAction .callout h3{
+    color: #424242;
+}
+.Component-LongCallToAction .callout{
+    border: 1px solid;
+    border-color: #e5e5e5;
+}
+.Component-LongCallToAction .callout .Component-Button{
+    border-top:  1px solid;
+    border-top-color: #e5e5e5;
+}
+/****
+Component-Marketing
+****/
+.md .Component-Marketing{
+    border: none;
+    border-color: #e5e5e5;
+    padding: 0px;  
+}
+.Component-Marketing .copy h3{
+    color:  #333333
+}
+.md .Component-Marketing .Component-Button a{
+    color: #FFFFFF;
+    background-color: #222478;
+}
+.md .Component-Marketing .Component-Button a:hover{
+    color: #1b1b1b;
+    background-color: #FFFFFF;
+}
+.Component-Marketing .Icon-Help:before,
+.Component-Marketing .Icon-Forms:before,
+.Component-Marketing .Icon-Contact:before,
+.Component-Marketing .Icon-Information:before,
+.Component-Marketing .Icon-Alert:before,
+.Component-Marketing .Icon-Performance:before,
+.Component-Marketing .Icon-NewProduct:before{
+    background-image: url(/DynamicContent/Resources/Images/Icons/marketing_matrix$v@202201280110.png); 
+}
+/****
+Component-Quicknav
+****/
+.md .Component-Quicknav{
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #e5e5e5;
+    padding: 4px; 
+}
+.md .Component-Quicknav h3{
+    color: #333333;
+}
+/****
+Component-Shortcuts
+****/
+.md .Component-Shortcuts{
+    background-color: #ffffff;
+    border: 1px solid;
+    border-color: transparent;
+    padding: 4px; 
+}
+.md .Component-Shortcuts h3{
+    color: #99cc33;
+}
+.md .Component-Shortcuts span.heading{
+    color: #99cc33;
+}
+.md .Component-Shortcuts li:before{
+    background-image: url(/DynamicContent/Resources/Images/Icons/bullet_arrow_right$v@202201280110.gif);
+}
+
+/****
+Component-Button
+****/
+
+.md .UXM-Component-Button {
+    color: #FFFFFF;
+    background-color: #222478;
+    border-color: #222478;
+}
+
+.md .UXM-Component-Button:hover {
+    color: #1b1b1b;
+    background-color: #b9bad4;
+    border-color: #b9bad4;
+}
+
+.md .UXM-Component-Button svg {
+    fill: #FFFFFF;
+}
+
+.md .UXM-Component-Button:hover svg {
+    fill: #1b1b1b;
+}
+
+/****
+OIR Specific
+****/
+.md .oir > .LogosWUInterac {
+    background-image: url('/DynamicContent/Resources/Images/Oir/LogosWUInterac.png');
+    background-position: right 0px;
+    background-repeat: no-repeat;
+    padding: 0px 0px 0px 0px;
+    height: 40px;
+}
+
+.md .Oir .arrowOpen::after {
+    content: "";
+    background: transparent url(/DynamicContent/Resources/Images/Icons/arrow_down.png) no-repeat scroll left top;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.md .Oir .arrowClose::after {
+    content: "";
+    background: transparent url(/DynamicContent/Resources/Images/Icons/arrow_up.png) no-repeat scroll left top;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.md .Oir .toggleOpen::before {
+    content: "";
+    background: transparent url(/DynamicContent/Resources/Images/Icons/toggle_down.png) no-repeat scroll left top;
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    cursor: pointer;
+    padding-right: 4px;
+}
+
+.md .Oir .toggleClose::before {
+    content: "";
+    background: transparent url(/DynamicContent/Resources/Images/Icons/toggle_up.png) no-repeat scroll left top;
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    cursor: pointer;
+    padding-right: 4px;
+}
+
+/****
+EUF Specific
+****/
+.requirederror .input .image.acknowledgeErrorIcon {
+    content:url(/DynamicContent/Resources/Images/Furniture/errors.gif);
+    float: left;
+    padding-left: 4px;
+    padding-top: 2px;
+}
+
+.acknowledgeCheckbox {
+    float: left;
+}
+
+.acknowledge.acknowledgeText {
+    position: relative;
+    top: -13px;
+    display: block;
+    padding-left: 23px;
+    font-weight: normal;
+}
+
+.requirederror .input span.acknowledge.acknowledgeText {
+    padding-left: 43px;
+}
+
+.requirederror .input input.acknowledgeCheckbox {
+    margin-left: 5px;
+}
+
+.interacLogoHolder {
+    position: relative;
+}
+
+.interacLogoEMT {
+    background-image: url('/DynamicContent/Resources/Images/EMT/interacLogo.svg');
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 128px;
+    position: absolute;
+    top: -8px;
+    right: -46px;
+}
+
+/****
+AB Tax
+ ****/
+.horizontal-textblock-align > div.oneColRow:not(.multiRow) > div.readOnly > label {
+    float: left;
+    width: 200px;
+}
+
+.horizontal-textblock-align > div.oneColRow:not(.multiRow) > div.readOnly > span {
+    margin-left: 70px;
+}
+
+/*****************
+BOC GROW CORE CSS
+*****************/
+
+
+.BocGrow .bocGrowButton {
+    cursor: pointer;
+}
+
+.BocGrow .errorMessage {
+    box-sizing: border-box;
+    padding: 20px; 
+    border: 2px solid red;
+    color: red;
+    background: #fff;
+    display: none;
+    margin: 20px 0px;
+}
+
+
+/*************
+MRR-21707 Safari 12
+***********/
+form.removeEmptyCheckedSets .summarygroup th.date,
+form.removeEmptyCheckedSets .summarygroup td.date {
+    width: 24%;
+}
+form.removeEmptyCheckedSets .summarygroup input.date {
+    width: 72%;
+}
+
+/***************
+MRR-24361 
+***************/
+
+
+
+
+/***********
+Import/common/actions.css
+************/
+.md .actions_dropdown{
+    background-color: #EAEAEA;
+    border-color: #CCC;
+}
+.actions_dropdown a:hover{
+    background-color: #FFF;
+}
+/***********
+Import/common/bars.css
+************/
+.md .bar_background{
+    background-color: #B9BAD4;
+    color: ;
+}
+/***********
+Import/common/progressBar.css
+************/
+.progressBarContainer{
+    color: #333333;
+    border-color: transparent;
+    background-color: transparent;
+}
+.progressBarContainer_over .progressBar{
+    border-color: #EF8885;
+    background-color: #EF8885;
+}
+.progressBarContainer_under .progressBar{
+    border-color: #A9D283;
+    background-color: #A9D283;
+}
+.progressBarContainer_near .progressBar{
+    border-color: #F0E38B;
+    background-color: #F0E38B;
+}
+.progressBarContainer_negative .progressBar{
+	background-color: transparent
+}
+/***********
+Import/common/buttons.css
+************/
+.md .btn{
+    background-color: #EAEAEA;
+    border-color: #CCCCCC;
+    color: #333333;
+}
+.md .btn_gradient{
+    background-image: -moz-linear-gradient(top, rgb(247,247,247) 25%, rgb(208,208,208) 100%);
+    background-image: -ms-linear-gradient(top, rgb(247,247,247) 25%, rgb(208,208,208) 100%);
+    background-image: -o-linear-gradient(top, rgb(247,247,247) 25%, rgb(208,208,208) 100%);
+    background-image: -webkit-linear-gradient(top, rgb(247,247,247) 25%, rgb(208,208,208) 100%);
+    background-image: linear-gradient(top, rgb(247,247,247) 25%, rgb(208,208,208) 100%);
+}
+.md .btn_icon{
+    background-image: url(/DynamicContent/Resources/Images/Icons/icons_matrix$v@202201280110.png);
+}
+.md .btn_cta{
+    background-color: #EAEAEA;
+    border-color: #EAEAEA;
+    color: #333333;
+}
+.md .btn_cta:hover{
+    background-color: #EAEAEA;
+    border-color: #EAEAEA;
+}
+.md .btn_cta_primary{
+    background-color: #222478;
+    border-color: #222478;
+    color: #FFFFFF;
+}
+.md .btn_cta_primary:hover{
+    background-color: #222478;
+    border-color: #222478;
+}
+/***********
+Import/common/headings.css
+************/
+.md .heading_split{
+    border-bottom-color: #B9BAD4;
+}
+/***********
+Import/common/modal.css
+************/
+.md .modal{
+    background-color: #FFFFFF;
+    border-color: #BABABA;
+}
+.md .modal_noChrome{
+    border-color: #444444;
+}
+.md .overlay_decorator{
+    background-color: #FFFFFF;
+}
+.md .dialog{
+    border-color: #BABABA;
+}
+.md .modal_close{
+    background-image: url(/DynamicContent/Resources/Images/Icons/icons_matrix$v@202201280110.png);
+}
+.md div .selectedBox {
+	border: 2px solid ;
+}
+.md .modal .modal_heading{
+	border-bottom: 1px solid #CCCCCC;
+}
+/***********
+Import/common/tips.css
+************/
+.md .tip{
+    background-color: #ffffdd;
+    -webkit-box-shadow: #000000;
+    box-shadow: #000000;
+}
+.md .tip:before{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/widgetTipArrow$v@202201280110.png);
+}
+div.contentCallout {
+    background-color: #EBEBEB;
+    background-image: -moz-linear-gradient(top, #EBEBEB, #EBEBEB);
+    color: #696969;
+}
+div.contentCallout.bottom::before {
+    border-top: 10px solid #EBEBEB;
+}
+div.contentCallout.top::before {
+    border-bottom: 10px solid #EBEBEB;
+}
+div.contentCallout.right::before {
+    border-left: 10px solid #EBEBEB;
+}
+div.contentCallout.left::before {
+    border-right: 10px solid #EBEBEB;
+}
+div.contentCallout.bottom-left::before {
+    border-top: 10px solid #EBEBEB;
+}
+div.contentCallout.bottom-right::before {
+    border-top: 10px solid #EBEBEB;
+}
+div.contentCallout.top-left::before {
+    border-bottom: 10px solid #EBEBEB;
+}
+div.contentCallout.top-right::before {
+    border-bottom: 10px solid #EBEBEB;
+}
+div.contentCallout.right-bottom::before {
+    border-left: 10px solid #EBEBEB;
+}
+div.contentCallout.right-top::before {
+    border-left: 10px solid #EBEBEB;
+}
+div.contentCallout.left-bottom::before {
+    border-right: 10px solid #EBEBEB;
+}
+div.contentCallout.left-top::before {
+    border-right: 10px solid #EBEBEB;
+}
+/***********
+Import/common/containerTreatments.css
+************/
+div.contentColumns{
+    color: #424242;
+}
+div.contentColumnsBackground{
+    background-color: #EAEAEA;
+    color: #424242;
+}
+div.contentColumnsBorder{
+    border-color: #E0E0E0;
+}
+div.contentColumnsBackgroundImage{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/contentColumn_bg$v@202201280110.gif);
+}
+div.contentColumnsBackgroundImage_rightTop{
+    background-position: 100% 0;
+}
+div.contentColumnsBackgroundImage_leftTop{
+    background-position: 0 0;
+}
+div.contentColumnsBackgroundImage_verticalRepeat{
+    background-repeat: repeat-y;
+}
+div.contentColumnsBackgroundImage_horizontalRepeat{
+    background-repeat: repeat-x;
+}
+div.contentColumnsBackgroundImage_noRepeat{
+    background-repeat: no-repeat;
+}
+/***********
+Import/common/contentTreatment.css
+************/
+.md .positive .value{
+    color: #027C02;
+}
+.md .negative .value{
+    color: #D50000;
+}
+.md .subduedText_color{
+    color: #777777;
+}
+.md a.noLinkAnchor {
+	color: inherit;
+	cursor: default;
+}
+/***********
+Import/common/contentTabs.css
+************/
+.md .contentTabsContainer,
+.md .contentTabsContainerFaked,
+.contentTabsContainer .contentTabs,
+.contentTabsContainerFaked .contentTabs{
+    border-bottom-color: #424242;
+}
+.tabify_decor_image .tabify_menu_container,
+.tabify_decor_image.tabify_vertical .tabify_content_frame{
+    border-color: #424242;
+}
+.tabify_decor_border .tabify_tab_content{
+    background-color: #EEEEEE;
+}
+.tabify_decor_border .tabify_tab_active .tabify_tab_content,
+.tabify_decor_border .tabify_content_frame{
+    background-color: #FFFFFF;   
+}
+.tabify_decor_border .tabify_tab_content,
+.tabify_decor_border .tabify_menu_container,
+.tabify_decor_border .tabify_content_frame{
+    border-color: #CCCCCC;
+}
+.contentTabs a,
+.contentTabs span,
+.tabify .tabify_tab_label,
+.tabify .tabify_tab_label_text{
+    color: #222478;
+}
+.contentTabs a,
+.contentTabs span,
+.tabify_decor_image .tabify_tab_label,
+.tabify_decor_image .tabify_tab_label_text{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/contentTabs$v@202201280110.gif);
+}
+.contentTabs .current a,
+.tabify_tab_active .tabify_tab_label,
+.tabify_tab_active .tabify_tab_label_text{
+    color: #222478;
+}
+.Form .contentTabs a,
+.Form .contentTabs span,
+.Form .tabify_tab_label,
+.Form .tabify_tab_label_text{
+    color: #222478;
+}
+.Form .contentTabs a,
+.Form .contentTabs span,
+.Form .tabify_decor_image .tabify_tab_label,
+.Form .tabify_decor_image .tabify_tab_label_text{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/contentTabs$v@202201280110.gif);
+}
+.Form .contentTabs .current a,
+.Form .tabify_tab_active .tabify_tab_label,
+.Form .tabify_tab_active .tabify_tab_label_text{
+    color: #222478;
+}
+.Online .contentTabs a,
+.Online .contentTabs span,
+.Online .tabify_menu .tabify_tab_label,
+.Online .tabify_menu .tabify_tab_label_text{
+    color: #222478;
+}
+.Online .contentTabs a,
+.Online .contentTabs span,
+.Online .tabify_decor_image .tabify_tab_label,
+.Online .tabify_decor_image .tabify_tab_label_text{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/contentTabs$v@202201280110.gif);
+}
+.Online .contentTabs .current a,
+.Online .tabify_tab_active .tabify_tab_label,
+.Online .tabify_tab_active .tabify_tab_label_text{
+    color: #222478;
+}
+.tabify_decor_image.tabify_vertical .tabify_tab_label,
+.tabify_decor_image.tabify_vertical .tabify_tab_label_text{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/contentTabsVertical$v@202201280110.gif);
+}
+.tabify_decor_image.tabify_vertical.tabify_opposed .tabify_tab_label,
+.tabify_decor_image.tabify_vertical.tabify_opposed .tabify_tab_label_text{
+    background-image: url(/DynamicContent/Resources/Images/Furniture/contentTabsVertical$v@202201280110.gif);
+}
+
+/***********
+Import/common/icons.css
+************/
+/*Icons - When used as Image Replacement*/
+.md .icon_withLabel_lower,
+.md .icon_none,
+.md .icon_success,
+.md .icon_alert,
+.md .icon_lock,
+.md .icon_news,
+.md .icon_plus:before,
+.md .icon_plus:after,
+.md .icon_repeat:before,
+.md .icon_repeat:after,
+.md .icon_complete:before,
+.md .icon_info:before,
+.md .icon_warning:before,
+.md .icon_error:before,
+.md .icon_close,
+.md .icon_repeat,
+.md .icon_payment,
+.md .icon_transfer,
+.md .icon_config{
+    background-image: url(/DynamicContent/Resources/Images/Icons/icons_matrix$v@202201280110.png);
+}
+/***********
+Import/common/lists.css
+************/
+ul.iconChecklist {
+    list-style-image: url(/DynamicContent/Resources/Images/Icons/success$v@202201280110.gif);
+}
+ul.iconChecklist_tick{
+    list-style-image: url(/DynamicContent/Resources/Images/Icons/success.gif);
+}
+/***********
+Import/common/toggles.css
+************/
+.md .toggle_tip,
+.md .toggle_errortip,
+.md .toggle_visibility a,
+.md .toggle_chart a{
+    background-image: url(/DynamicContent/Resources/Images/Icons/icons_matrix$v@202201280110.png);
+}
+.md .toggle_errortip{
+    color: #990000;
+}
+/******
+Import/portlet/portletOnlineDetails.jsp
+*******/
+.Online .portlets .online_details{
+	background-color: transparent;
+	border-color: #B9BAD4;
+	color: #424242;
+}
+.Online .portlets .online_details a{
+	color: #7c8800;
+}
+.Online .portlets .online_details a:hover{
+	color: #7c8800;
+}
+.Online .portlets .online_details h2{
+	color: #424242;
+}
+.Online .portlets .online_details .label_color{
+	color: #424242;
+}
+/*****
+Short Call to action
+******/
+.md .Component-ShortCallToAction a {
+    background-color: #e8e8f3;
+    background-image: url(/DynamicContent/Resources/Images/Icons/bullet_arrow_right.gif);
+    background-position: 2px 7px;
+}
+/*****
+Button Button - Note other components use this component with variations
+******/
+.md .Component-Button a {
+    color: #FFFFFF;
+    background-color: #222478;
+}
+.md .Component-Button a:hover {
+    color: #1b1b1b;
+    background-color: #b9bad4;
+}
+/*****
+New Rate as Component-RatesTable
+.Component-RatesTable large and compact
+.Component-RatesTableCompact only compact
+******/
+.md .Component-RatesTable tr.even td,
+.md .Component-RatesTable tr.odd td,
+.md .Component-RatesTable tr.even th,
+.md .Component-RatesTable tr.odd th{
+    color: #424242;
+    background-color: #DBDBE9;
+}
+.md .Component-RatesTable table.rates,
+.md .Component-RatesTable table.rates td,
+.md .Component-RatesTable table.rates th{
+    border-color: #FFFFFF;
+}
+.md .Component-RatesTableCompact table.rates th{
+    background-color: #FFFFFF;
+    color: #424242;
+}
+.md .Component-RatesTableCompact tr.even td,
+.md .Component-RatesTableCompact tr.odd td,
+.md .Component-RatesTableCompact tr.even th,
+.md .Component-RatesTableCompact tr.odd th{
+    background-color: #FFFFFF;
+}
+/*****
+Global Warning style
+******/
+.md div.globalWarning{
+    border-color: #D79105;
+}
+/*****
+Core Branding Styles 
+******/
+.brand-canvas-background { background-color: transparent; }
+.brand-canvas-background-override { background-color: transparent !important; }
+.brand-page-background { background-color:  #FFFFFF; }
+.brand-page-background-override { background-color:  #FFFFFF !important; }
+.brand-text { color: #424242; }
+.brand-text-override { color: #424242 !important; }
+
+.brand-primary-color1-text { color: #222478; }
+.brand-primary-color1-text-override { color: #222478 !important; }
+.brand-primary-color1-background {  background-color: #222478; }
+.brand-primary-color1-background-override {  background-color: #222478 !important; }
+.brand-primary-color1-border { border-color: #222478; }
+.brand-primary-color1-border-override { border-color: #222478 !important; }
+
+.brand-primary-color2-text { color: #e8e8f3; }
+.brand-primary-color2-text-override { color: #e8e8f3 !important; }
+.brand-primary-color2-background {  background-color: #e8e8f3; }
+.brand-primary-color2-background-override {  background-color: #e8e8f3 !important; }
+.brand-primary-color2-border { border-color: #e8e8f3; }
+.brand-primary-color2-border-override { border-color: #e8e8f3 !important; }
+
+.brand-primary-color3-text { color: #e8e8f3; }
+.brand-primary-color3-text-override { color: #e8e8f3 !important; }
+.brand-primary-color3-background {  background-color: #e8e8f3; }
+.brand-primary-color3-background-override {  background-color: #e8e8f3 !important; }
+.brand-primary-color3-border { border-color: #e8e8f3; }
+.brand-primary-color3-border-override { border-color: #e8e8f3 !important; }
+
+.brand-primary-color4-text { color: #e8e8f3; }
+.brand-primary-color4-text-override { color: #e8e8f3 !important; }
+.brand-primary-color4-background {  background-color: #e8e8f3; }
+.brand-primary-color4-background-override {  background-color: #e8e8f3 !important; }
+.brand-primary-color4-border { border-color: #e8e8f3; }
+.brand-primary-color4-border-override { border-color: #e8e8f3 !important; }
+
+.brand-primary-color5-text { color: #FFFFFF; }
+.brand-primary-color5-text-override { color: #FFFFFF !important; }
+.brand-primary-color5-background {  background-color: #FFFFFF; }
+.brand-primary-color5-background-override {  background-color: #FFFFFF !important; }
+.brand-primary-color5-border { border-color: #FFFFFF; }
+.brand-primary-color5-border-override { border-color: #FFFFFF !important; }
+
+.brand-primary-color6-text { color: ; }
+.brand-primary-color6-text-override { color:  !important; }
+.brand-primary-color6-background {  background-color: ; }
+.brand-primary-color6-background-override {  background-color:  !important; }
+.brand-primary-color6-border { border-color: ; }
+.brand-primary-color6-border-override { border-color:  !important; }
+
+.brand-primary-color7-text { color: #1b1b1b; }
+.brand-primary-color7-text-override { color: #1b1b1b !important; }
+.brand-primary-color7-background {  background-color: #1b1b1b; }
+.brand-primary-color7-background-override {  background-color: #1b1b1b !important; }
+.brand-primary-color7-border { border-color: #1b1b1b; }
+.brand-primary-color7-border-override { border-color: #1b1b1b !important; }
+
+.brand-secondary-color1-text { color: #222478; }
+.brand-secondary-color1-text-override { color: #222478 !important; }
+.brand-secondary-color1-background {  background-color: #222478; }
+.brand-secondary-color1-background-override {  background-color: #222478 !important; }
+.brand-secondary-color1-border { border-color: #222478; }
+.brand-secondary-color1-border-override { border-color: #222478 !important;}
+
+.brand-secondary-color2-text { color: #FFFFFF; }
+.brand-secondary-color2-text-override { color: #FFFFFF !important; }
+.brand-secondary-color2-background {  background-color: #FFFFFF; }
+.brand-secondary-color2-background-override {  background-color: #FFFFFF !important; }
+.brand-secondary-color2-border { border-color: #FFFFFF; }
+.brand-secondary-color2-border-override { border-color: #FFFFFF !important; }
+
+.brand-secondary-color3-text { color: #FFFFFF; }
+.brand-secondary-color3-text-override { color: #FFFFFF !important; }
+.brand-secondary-color3-background {  background-color: #FFFFFF; }
+.brand-secondary-color3-background-override {  background-color: #FFFFFF !important; }
+.brand-secondary-color3-border { border-color: #FFFFFF; }
+.brand-secondary-color3-border-override { border-color: #FFFFFF !important; }
+
+.brand-secondary-color4-text { color: #FFFFFF; }
+.brand-secondary-color4-text-override { color: #FFFFFF !important; }
+.brand-secondary-color4-background {  background-color: #FFFFFF; }
+.brand-secondary-color4-background-override {  background-color: #FFFFFF !important; }
+.brand-secondary-color4-border { border-color: #FFFFFF; }
+.brand-secondary-color4-border-override { border-color: #FFFFFF !important; }
+
+.brand-secondary-color5-text { color: #FFFFFF; }
+.brand-secondary-color5-text-override { color: #FFFFFF !important; }
+.brand-secondary-color5-background {  background-color: #FFFFFF; }
+.brand-secondary-color5-background-override {  background-color: #FFFFFF !important; }
+.brand-secondary-color5-border { border-color: #FFFFFF; }
+.brand-secondary-color5-border-override { border-color: #FFFFFF !important; }
+
+.brand-secondary-color6-text { color: ; }
+.brand-secondary-color6-text-override { color:  !important; }
+.brand-secondary-color6-background {  background-color: ; }
+.brand-secondary-color6-background-override {  background-color:  !important; }
+.brand-secondary-color6-border { border-color: ; }
+.brand-secondary-color6-border-override { border-color:  !important; }
+
+.brand-table-border { border-color: #B0B0B0; }
+.brand-table-border-override { border-color: #B0B0B0 !important; }
+.brand-table-row-background { background-color: #eeeeee; }
+.brand-table-row-background-override { background-color: #eeeeee !important; }
+.brand-table-row-alt-background { background-color: #DBDBE9; }
+.brand-table-row-alt-background-override { background-color: #DBDBE9 !important; }
+.brand-table-row-selected-background { background-color: ; }
+.brand-table-row-selected-background-override { background-color:  !important; }
+.brand-table-header-text { color: ; }
+.brand-table-header-text-override { color:  !important; }
+.brand-table-header-background { background-color: #B9BAD4;}
+.brand-table-header-background-override { background-color: #B9BAD4 !important; }
+
+/*----------------------------------- Wicket AutoComplete Styles -----------------------------*/
+div.wicket-aa-container {
+    border-color: #DDDDDD;
+    border-style: solid;
+    border-width: 1px;
+    z-index: 3000 !important;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+div.wicket-aa {
+    background-color: #FFFFFF;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    padding: 2px 0 2px 0;
+    text-align: left;
+}
+
+div.wicket-aa ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 2px 0;
+}
+
+div.wicket-aa ul li {
+    padding: 2px;
+}
+
+div.wicket-aa ul li.selected {
+    background-color: #F1F1F1;
+    /*margin: 0 0 5px;*/
+}
+
+/* end wicket autocomplete styles */
+
+ 
+/*Design Scheme=personal */
+
+div.primary{
+	background: #99cc33;
+}
+ul.primary li{
+    background-image: none;
+ }
+
+div.footer{
+	background: none;
+}
+.footer div.contentColumns{
+	color:#222478;
+}
+.footer div.contentColumns a{
+	color:#222478;
+}
+h3,
+h4{
+	color: #222478;	
+}
+.marketingBox_type1 .contentColumn0{
+	border-right: 1px solid #bababa;
+}
+.locatorportlet.portlet,
+.portlets .locatorportlet.portlet h3,
+.locatorportlet.portlet a {
+	background: #5759aa;
+	color: #FFF;
+	font-weight: normal;
+}
+ul.context .depth1 li {
+	background-image: none;
+}
+.summarygroup h1 {
+	background-image: none;
+}
+.Online .summarygroup caption {
+	background-color: #000066;
+}
+.Online .summarygroup tr.even {

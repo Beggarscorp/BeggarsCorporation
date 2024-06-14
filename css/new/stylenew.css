@@ -1,0 +1,80 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+#nav{
+    height: 28px;
+    background:linear-gradient(90deg, rgba(253,192,56,1) 0%, rgba(96,66,8,1) 35%); ;
+}
+#nav1{
+    height: 28px;
+    background:linear-gradient(90deg, rgba(253,192,56,1) 0%, rgba(96,66,8,1) 35%); ;
+    margin-top: 0px;
+}
+    #headu{
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 5px;
+    animation: myAnim 5s linear 0s 1 alternate forwards;
+    animation-iteration-count: infinite;
+}
+@keyframes myAnim {
+	 700%{
+		transform: translateX(100px);
+	}
+
+     100% {
+		transform: translateX(840px);
+	}
+}
+
+#logo{
+    height: 56px;
+    margin-right: 631px;
+    margin-top: 7px;
+    margin-left: 47px;
+    display: inline-block;
+
+}
+
+#logo1{
+    height: 56px;
+    margin-left: 10px;
+display: inline-block;
+    
+   
+}
+
+h4{
+    color: black;
+}
+#headd{
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 3px;
+    margin-right: 15px;
+    margin-left: 67px;
+    
+}
+#content{
+    height: 800px;
+    display: flex;
+    font-family:sans-serif;
+     color: #9c9c9c;
+}
+#t1{
+    height: 100px;
+}
+#graph{
+    height: 50px;
+    width: 33px ;
+    margin-left: 70%;
+}
+#p{
+    display: inline-block ;
+}
+

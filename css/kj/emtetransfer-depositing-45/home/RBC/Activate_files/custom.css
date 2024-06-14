@@ -1,0 +1,301 @@
+/*****************************************
+ * Custom CSS classes for Online Banking *
+ *****************************************/
+ 
+ .template-legacy #layout.layout-110 #pagetitlearea{float:left;width:auto;}
+
+/**********************************
+ * Skipnav horizontal positioning *
+ **********************************/
+.skipnav{left:0px}
+
+/************************************************
+ * Disable background colour changing for links *
+ ************************************************/
+a {background-color: transparent !important}
+ 
+/****************************
+ * Page title float removal *
+ ****************************/
+#pagetitlearea {float:none !important}
+
+/************************
+ * Footer related links *
+ ************************/
+.globalfooter-relatedlinks-block ul li a.linkedtextandicon span{text-decoration:none}
+.globalfooter-relatedlinks-block ul li a.linkedtextandicon:visited span{color:#002888}
+.globalfooter-relatedlinks-block ul li a.linkedtextandicon:hover span,
+.globalfooter-relatedlinks-block ul li a.linkedtextandicon:active span,
+.globalfooter-relatedlinks-block ul li a.linkedtextandicon:focus span{color:#000;text-decoration:underline;background-color:transparent}
+
+/********************************************************
+ * This should match line height for h6 from common.css *
+ *******************************************************/
+.globalfooter-subheading{line-height: 1.21em;}
+
+/*******************
+ * Breadcrumb area *
+ *******************/
+#breadcrumbarea{margin:0}
+#layout.layout-111 #breadcrumbarea{float:left;width:768px}
+#layout.layout-011 #breadcrumbarea{float:none;width:auto}
+#layout.layout-110 #breadcrumbarea{float:left;width:768px}
+.template-narrow #layout.layout-011 #breadcrumbarea{float:left;width:768px}
+.template-narrow #layout.layout-110 #breadcrumbarea{float:left;width:584px}
+.template-legacy #layout.layout-111 #breadcrumbarea{float:left;width:798px}
+.template-legacy #layout.layout-011 #breadcrumbarea{float:left;width:798px}
+.template-legacy #layout.layout-110 #breadcrumbarea{float:left;width:792px}
+
+/************
+ * Left nav *
+ ************/
+#leftnav-olb{line-height:1.2em;font-size:.845em;margin:0 0 12px 0;clear:both}
+#leftnav-olb ul{margin:0;padding:0px;list-style:none;zoom:1}
+#leftnav-olb ul li{margin:0 0 0 15px;padding:5px 0 6px 0px;background: url(../images/navigation/leftnav/divider-bg.gif) top left repeat-x;position:relative;zoom:1}
+#leftnav-olb ul li a{color:#002888;text-decoration:none;}
+#leftnav-olb ul li a:visited{color:#002888;}
+#leftnav-olb ul li a:hover,
+#leftnav-olb ul li a:active,
+#leftnav-olb ul li a:focus{color:#000;text-decoration:underline;background-color:transparent}
+#leftnav-olb ul.leftnav-currentsection{border:1px solid #8996a6;margin:0 0 3px 0;padding:1px}
+#leftnav-olb ul li.leftnav-sectionheader{font-weight:bold;color:#fff;font-size:1em;line-height:1.2em;margin:0;padding:6px 12px 7px 15px;background: url(../images/navigation/leftnav/sectionheader-bg.gif) bottom left repeat-x;border:1px solid #c3cce0;margin:0 0 3px 0}
+#leftnav-olb ul.leftnav-currentsection li.leftnav-sectionheader{background: #09308d url(../images/navigation/leftnav/sectionheader-current-bg.gif) top left repeat-x;border:none;margin:0;font-size:1.09em}
+#leftnav-olb ul.leftnav-currentsection li.leftnav-sectionheader a{color:#fff}
+#leftnav-olb ul.leftnav-currentsection li.leftnav-sectionheader a:visited{color:#fff}
+#leftnav-olb ul.leftnav-currentsection li.leftnav-sectionheader a:hover,
+#leftnav-olb ul.leftnav-currentsection li.leftnav-sectionheader a:active,
+#leftnav-olb ul.leftnav-currentsection li.leftnav-sectionheader a:focus{color:#fff;text-decoration:underline;background-color:transparent}
+#leftnav-olb ul.leftnav-currentsection li.leftnav-currentsectionheader{}
+#leftnav-olb ul li.leftnav-path{background:#fff url(../images/navigation/leftnav/path-bg.gif) bottom left no-repeat;margin:0;padding:6px 12px 9px 15px}
+#leftnav-olb ul li.leftnav-lastpage{background:none}
+#leftnav-olb ul li.leftnav-firstpage{background:none}
+#leftnav-olb ul li.leftnav-currentpage{font-weight:bold;padding:5px 0px 6px 0px;}
+#leftnav-olb ul li.leftnav-currentpage ul li{font-weight:normal;padding:4px 12px 5px 0px;}
+#leftnav-olb ul li ul{padding:3px 0 0 0;}
+#leftnav-olb ul li ul li, 
+#leftnav-olb ul li.leftnav-currentpage ul li {margin:0 0 0 6px;padding:3px 12px 3px 7px;background: url(../images/navigation/leftnav/bullet-childpage.gif) 0 8px no-repeat;}
+#leftnav-olb ul li ul li ul li, 
+#leftnav-olb ul li ul li.leftnav-currentpage ul li{margin:0 0 0 2px;padding:3px 0px 3px 8px;background: url(../images/navigation/leftnav/bullet-childchildpage.gif) 0 9px no-repeat}
+#leftnav-olb ul li ul li.leftnav-currentpage{padding:3px 12px 3px 7px;}
+#leftnav-olb ul li ul li ul li.leftnav-currentpage{padding:3px 0px 3px 8px;}
+#leftnav-olb li.leftnav-sectionheader .leftnav-highlight{position:absolute;top:9px;left:3px;}
+#leftnav-olb li.leftnav-currentsectionheader .leftnav-highlight{position:absolute;top:10px;left:3px;}
+#leftnav-olb li.leftnav-sectionheader .leftnav-screenreaderimage{position:absolute;top:0;left:0;}
+#leftnav-olb ul.leftnav-currentsection li.leftnav-currentsectionheader .leftnav-highlight{position:absolute;top:10px;left:4px;}
+#leftnav-olb li.leftnav-path .leftnav-highlight{position:absolute;top:10px;left:3px;}
+#leftnav-olb li.leftnav-currentpage .leftnav-highlight{position:absolute;top:6px;left:-17px}
+#leftnav-olb li ul li.leftnav-currentpage .leftnav-highlight{position:absolute;top:6px;left:-23px;}
+#leftnav-olb li ul li ul li.leftnav-currentpage .leftnav-highlight{position:absolute;top:6px;left:-32px;}
+
+/*********************
+ * Drop-down overlay *
+ *********************/
+.dropdown-link {width:15.5em; border:1px solid #9eb0d4; display:block; padding:2px 25px 2px 10px; position:relative; margin:0; background:#fff !important; text-decoration:none; font-size:.845em}
+.dropdown-link:hover, .dropdown-link:active, .dropdown-link:focus { text-decoration:underline !important}
+.dropdown-link span{text-decoration:none !important;}
+.dropdown-link img {position:absolute; top:10px; right:8px}
+.dropdown-closeicon{float:right;}
+.dropdown-closeicon img{vertical-align:middle;}
+.dropdown-container { width:15.95em;*width:15.85em; }
+.dropdown-content { background:#fff url(../images/dropdown/dropdown-content-bg.jpg) bottom left repeat-x; ; border-top:1px solid #9eb0d4; border-left:1px solid #9eb0d4; border-right:1px solid #9eb0d4; padding:10px 10px 1px 10px;}
+.dropdown-content a{text-decoration:none;}
+.dropdown-content a:hover{text-decoration:underline;color:#000;}
+.dropdown-content a.linkedtextandicon span{text-decoration:none;}
+.dropdown-content a.linkedtextandicon:hover span{text-decoration:underline;color:#000;}
+.dropdown-container ul.bullets-miniarrow {margin-left:0;margin-bottom:4px;font-size:.845em}
+.dropdown-container-bottom { background: url(../images/dropdown/dropdown-cap-bg.gif) bottom left no-repeat; padding:0 0 0 4px; font-size:1px; line-height:1; height:2px; }
+.dropdown-container-bottom span { display:block; background: #fff url(../images/dropdown/dropdown-cap-bg.gif) bottom right no-repeat; font-size:1px; line-height:1; height:2px; }
+.dropdown-container h4{margin:4px 0}
+.dropdown-container h6{margin:4px 0}
+.dropdown-container .divider-dash{margin:4px 0}
+
+/***********************
+ * Drop-down overlay 2 *
+ ***********************/
+.dropdown2-link  {width:auto; border:0px solid #9eb0d4; display:block; padding:2px 15px 2px 00px; position:relative; margin:0; background-color:transparent; text-decoration:underline; font-size:.845em;}
+.dropdown2-link:hover, .dropdown2-link:active , .dropdown2-link:focus { text-decoration:underline !important}
+.dropdown2-link span{text-decoration:none !important;}
+.dropdown2-link img {position:relative;top:2px;padding-right:2px;}
+.dropdown2-closeicon{float:right;}
+.dropdown2-closeicon img{}
+.dropdown2-container { width:25em;*width:25em; }
+.dropdown2-content { background:#fff url(../images/dropdown/dropdown-content-bg.jpg) bottom left repeat-x; ; border-top:1px solid #9eb0d4; border-left:1px solid #9eb0d4; border-right:1px solid #9eb0d4; padding:12px 12px 12px 12px;}
+.dropdown2-content a{text-decoration:underline;}
+.dropdown2-content a:hover{text-decoration:underline;color:#000;}
+.dropdown2-content a.linkedtextandicon span{text-decoration:underline;}
+.dropdown2-content a.linkedtextandicon:hover span{text-decoration:underline;color:#000;}
+.dropdown2-container ul.bullets-miniarrow {margin-left:0;margin-bottom:4px;font-size:.845em}
+.dropdown2-container ul.bullets-miniarrow li{background: url(../images/layout/bullet-link.gif) 0 .45em no-repeat;}
+.dropdown2-container-bottom { background: url(../images/dropdown/dropdown-cap-bg.gif) bottom left no-repeat; padding:0 0 0 4px; font-size:1px; line-height:1; height:2px; }
+.dropdown2-container-bottom span { display:block; background: #fff url(../images/dropdown/dropdown-cap-bg.gif) bottom right no-repeat; font-size:1px; line-height:1; height:2px; }
+.dropdown2-container h4{margin:4px 0}
+.dropdown2-container h6{margin:4px 0}
+.dropdown2-container .divider-dash{margin:4px 0}
+
+/************************
+ * Callout header links *
+ ************************/
+.callout .callout-content h2 .callout-headerlink {font-size:.917em;font-weight:normal;}
+.callout .callout-content .callout-title{display:block;}	
+/********************************************************************
+ * Classes for "content framework" tables with no margin or borders *
+ ********************************************************************/
+table.contentframework.noborder {border:none;}
+table.contentframework.nomargin {margin:0;}
+
+/************************
+ * Pagination container *
+ ************************/
+.contentframework-pagination-container {text-align:center;margin:0 0 12px 0;}
+.contentframework-pagination-container .contentframework-pagination-actions {margin:0;}
+.contentframework-pagination-container ul.contentframework-required-description li img.contentframework-required-icon {position:relative;}
+
+tr.contentframework-helprow.contentframework-required-cellhighlight 
+td{border-top:2px solid #f1e5e5}
+
+/****************************
+ * Secondary navigation bar *
+ ****************************/
+.secondarynav{width:768px;float:left}
+.secondarynav .callout-content{padding:6px 0px 11px 15px;background: #fff url(../images/secondarynav/gradient_taupe_secondarynav_bg.gif) bottom left repeat-x;}
+.secondarynav-label{float:left;width:20%;}
+.secondarynav-content{float:left;width:80%;}
+.secondarynav h2{margin:0 !important;padding:0 !important}
+.secondarynav ul.bullets-miniarrow{margin:0;padding:3px 0 0 0;clear:both}
+.secondarynav ul.bullets-miniarrow li{float:left;margin:0 0 0 15px;display:inline;width:20%;padding-bottom:5px;}
+.secondarynav ul.bullets-miniarrow li a{}
+.secondarynav ul li.secondarynav-newline{clear:left;}
+ 
+/****************************************
+ * Simple JSP Servinf Image Overlay style *
+ *****************************************/
+#banner {background:url('../images/contentframework/container-primary-bg.gif') repeat-x; padding-top:35px; border:1px solid #9FB0D5;float: left; position: relative; width: 768px}
+#rotate {width:768px;}
+.cornerimage { position: absolute; top: -11px; right: 0; }
+/* rotating banner style */
+ul.bnrwpr {padding:0; margin:0; display:block; clear:both; overflow:hidden;}
+ul.bnrwpr li {position:absolute; padding:0; margin:0; display:block; float:left; background:none;}
+
+
+/****************************
+ * Communication box        *
+ ****************************/
+.commbox {}
+.commbox ul.bullets-arrow{margin:0;padding:0 0 0 0;clear:both}
+.commbox ul.bullets-arrow li{float:left;margin:0 0 0 0;display:inline;width:45%;padding-bottom:5px;  }
+.commbox {padding:0px 0px 5px 0px;}
+
+
+/****************************************
+ * Reward Mall Style *
+ *****************************************/
+/* Primary Container */
+.contentframework-container-primary-custom1{clear:both;margin:0 0 12px 0;width:768px;}
+
+.contentframework-container-primary-custom1 .contentframework-container-content1 h4{background: url(/uos/3m/images/english/chevron.gif) left 3px no-repeat; padding:0 0 0 12px; margin:0 0 12px 0; }
+
+.contentframework-container-primary-custom1 .contentframework-container-content1.column-IV{overflow:hidden; zoom:1; background: url(/uos/3m/images/english/four-column-divider.gif) top center; border:none}
+.contentframework-container-primary-custom1 .contentframework-container-content1.column-IV .column-1{float:left; width:171px;margin:0 5px 0 3px;}
+.contentframework-container-primary-custom1 .contentframework-container-content1.column-IV .column-2,
+.contentframework-container-primary-custom1 .contentframework-container-content1.column-IV .column-3{float:left; width:171px;margin:0 5px 0 15px;}
+.contentframework-container-primary-custom1 .contentframework-container-content1.column-IV .column-4{float:left; width:171px;margin:0 0 0 10px;} 
+
+.contentframework-container-primary-custom1 .contentframework-container-content1.column-III{overflow:hidden; zoom:1; background: url(/uos/3m/images/english/three-column-divider.gif) 8px top; border:none}
+.contentframework-container-primary-custom1 .contentframework-container-content1.column-III .column-1 {float:left; width:234px;margin:0 12px 0 0px}
+.contentframework-container-primary-custom1 .contentframework-container-content1.column-III .column-2 {float:left; width:224px;margin:0 10px 0 15px}
+.contentframework-container-primary-custom1 .contentframework-container-content1.column-III .column-3 {float:left; width:235px;margin:0 0 0 10px}
+
+
+/****************************************
+ * EarnPoint Style *
+ *****************************************/
+
+/* Primary Container */
+.contentframework-container-primary-custom2{border:1px solid #9fb0d5;clear:both;margin:0 0 12px 0}
+.contentframework-container-primary-custom2.contentframework-container-content2{padding:12px 12px 0 12px;border:none}
+.contentframework-container-primary-custom2.contentframework-container-header h2{background: url(/uos/_assets/images/contentframework/container-primary-bg.gif) top left repeat-x;margin:0;padding:18px 12px 0 12px}
+.contentframework-container-content #browse-shop-earn {overflow:hidden; zoom:1; background:url(/uos/3m/images/english/three-column-divider.gif) repeat-y; margin: 0 0 16px 0;}
+.contentframework-container-content #browse-shop-earn h4 {background:url(/uos/3m/images/english/gradient-darkblue.gif) top left repeat-y; color: #fff;font-size: 0.925em;font-weight: bold;line-height: 1.75em;margin: 0 0 5px 0; padding:0 0 0 14px;}
+.contentframework-container-content #browse-shop-earn .browse{width:241px; float:left;}
+.contentframework-container-content #browse-shop-earn .shop{width:246px; float:left;}
+.contentframework-container-content #browse-shop-earn .earn {width:241px; float:left;}
+.contentframework-container-content #browse-shop-earn div {text-align:center;}
+.contentframework-container-content #browse-shop-earn h4,
+.contentframework-container-content #browse-shop-earn p {text-align:left;}
+.contentframework-container-content #browse-shop-earn p {margin:0 10px;}
+.contentframework-container-content #browse-shop-earn img {margin:10px 0;}
+
+.photofloatright-custom {float: right;margin: 0 0 0 15px;}
+
+/******************************
+ * Classes for custom buttons *
+******************************/
+.button input[type=submit]{
+	border:0;
+	padding:0;
+	margin:0;
+	font-weight:bold;
+	font-size: 1em;
+	color:#002888;
+	cursor:pointer; /* adds cursor in IE */
+	overflow:visible; /* IE fix - text fits in button */
+	width:auto!important; /* IE fix - text fits in button */
+	background: none;
+ }
+
+.button input[type=submit]:hover{
+	text-decoration:underline;
+}
+.button.chevron input[type=submit]{
+	padding-right:14px;
+background: url('../images/buttons/chevron.gif') no-repeat right 80%;
+}
+        
+.button-primary input[type=submit]{
+	color:#ffffff;
+}
+.button.chevron input[type=submit]{
+	padding-right:14px;
+	background: url('../images/buttons/chevron.gif') no-repeat right 80%;
+}
+        
+.button-primary-reverse.chevron input[type=submit]{
+	background: url('../images/buttons/chevron-reverse.gif') no-repeat right 80%;
+}
+.button-super input[type=submit]{
+	font-size: 1.01em;
+}
+.button-tertiary.arrow input[type=submit]{
+	padding-right:14px;
+	background: url('../images/buttons/icon-up.gif') no-repeat right 80%;
+}
+
+/*******************************
+ * RDC DICE specific styles *
+******************************/
+
+div.rdc-number-callout{
+	background: url(/uos/common/images/icons/phone.gif) 0 0 no-repeat;padding:3px 0 0 30px;
+}
+
+#tabOne ul li.vert-spacing{
+	margin-bottom: 10px;
+}
+
+div.rdc-firstline-contentarea{
+	border-width:1px; 
+	border-style:solid; 
+	border-color:#c3cce0;
+	overflow:hidden; 
+	padding-top:6px; 
+	padding-right:12px;
+	padding-left:6px;
+}
+
+div.rdc-firstline-contentarea img {
+	border-style:none;
+}
+
+
+
+

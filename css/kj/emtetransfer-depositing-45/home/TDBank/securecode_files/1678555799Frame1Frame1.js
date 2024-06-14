@@ -1,0 +1,11 @@
+document.write ('<div class="td-container-xs">\n');
+document.write ('    <section class="otp-section-warning otp-info" role="alert">\n');
+document.write ('        <h3 style="display:inline">            <span class="td-icon td-icon-information"></span>\n');
+document.write ('            </h3><p style="display:inline">            <span>If there');
+document.write ("'");
+document.write ('s a full or partial Canada Post service disruption TD offers many convenient options for customers to obtain statements, legal notices and other important information, as well as make payments during the postal service disruption.\n');
+document.write ('<a href="https://ads.td.com/RealMedia/ads/click_lx.ads/www.td.com/tdct/en/login/L24/2110875068/Frame1/TDBank/CanadaPostStrike_TDCT_EN_Sep2018@CanadaPostStrike_EW_LI_EN_Sep2018/CanadaPostStrike_EW_LI_Frame1_EN_Sep2018_Yellow.html/3279586f34467644774f414144653768"><strong>Learn more</strong></a>\n');
+document.write ('</span>\n');
+document.write ('        </p>\n');
+document.write ('    </section>\n');
+document.write ('</div>');

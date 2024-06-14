@@ -1,0 +1,35 @@
+/*
+
+.rn_ConditionalChatLink .rn_ChatAvailable
+{
+    display: block;
+}
+
+*/
+
+
+#rn_ChatAvailableImg, .rn_ChatAvailable #rn_ChatUnavailableImg
+{
+  display:none !important; 
+}
+
+.rn_ChatAvailable #rn_ChatAvailableImg
+{    
+  display:block !important;
+  margin-left:-3px !important;
+}   
+div:not(.rn_ConditionalChatLink) > #myChatLink > #myChatLinkInfo > #rn_ChatUnavailableImg {
+   /*display:none !important; */
+}
+div:not(.rn_ChatAvailable) > #myChatLink > #myChatLinkInfo > #rn_ChatAvailableImg {
+   display:none !important; 
+}
+div:not(.rn_ChatAvailable) > #myChatLink > #myChatLinkInfo > #rn_ChatUnAvailableImg {
+   display:block !important; 
+}
+div:not(.rn_ChatAvailable)  #myChatLink  #myChatLinkInfo a #rn_ChatUnAvailableImg {
+   display:block !important; 
+}
+.rn_ChatAvailable > #myChatLink > #myChatLinkInfo > #rn_ChatAvailableImg {
+   display:block !important; 
+}
