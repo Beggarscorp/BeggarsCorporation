@@ -1,0 +1,29 @@
+.sig-slider {
+    width: 90%;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #a55605;
+    margin: auto;
+    margin-top: 14px;
+    border-radius: 5px;
+}
+
+.sig-slide {
+    display: none;
+    transition: opacity 1s ease;
+}
+
+.sig-slide img {
+    width: 100%;
+    height: auto;
+}
+
+.active {
+    display: block;
+}
+.full-sec-content iframe
+{
+    border: 3px solid #a55605;
+    border-radius:5px;
+    padding: 1px;
+}
