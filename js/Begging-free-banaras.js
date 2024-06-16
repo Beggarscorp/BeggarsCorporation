@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     let slides = document.querySelectorAll('.sig-slide');
     let currentSlide = 0;
+    slides[currentSlide].classList.add('active');
     let slideInterval = setInterval(nextSlide, 3000); 
 
     function nextSlide() {

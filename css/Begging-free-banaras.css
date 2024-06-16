@@ -27,3 +27,8 @@
     border-radius:5px;
     padding: 1px;
 }
+.forms-section .modal-header .close,#signature-form .modal-header .close
+{
+    background-color: goldenrod;
+    color: #fff;
+}

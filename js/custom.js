@@ -918,3 +918,19 @@ jQuery(window).on('scroll', function () {
 $(".myclass").on("click",()=>{
     console.log("Hello world");
 })
+
+// update slider js code
+document.addEventListener('DOMContentLoaded', function() {
+    let slides = document.querySelectorAll('.update-slide');
+    let currentSlide = 0;
+	slides[currentSlide].classList.add('active');
+    let slideInterval = setInterval(nextSlide, 3000); 
+	
+    function nextSlide() {
+		slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+});
+
+
