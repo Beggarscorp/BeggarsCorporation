@@ -28,13 +28,13 @@ window.onload=()=>{
 const aritcleObj=[
    {
     id:1,
-    title:"Lorem ipsum dolor sit amet",
+    title:"Lorem ipsum dolor sit amet1",
     image:"images/main/timesofindia.jpg",
     dis:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum tempora consectetur maiores quo praesentium dolore sit suscipit? Dolorem, deserunt!"
    },
    {
     id:2,
-    title:"Lorem ipsum dolor sit amet",
+    title:"Lorem ipsum dolor sit amet2",
     image:"images/main/timesofindia.jpg",
     dis:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum tempora consectetur maiores quo praesentium dolore sit suscipit? Dolorem, deserunt!"
    }
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded",()=>{
                                <img src=${aritcleObj[key].image} alt="">
                                <h4 class="text-dark" style="font-weight: 700;">${aritcleObj[key].title}</h4>
                                <p style="font-size: smaller;color: black;">${aritcleObj[key].dis}</p>
-                               <a href="DetailsPage.html?articleId=${aritcleObj[key].id}" target="_blank" rel="noopener noreferrer"><button
+                               <a href="DetailsPage.html?articleId=${aritcleObj[key].id}&image=${aritcleObj[key].image}&title=${aritcleObj[key].title}&dis=${aritcleObj[key].dis}" target="_blank" rel="noopener noreferrer"><button
                                    style="background-color: #a55605;color: white;border: none;outline: none;padding: 3px 10px;border-radius: 5px; font-size: small;margin: 10px 0;">See
                                    more</button></a>
                            </div>
@@ -61,13 +61,13 @@ document.addEventListener("DOMContentLoaded",()=>{
 const newsObj=[
     {
      id:1,
-     title:"Lorem ipsum dolor sit amet",
+     title:"Lorem ipsum dolor sit amet1",
      image:"images/MemplateImg/bc.jpg",
      dis:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum tempora consectetur maiores quo praesentium dolore sit suscipit? Dolorem, deserunt!"
     },
     {
      id:2,
-     title:"Lorem ipsum dolor sit amet",
+     title:"Lorem ipsum dolor sit amet2",
      image:"images/MemplateImg/bc.jpg",
      dis:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum tempora consectetur maiores quo praesentium dolore sit suscipit? Dolorem, deserunt!"
     }
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded",()=>{
             <div class="col-sm-9">
                 <h4 class="text-dark" style="font-weight: 700;">${newsObj[key].title}</h4>
                 <p class="text-dark" style="font-size:smaller;">${newsObj[key].dis}</p>
-                <a href="DetailsPage.html?newsId=${newsObj[key].id}" target="_blank" rel="noopener noreferrer"><button
+                <a href="DetailsPage.html?newsId=${newsObj[key].id}&image=${newsObj[key].image}&title=${newsObj[key].title}&dis=${newsObj[key].dis}" target="_blank" rel="noopener noreferrer"><button
                     style="background-color: #a55605;color: white;border: none;outline: none;padding: 3px 10px;border-radius: 5px; font-size: small;margin: 10px 0;">Read
                     more</button></a>
             </div>
