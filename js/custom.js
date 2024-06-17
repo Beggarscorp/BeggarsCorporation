@@ -932,6 +932,9 @@ document.addEventListener('DOMContentLoaded', function() {
         slides[currentSlide].classList.add('active');
     }
 });
-const para=document.querySelectorAll(".para");
-console.log(para.innerText);
+// const para=document.querySelectorAll(".para");
+
+// let paraText=para[1].innerText.split(" ");
+// let tt=paraText.slice("0","20");
+// console.log(tt.toString().replaceAll(","," "));
 

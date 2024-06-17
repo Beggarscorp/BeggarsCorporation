@@ -10,3 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
         slides[currentSlide].classList.add('active');
     }
 });
+
+const memberCountVal=document.querySelector(".memberCountVal");
+const memberFormBtn=document.querySelector(".memberForm");
+memberFormBtn.addEventListener("click",()=>{
+    let memberval=parseInt(memberCountVal.innerText);
+    memberval++;
+    localStorage.setItem('memberIncreaseVal',memberval);
+    memberCountVal.innerText=memberval;   
+})
+window.onload=()=>{
+    const memberCountVal=document.querySelector(".memberCountVal");
+    memberCountVal.innerText=localStorage.getItem('memberIncreaseVal');
+}
