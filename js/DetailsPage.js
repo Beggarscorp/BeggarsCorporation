@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 newsDetailPageHTML = `<div class="row">
                 <div class="col-sm-12">
                     <div class="imgae">
-                        <img src=${i.image} alt="">
+                        <img src=${i.image} alt="" style="aspect-ratio:3;object-fit:contain;">
                     </div>
                     <div class="content">
                         <h2>${i.title}</h2>
@@ -66,7 +66,7 @@ window.addEventListener("DOMContentLoaded", () => {
                      newsDetailPageHTML = `<div class="row">
                      <div class="col-sm-12">
                          <div class="imgae">
-                             <img src=${i.image} alt="">
+                             <img src=${i.image} alt="" style="aspect-ratio:3;object-fit:contain;">
                          </div>
                          <div class="content">
                              <h2>${i.title}</h2>

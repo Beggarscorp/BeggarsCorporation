@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     let divarticleElement=document.getElementById("aritcle-data");
     for (const key in aritcleObj) {
         let articleHTML=`<div class="col-sm-6" style="padding: 6px;">
-                           <div style="border: 2px solid #a55605; border-radius: 5px;padding: 5px;">
+                           <div style="border: 2px solid #a55605; border-radius: 5px;padding: 10px;">
                                <img src=${aritcleObj[key].image} alt="">
                                <h4 class="text-dark" style="font-weight: 700;">${aritcleObj[key].title}</h4>
                                <p style="font-size: smaller;color: black;">${aritcleObj[key].dis}</p>
