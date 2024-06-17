@@ -1,27 +1,87 @@
+const aritcleObj=[
+    {
+     id:1,
+     title:"Lorem ipsum dolor sit amet1",
+     image:"images/main/timesofindia.jpg",
+     dis:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum tempora consectetur maiores quo praesentium dolore sit suscipit? Dolorem, deserunt!"
+    },
+    {
+     id:2,
+     title:"Lorem ipsum dolor sit amet2",
+     image:"images/main/timesofindia.jpg",
+     dis:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum tempora consectetur maiores quo praesentium dolore sit suscipit? Dolorem, deserunt!"
+    }
+ ];
+
+ const newsObj=[
+    {
+     id:1,
+     title:"Lorem ipsum dolor sit amet1",
+     image:"images/MemplateImg/bc.jpg",
+     dis:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum tempora consectetur maiores quo praesentium dolore sit suscipit? Dolorem, deserunt!"
+    },
+    {
+     id:2,
+     title:"Lorem ipsum dolor sit amet2",
+     image:"images/MemplateImg/bc.jpg",
+     dis:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum tempora consectetur maiores quo praesentium dolore sit suscipit? Dolorem, deserunt!"
+    }
+ ];
+
+
+
 window.addEventListener("DOMContentLoaded", () => {
     const detailpageDiv = document.getElementById("detailPage-data");
     let urlParams = new URLSearchParams(window.location.search);
-    let id = urlParams.get('newsId');
-    let image = urlParams.get('image');
-    let title = urlParams.get('title');
-    let dis = urlParams.get('dis');
+    let newsid = urlParams.get('newsId');
+    let articleid = urlParams.get('articleId');
     let newsDetailPageHTML = "";
-console.log(image);
-    if (id != " ") {
-        newsDetailPageHTML = `<div class="row">
-                    <div class="col-sm-12">
-                        <div class="imgae">
-                            <img src=${image} alt="">
-                        </div>
-                        <div class="content">
-                            <h2>${title}</h2>
-                            <p>${dis}</p>
-                        </div>
+
+    if (newsid != " " && articleid === null) {
+        for (const i of newsObj) {
+           if(i.id == newsid)
+            {
+                newsDetailPageHTML = `<div class="row">
+                <div class="col-sm-12">
+                    <div class="imgae">
+                        <img src=${i.image} alt="">
                     </div>
-                    </div>`;
-                    detailpageDiv.innerHTML=newsDetailPageHTML;
+                    <div class="content">
+                        <h2>${i.title}</h2>
+                        <p>${i.dis}</p>
+                    </div>
+                </div>
+                </div>`;
+                detailpageDiv.innerHTML+=newsDetailPageHTML;
+
+            }
+        
+        }
     }
-    else {
+    else if (articleid != " " && newsid === null)
+        {
+            for (const i of aritcleObj) {
+                if(i.id == articleid)
+                 {
+                     newsDetailPageHTML = `<div class="row">
+                     <div class="col-sm-12">
+                         <div class="imgae">
+                             <img src=${i.image} alt="">
+                         </div>
+                         <div class="content">
+                             <h2>${i.title}</h2>
+                             <p>${i.dis}</p>
+                         </div>
+                     </div>
+                     </div>`;
+                     detailpageDiv.innerHTML+=newsDetailPageHTML;
+     
+                 }
+             
+             }
+        }
+    else 
+    {
         null;
     }
 
