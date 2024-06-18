@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let slides = document.querySelectorAll('.sig-slide');
+    let slides = document.getElementsByClassName('sig-slide');
     let currentSlide = 0;
     slides[currentSlide].classList.add('active');
     let slideInterval = setInterval(nextSlide, 3000); 
-
+    
     function nextSlide() {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
@@ -92,7 +92,12 @@ document.addEventListener("DOMContentLoaded",()=>{
    }
 });
 
-for(let i=1;i<=43;i++)
-    {
-        console.log(i);
-    }
+document.addEventListener("DOMContentLoaded",()=>{
+     const PrentDiv=document.getElementById("sig-slider");
+     const childImgDiv=document.getElementsByClassName("sig-slide");
+     for(let i=1;i<=43;i++)
+        {
+            let divcontent=`<div class="sig-slide"><img src="images/signatures-images/Signature-${i}.jpg" alt="Signature image ${i}"></div`;
+            PrentDiv.innerHTML+=divcontent;
+        }
+});

@@ -1,6 +1,6 @@
 .slider-container {
     position: relative;
-    width: 90%; 
+    width: 98%; 
     margin: 0 auto;
     overflow: hidden;
     margin-bottom: 20px;
@@ -73,13 +73,26 @@
     color: white;
     padding: 6px 0;
 }
-#slider2 .cards-wrapper .card,#slider3 .cards-wrapper .card
+#slider2 .cards-wrapper .card
 {
     width: 300px;
     height: 220px;
 }
 #slider1 .cards-wrapper .card
 {
-    height: 250px;
+    height: fit-content;
     width: 250px;
+}
+#slider3 .cards-wrapper .card
+{
+    width: 300px;
+    height: fit-content;
+}
+#slider3 .cards-wrapper .card .post .image
+{
+    height: 300px;
+}
+#slider3 .cards-wrapper .card .post .image img
+{
+    aspect-ratio: 1;
 }
