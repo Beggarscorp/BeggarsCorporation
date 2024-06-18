@@ -45,11 +45,11 @@
 .right-button {
     right: 10px;
 }
-.product-card img
+.product-card .img
 {
     display: none;
     width: 78%;
-    border: 3px solid goldenrod;
+    border: 4px solid goldenrod;
     border-radius: 10px;
     transition: opacity 0.5s ease;
 }
@@ -63,4 +63,12 @@
     border: none;
     background: none;
     padding: 0 10px;
+}
+.product-card .img button
+{
+    width: 100%;
+    border: none;
+    background-color: goldenrod;
+    color: white;
+    padding: 6px 0;
 }
