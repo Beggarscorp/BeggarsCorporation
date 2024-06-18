@@ -29,13 +29,14 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: #a55605;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 1px 5px;
     cursor: pointer;
     font-size: 24px;
     z-index: 1;
+    border-radius: 20px;
 }
 
 .left-button {
@@ -71,4 +72,14 @@
     background-color: goldenrod;
     color: white;
     padding: 6px 0;
+}
+#slider2 .cards-wrapper .card,#slider3 .cards-wrapper .card
+{
+    width: 300px;
+    height: 220px;
+}
+#slider1 .cards-wrapper .card
+{
+    height: 250px;
+    width: 250px;
 }

@@ -80,3 +80,15 @@ window.addEventListener("load",()=>{
 
     },3000)
 });
+
+
+
+const lnkedinURL="https://www.linkedin.com/posts/paianup_lloyds-cafe-started-in-the-1680s-a-humble-activity-7208676281238900736-u4nh?utm_source=li_share&utm_content=feedcontent&utm_medium=g_dt_web&utm_campaign=copy";
+fetch(`https://www.linkedin.com/post-embed?url=${encodeURIComponent(lnkedinURL)}`)
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('linkedin-post-container').innerHTML = html;
+    })
+    .catch(error => {
+      console.error('Error fetching LinkedIn post:', error);
+    });

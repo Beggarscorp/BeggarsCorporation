@@ -91,3 +91,8 @@ document.addEventListener("DOMContentLoaded",()=>{
         divnewsElement.innerHTML+=newsHTML;
    }
 });
+
+for(let i=1;i<=43;i++)
+    {
+        console.log(i);
+    }
