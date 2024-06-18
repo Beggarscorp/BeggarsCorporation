@@ -45,3 +45,22 @@
 .right-button {
     right: 10px;
 }
+.product-card img
+{
+    display: none;
+    width: 78%;
+    border: 3px solid goldenrod;
+    border-radius: 10px;
+    transition: opacity 0.5s ease;
+}
+.product-active
+{
+    display: block !important;
+    opacity: 1;
+}
+.product-prev,.product-next
+{
+    border: none;
+    background: none;
+    padding: 0 10px;
+}
