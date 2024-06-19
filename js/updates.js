@@ -31,7 +31,6 @@ class CardSlider {
 }
 
 // Instantiate multiple sliders
-const slider1 = new CardSlider('slider1');
 const slider2 = new CardSlider('slider2');
 const slider3 = new CardSlider('slider3');
 
