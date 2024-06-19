@@ -95,7 +95,7 @@
 }
 #slider3 .cards-wrapper .card .post .content
 {
-    height: 10px;
+    height: 15px;
 }
 #slider3 .cards-wrapper .card .post .image
 {
@@ -115,7 +115,7 @@
     font-weight: 300;
     text-align: start;
     font-size: small;
-    padding: 15px;
+    padding: 0 15px;
 }
 #slider3 .cards-wrapper .card .post
 {
@@ -163,4 +163,8 @@
 {
     text-align: start;
     margin: 5px 0;
+}
+.products
+{
+    margin-top: 38px;
 }
