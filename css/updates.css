@@ -50,7 +50,7 @@
 {
     display: none;
     width: 78%;
-    border: 4px solid goldenrod;
+    border: 4px solid #a55605;
     border-radius: 10px;
     transition: opacity 0.5s ease;
 }
@@ -74,7 +74,7 @@
 {
     width: 100%;
     border: none;
-    background-color: goldenrod;
+    background-color: #a55605;
     color: white;
     padding: 6px 0;
 }
@@ -93,6 +93,10 @@
     width: 300px;
     height: fit-content;
 }
+#slider3 .cards-wrapper .card .post .content
+{
+    height: 10px;
+}
 #slider3 .cards-wrapper .card .post .image
 {
     height: 300px;
@@ -108,11 +112,18 @@
 #slider3 .cards-wrapper .card .post p
 {
     color: #fff;
-    font-weight: 300;text-align: start;font-size: small;padding: 10px;
+    font-weight: 300;
+    text-align: start;
+    font-size: small;
+    padding: 15px;
+}
+#slider3 .cards-wrapper .card .post
+{
+    border: 4px solid #a55605;
 }
 .services .services-card div
 {
-    border: 4px solid goldenrod;
+    border: 4px solid #a55605;
     border-radius: 5px;
     margin: 10px 16px;
     height: 400px;
@@ -126,7 +137,30 @@
 {
     width: 100%;
     border: none;
-    background-color: goldenrod;
+    background-color: #a55605;
     color: white;
     padding: 6px 0;
+}
+.announcements-section .dis a button
+{
+    border: 2px solid #a55605;
+    background-color: #fff;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 15px;
+    margin: 15px 0;
+}
+.announcements-section .dis a button:hover
+{
+    background-color: #a55605;
+    color: white;
+    /* transform: scale(1.1); */
+    font-weight: 400;
+    /* transition: 0.5s linear; */
+    font-size: 15px;
+}
+.announcements-section .heading h3
+{
+    text-align: start;
+    margin: 5px 0;
 }
