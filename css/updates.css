@@ -32,9 +32,9 @@
     background-color: #a55605;
     color: white;
     border: none;
-    padding: 1px 5px;
+    padding: 4px 8px;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 15px;
     z-index: 1;
     border-radius: 20px;
 }
@@ -63,7 +63,12 @@
 {
     border: none;
     background: none;
-    padding: 0 10px;
+    height: 33px;
+    margin: auto;
+    background-color: #a55605;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0 7px;
 }
 .product-card .img button
 {
@@ -95,6 +100,15 @@
 #slider3 .cards-wrapper .card .post .image img
 {
     aspect-ratio: 1;
+}
+#slider3 .cards-wrapper .card .post 
+{
+     background-color: #a55605;
+}
+#slider3 .cards-wrapper .card .post p
+{
+    color: #fff;
+    font-weight: 300;text-align: start;font-size: small;padding: 10px;
 }
 .services .services-card div
 {
