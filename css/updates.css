@@ -50,7 +50,7 @@
 {
     display: none;
     width: 78%;
-    border: 4px solid #a55605;
+    border: 4px solid goldenrod;
     border-radius: 10px;
     transition: opacity 0.5s ease;
 }
@@ -74,7 +74,7 @@
 {
     width: 100%;
     border: none;
-    background-color: #a55605;
+    background-color: goldenrod;
     color: white;
     padding: 6px 0;
 }
@@ -93,21 +93,37 @@
     width: 300px;
     height: fit-content;
 }
+#slider3 .cards-wrapper .card .post .content p
+{
+    padding-top: 42%;
+}
 #slider3 .cards-wrapper .card .post .content
 {
-    height: 15px;
+    background:rgba(0, 0, 0, 0.6);
+    transition: all 1s ease-out;
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    margin-top: 5px;
 }
 #slider3 .cards-wrapper .card .post .image
 {
     height: 300px;
 }
+#slider3 .cards-wrapper .card .post .image:hover + .content
+{
+    transform: translateY(-305px);
+}
+
+#slider3 .cards-wrapper .card .post .content:hover
+{
+    transform: translateY(-305px);
+
+}
 #slider3 .cards-wrapper .card .post .image img
 {
     aspect-ratio: 1;
-}
-#slider3 .cards-wrapper .card .post 
-{
-     background-color: #a55605;
+    height: 100%;
 }
 #slider3 .cards-wrapper .card .post p
 {
@@ -119,11 +135,12 @@
 }
 #slider3 .cards-wrapper .card .post
 {
-    border: 4px solid #a55605;
+    border: 4px solid goldenrod;
+    position: relative;
 }
 .services .services-card div
 {
-    border: 4px solid #a55605;
+    border: 4px solid goldenrod;
     border-radius: 5px;
     margin: 10px 16px;
     height: 400px;
@@ -137,34 +154,46 @@
 {
     width: 100%;
     border: none;
-    background-color: #a55605;
+    background-color: goldenrod;
     color: white;
     padding: 6px 0;
 }
 .announcements-section .dis a button
 {
-    border: 2px solid #a55605;
+    border: 2px solid goldenrod;
     background-color: #fff;
     border-radius: 5px;
     font-weight: 400;
     font-size: 15px;
     margin: 15px 0;
+    color: goldenrod;
+    padding: 2px 20px;
+    transition: 0.3s ease;
+}
+.announcements-section .img img
+{
+    border: 3px solid goldenrod;
 }
 .announcements-section .dis a button:hover
 {
-    background-color: #a55605;
+    background-color: goldenrod;
     color: white;
-    /* transform: scale(1.1); */
     font-weight: 400;
-    /* transition: 0.5s linear; */
+    transition: 0.3s ease;
     font-size: 15px;
+    transform: translateY(-7px);
 }
 .announcements-section .heading h3
 {
     text-align: start;
     margin: 5px 0;
+    padding: 0 10px;
 }
 .products
 {
     margin-top: 38px;
+}
+.announcements-section .dis
+{
+    text-align: start;
 }
