@@ -1,0 +1,86 @@
+ <div class="update-strip" style="padding: 13px 0;">
+            <div class="update-slider">
+                <div class="update-slide">
+                    <div class="">
+                        <div class="col-sm-12 col-md-3">
+                            <div class="mx-auto"><img src="images/main/slides2/kv.jpg" class="w-100 px-3" alt="">
+                                <h6 class="py-2 text-center">KV Subramanian<br />ED, IMF & Former CEA to Govt. of India
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-9 para" style="font-size: small;margin:25px 0;line-height:25px;">
+                            Beggars Corporation is an initiative for ethical wealth creation at the bottom of the
+                            pyramid. It inspires all of us not to take impossible as a word granted. With right mindset,
+                            with positive thinking, what is thought impossible can be made possible.
+                            <a href="updates.html" target="_blank" rel="noopener noreferrer"><button class="Seem">Read
+                                    more</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="update-slide">
+                    <div class="">
+                        <div class="col-sm-12 col-md-3">
+                            <div class=" mx-auto"><img src="images/main/slides2/mirchmaladi.jpg" class="w-100 px-3"
+                                    alt="">
+                                <h6 class="py-2 text-center">Mirchmala Devi<br />Beggar Beggar Turned Entrepreneurs</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-9 para" style="font-size: small;margin:25px 0;line-height:25px;">
+                            After my husband's accident, unfortunate life made me to beg
+                            for the family. Leading us to Struggle for six years. Finally with countless prayers to
+                            "Ganga Maa".
+                            Destiny introduced me to Beggars' Corporation, gifting me work and dignity back.
+                            <a href="updates.html" target="_blank" rel="noopener noreferrer"><button class="Seem">Read
+                                    more</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="update-slide">
+                    <div class="">
+                        <div class="col-sm-12 col-md-3">
+                            <div class=" mx-auto"><img src="images/main/slides2/ONDC.jpg" class="w-100 px-3" alt="">
+                                <h6 class="py-2 text-center">T. Koshy,<br />MD & CEO, ONDC</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-9 para" style="font-size: small;margin:25px 0;line-height:25px;">At
+                            the heart of ONDC's mission is the belief that digital
+                            advancement must benefit all the society, leaving no one behind. The Open Network was
+                            conceptualized
+                            with the thought of digitizing the undigitized, and what better way to fulfill the vision
+                            than by
+                            teaming up with the Beggars Corporation that is solely dedicated to uplifting the one of
+                            India's
+                            most undeserved communities. We are proud to support the corporation as they pave the way
+                            for a
+                            respectful, happy, wealthy, and independent life for the underprivileged.
+                            <a href="updates.html" target="_blank" rel="noopener noreferrer"><button class="Seem">Read
+                                    more</button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="update-slide">
+                    <div class="">
+                        <div class="col-sm-12 col-md-3">
+                            <div class=" mx-auto"><img src="images/main/slides2/cv.jpg" class="w-100 px-3" alt="">
+                                <h6 class="py-2 text-center">Chandra Mishra<br />Founder & CEO<br />Beggars' Corporaiton
+                                </h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-9 para" style="font-size: small;margin:25px 0;line-height:25px;">We
+                            are trying to turn the vast idle manpower of 4.14 lakh
+                            beggars of India into a productive force of economy where they can be both Creator and Owner
+                            of
+                            Wealth. Since the market plays a vital role in the success of a venture, we believe ONDC
+                            Network
+                            will empower the beggar-turned-entrepreneurs to achieve their due market share. This
+                            democratization
+                            of the market can lead to democratization of the economy and re-evolution of the poorest
+                            section of
+                            the society - the beggars - to break the poverty-trap.
+                            <a href="updates.html" target="_blank" rel="noopener noreferrer"><button class="Seem">Read
+                                    more</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

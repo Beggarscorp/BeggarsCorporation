@@ -31,66 +31,66 @@ class CardSlider {
 }
 
 // Instantiate multiple sliders
-const slider2 = new CardSlider('slider2');
+// const slider2 = new CardSlider('slider2');
 const slider3 = new CardSlider('slider3');
 
-const product_card_img=document.querySelectorAll(".product-card .img");
-const pro_left=document.querySelector(".product-prev");
-const pro_next=document.querySelector(".product-next");
-let count=0;
-pro_next.addEventListener("click",()=>{
-    let lenofImg=product_card_img.length-2;
-    if(count <= lenofImg )
-        {
-            product_card_img[count].classList.remove("product-active");
-            count++;
-            product_show();
-        }
-  
+const product_card_img = document.querySelectorAll(".product-card .img");
+const pro_left = document.querySelector(".product-prev");
+const pro_next = document.querySelector(".product-next");
+let count = 0;
+pro_next.addEventListener("click", () => {
+    let lenofImg = product_card_img.length - 2;
+    if (count <= lenofImg) {
+        product_card_img[count].classList.remove("product-active");
+        count++;
+        product_show();
+    }
+
 });
-pro_left.addEventListener("click",()=>{
-   if(count > 0)
-    {
+pro_left.addEventListener("click", () => {
+    if (count > 0) {
         product_card_img[count].classList.remove("product-active");
         count--;
         product_show();
     }
 });
 
-const product_show=()=>{
+const product_show = () => {
     product_card_img[count].classList.add("product-active");
 };
 
-function startInterval(){
- slideonFlow = setInterval(()=>{
-        let lenofImg=product_card_img.length-2;
-        if(count <= lenofImg )
-            {
-                product_card_img[count].classList.remove("product-active");
-                count++;
-                product_show();
-            }
-            else
-            {
-                product_card_img[count].classList.remove("product-active");
-                count=0;
-                product_card_img[count].classList.add("product-active");
-            }
+function startInterval() {
+    slideonFlow = setInterval(() => {
+        let lenofImg = product_card_img.length - 2;
+        if (count <= lenofImg) {
+            product_card_img[count].classList.remove("product-active");
+            count++;
+            product_show();
+        }
+        else {
+            product_card_img[count].classList.remove("product-active");
+            count = 0;
+            product_card_img[count].classList.add("product-active");
+        }
 
-    },2000)
+    }, 2000)
 }
 
 
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
     product_card_img[count].classList.add("product-active");
-    const productsDiv=document.getElementsByClassName("products");
+    const productsDiv = document.getElementsByClassName("products");
     startInterval();
-    productsDiv[0].addEventListener("mouseover",()=>{
+    productsDiv[0].addEventListener("mouseover", () => {
         clearInterval(slideonFlow);
-    }) 
+    })
     productsDiv[0].addEventListener('mouseout', () => {
-        startInterval(); 
-      });
-    
+        startInterval();
+    });
+
 });
+
+
+
+// fatching api data
 

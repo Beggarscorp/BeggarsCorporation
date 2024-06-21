@@ -932,9 +932,21 @@ document.addEventListener('DOMContentLoaded', function() {
         slides[currentSlide].classList.add('active');
     }
 });
-// const para=document.querySelectorAll(".para");
 
-// let paraText=para[1].innerText.split(" ");
-// let tt=paraText.slice("0","20");
-// console.log(tt.toString().replaceAll(","," "));
 
+window.onload=()=>{
+	let tt=document.querySelector(".onloadPopup .img");
+	let popupDiv=document.querySelector(".onloadPopup");
+	let crossIcon=document.querySelector(".onloadPopup .img i");
+	const bodyForLoadpopup=document.getElementsByTagName("body");
+	
+	bodyForLoadpopup[0].addEventListener("click",()=>{
+		tt.style.transform="translateY(-550px)";
+		popupDiv.style.display="none";
+	}),
+	crossIcon.addEventListener("click",()=>{
+		tt.style.transform="translateY(-550px)";
+		popupDiv.style.display="none";
+	})
+    tt.style.transform="translateY(103px)";
+}

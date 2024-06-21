@@ -32,3 +32,31 @@
     background-color: goldenrod;
     color: #fff;
 }
+#news-data .headdd h4
+{
+    color: goldenrod;
+    font-weight: 700;
+    
+}
+#news-data .img img
+{
+    border: 2px solid #a55605;
+}
+#news-data .discc
+{
+    font-size: small;
+}
+#news-data button
+{
+    background-color: #a55605;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: all 0.3s;
+    margin: 10px 0;
+}
+#news-data button:hover
+{
+    transform: translateY(-10px);
+}

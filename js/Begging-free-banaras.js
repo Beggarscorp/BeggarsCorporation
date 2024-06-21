@@ -71,22 +71,19 @@ const newsObj=[
      dis:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum tempora consectetur maiores quo praesentium dolore sit suscipit? Dolorem, deserunt!"
     }
  ];
-
+ 
 document.addEventListener("DOMContentLoaded",()=>{
     let divnewsElement=document.getElementById("news-data");
     for (const key in newsObj) {
-        let newsHTML=`<div class="row" style="margin-bottom: 20px;"> 
-        <div class="col-sm-3">
-                <img src=${newsObj[key].image} alt=""
-                    style="border: 2px solid #a55605;border-radius: 5px;padding: 1px;">
-            </div>
-            <div class="col-sm-9">
-                <h4 class="text-dark" style="font-weight: 700;">${newsObj[key].title}</h4>
-                <p class="text-dark" style="font-size:smaller;">${newsObj[key].dis}</p>
-                <a href="DetailsPage.html?newsId=${newsObj[key].id}" target="_blank" rel="noopener noreferrer"><button
-                    style="background-color: #a55605;color: white;border: none;outline: none;padding: 3px 10px;border-radius: 5px; font-size: small;margin: 10px 0;">Read
-                    more</button></a>
-            </div>
+        let newsHTML=`<div class="col-sm-4">
+                <div class="img"><img src=${newsObj[key].image} alt=""></div>
+                <div class="headdd">
+                    <h4>${newsObj[key].title}</h4>
+                </div>
+                <div class="discc">
+                ${newsObj[key].dis}
+                </div>
+                <button>Read more</button>
             </div>`;
         divnewsElement.innerHTML+=newsHTML;
    }
