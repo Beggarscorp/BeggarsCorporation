@@ -1,0 +1,40 @@
+<?php
+include '../db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+  $proname = $_POST['name'];
+  $prodis = $_POST['description'];
+  $proprice = $_POST['price'];
+  $procategory = $_POST['category'];
+  $prostock = $_POST['stock'];
+
+  // Check if file was uploaded without errors
+  if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+    $imageName = $_FILES['image']['name'];
+    $tmpName = $_FILES['image']['tmp_name'];
+    $folder = '../assets/images/ProductImages/'. $imageName;
+
+    // Insert data into the database
+    $sql = "INSERT INTO products (`productname`, `discription`, `price`, `category`, `stock`, `productimage`) 
+                VALUES ('$proname', '$prodis', '$proprice', '$procategory', '$prostock', '$imageName')";
+
+    $responseMsg = "";
+
+    if ($conn->query($sql) === TRUE) {
+      // Move the uploaded file
+      if (move_uploaded_file($tmpName, $folder)) {
+        $responseMsg = "File uploaded and moved successfully.";
+      } else {
+        $responseMsg = "Failed to move uploaded file.";
+      }
+    } else {
+      $responseMsg = "Error inserting data into database: " . $conn->error;
+    }
+
+    echo $responseMsg; // Display response message for debugging
+    header("Location: /addproduct.php?uploaded=true");
+    exit();
+  } else {
+    echo "No file uploaded or file upload error.";
+  }
+}

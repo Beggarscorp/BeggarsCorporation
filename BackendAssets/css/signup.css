@@ -1,0 +1,30 @@
+@import url('admin.css');
+
+input:focus-visible
+{
+    border: none;
+    outline: 0;
+}
+input
+{
+    border: none;
+    width: 50%;
+    margin: 10px 0 !important;
+    background-color: var(--color-2) !important;
+    color: var(--color-5) !important;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+input::placeholder
+{
+    color: var(--color-5) !important; 
+}
+button
+{
+    border: none;
+    color: var(--color-5) !important;
+    background-color: var(--color-2) !important;    
+    padding: 3px 28px;
+    margin: 10px 0 !important;
+    border-radius: 15px !important;
+}
