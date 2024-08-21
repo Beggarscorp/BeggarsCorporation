@@ -49,18 +49,14 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 <td>INR <?=$row['price']?></td>
                                 <td><?=$row['stock']?></td>
                                 <td><?=$row['discription']?></td>
-                                <td class="update" onclick="updateProduct(<?=$row['id'] ?>)">Updata</td>
+                                <td class="update" onclick="updateProduct('<?=$row['id']?>','<?=$row['productname']?>','<?=$row['category']?>','<?=$row['price']?>','<?=$row['stock']?>','<?=$row['discription']?>','<?=$row['productimage']?>')">Updata</td>
                                 <td class="delete" onclick="deleteProduct(<?=$row['id'] ?>)">Delete</td>
                             </tr>
                             <?php
                            }
                            ?>
-                           <form action="/BackendAssets/mysqlcode/allproducts" method="post" id="delete">
+                           <form action="/BackendAssets/mysqlcode/allproducts.php" method="post" id="delete">
                                <input type="hidden" name="delete">
-                               <input type="hidden" name="id" value="<?=$row['id'] ?>">
-                           </form>
-                           <form action="/BackendAssets/mysqlcode/allproducts" method="post" id="update">
-                               <input type="hidden" name="update">
                                <input type="hidden" name="id" value="<?=$row['id'] ?>">
                            </form>
                         </tbody>
@@ -71,11 +67,12 @@ include('BackendAssets/mysqlcode/allproducts.php');
     </div>
     <script>
         const deleteProduct=(id)=>{
+            alert("Want to update product"+id);
            document.getElementById("delete").submit();
         }
-        const updateProduct=(id)=>{
+        const updateProduct=(id,productname,productcategory,productprice,productstock,productdiscription,productimage)=>{
             alert("Want to update product"+id);
-            document.getElementById("update").submit();
+            window.location.href="/productUpdate.php?Id="+id+'&productName='+productname+'&'+'productCategory='+productcategory+'&productPrice='+productprice+'&productStock='+productstock+'&productDiscription='+productdiscription+'&productImage='+productimage;
         }
     </script>
 </body>
