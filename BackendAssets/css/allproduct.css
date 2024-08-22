@@ -4,7 +4,7 @@ td
     width: 10px;
     text-align: center;
 }
-thead tr td
+thead tr td,tbody tr td
 {
     padding: 8px 0;
 }

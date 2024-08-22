@@ -1,12 +1,9 @@
 <?php
 include('./BackendAssets/db.php');
 
-if (isset($_POST['delete'])) {
-  deleteProduct();
+if (isset($_POST['delete']) && isset($_POST['id'])) {
+    deleteProduct();
 }
-// if (isset($_POST['update'])) {
-//   updateProduct();
-// }
 
 $sql = "SELECT * FROM `products`";
 $Allproducts = $conn->query($sql);
@@ -25,12 +22,7 @@ function deleteProduct()
   include '../db.php';
   $sql = "DELETE FROM `products` WHERE id=" . $_POST['id'];
   if ($conn->query($sql) === TRUE) {
-    $delete = "Want to delete product";
     header("Location: /allproduct.php");
+    exit();
   }
 }
-// function updateProduct()
-// {
-//   include './BackendAssets/db.php';
-//   header("Location: /allproducts.php");
-// }

@@ -39,18 +39,14 @@ include('./BackendAssets/db.php');
                     <input type="number" id="stock" name="stock" value="<?=$_GET['productStock']?>"><br>
 
                     <label for="image">Product Image:</label><br>
-                    <img src="/BackendAssets/assets/images/ProductImages/<?=$_GET['productImage']?>" imgPath="<?=$_GET['productImage']?>" class="img2" style="height:80px;border:1px solid gray;margin:0 10px;">
-                    <input type="file" accept="image/*" class="img" name="image" value="<?=$_GET['productImage']?>"><br>
+                    <img src="/BackendAssets/assets/images/ProductImages/<?=$_GET['productImage']?>" imgPath="<?=$_GET['productImage']?>" class="defaultImgName" style="height:80px;border:1px solid gray;margin:0 10px;">
+                    <input type="hidden" name="defaultImgPath" value="<?=$_GET['productImage']?>">
+                    <input type="file" accept="image/*" class="chooseImgName" name="image" value="<?=$_GET['productImage']?>"><br>
                     <button type="submit" name="submit">Update Product</button>
-                    </form>
+                </form>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        console.log(document.querySelector(".img").getAttribute("value"));  
-        console.log(document.querySelector(".img2").getAttribute("imgPath"));
-        
-    </script>
 </body>
 </html>

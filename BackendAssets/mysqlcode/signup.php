@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
       $lname=$_POST['lname'];
       $email=$_POST['email'];
       $password=$_POST['password'];
-      $sql = "INSERT INTO first_data_tabel (`First-name`, `Last-name`,`email`,`password`) VALUES ('$fname', '$lname','$email','$password')";
+      $sql = "INSERT INTO user (`First-name`, `Last-name`,`email`,`password`) VALUES ('$fname', '$lname','$email','$password')";
   
   if ($conn->query($sql) === TRUE) {
     header("Location: /login.php");

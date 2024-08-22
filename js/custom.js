@@ -920,33 +920,33 @@ $(".myclass").on("click",()=>{
 })
 
 // update slider js code
-document.addEventListener('DOMContentLoaded', function() {
-    let slides = document.querySelectorAll('.update-slide');
-    let currentSlide = 0;
-	slides[currentSlide].classList.add('active');
-    let slideInterval = setInterval(nextSlide, 3000); 
+// document.addEventListener('DOMContentLoaded', function() {
+//     let slides = document.querySelectorAll('.update-slide');
+//     let currentSlide = 0;
+// 	slides[currentSlide].classList.add('active');
+//     let slideInterval = setInterval(nextSlide, 3000); 
 	
-    function nextSlide() {
-		slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-    }
-});
+//     function nextSlide() {
+// 		slides[currentSlide].classList.remove('active');
+//         currentSlide = (currentSlide + 1) % slides.length;
+//         slides[currentSlide].classList.add('active');
+//     }
+// });
 
 
-window.onload=()=>{
-	let tt=document.querySelector(".onloadPopup .img");
-	let popupDiv=document.querySelector(".onloadPopup");
-	let crossIcon=document.querySelector(".onloadPopup .img i");
-	const bodyForLoadpopup=document.getElementsByTagName("body");
+// window.onload=()=>{
+// 	let tt=document.querySelector(".onloadPopup .img");
+// 	let popupDiv=document.querySelector(".onloadPopup");
+// 	let crossIcon=document.querySelector(".onloadPopup .img i");
+// 	const bodyForLoadpopup=document.getElementsByTagName("body");
 	
-	bodyForLoadpopup[0].addEventListener("click",()=>{
-		tt.style.transform="translateY(-550px)";
-		popupDiv.style.display="none";
-	}),
-	crossIcon.addEventListener("click",()=>{
-		tt.style.transform="translateY(-550px)";
-		popupDiv.style.display="none";
-	})
-    tt.style.transform="translateY(103px)";
-}
+// 	bodyForLoadpopup[0].addEventListener("click",()=>{
+// 		tt.style.transform="translateY(-550px)";
+// 		popupDiv.style.display="none";
+// 	}),
+// 	crossIcon.addEventListener("click",()=>{
+// 		tt.style.transform="translateY(-550px)";
+// 		popupDiv.style.display="none";
+// 	})
+//     tt.style.transform="translateY(103px)";
+// }

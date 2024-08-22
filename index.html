@@ -1169,7 +1169,7 @@ function showSlides(n) {
             // Automatic slideshow
             setInterval(function () {
                 plusSlides(1);
-            }, 10000); 
+            }, 10000);
         </script>
         <section style="margin-top:50px;" class="inner-header">
             <div class="container">
@@ -2040,28 +2040,26 @@ to make beggars work & earn with dignity and create a
 
         <!-- thm custom script -->
         <script src="js/custom.js"></script>
-
-
-
         <script>
-            window.onload = () => {
-                let tt = document.querySelector(".onloadPopup .img");
-                let popupDiv = document.querySelector(".onloadPopup");
-                let crossIcon = document.querySelector(".onloadPopup .img i");
-                const bodyForLoadpopup = document.getElementsByTagName("body");
+             document.addEventListener("DOMContentLoaded",()=>{
+                let tt=document.querySelector(".onloadPopup .img");
+            let popupDiv=document.querySelector(".onloadPopup");
+            let crossIcon=document.querySelector(".onloadPopup .img i");
+            const bodyForLoadpopup=document.getElementsByTagName("body");
 
-                bodyForLoadpopup[0].addEventListener("click", () => {
-                    tt.style.transform = "translateY(-550px)";
-                    popupDiv.style.display = "none";
-                }),
-                    crossIcon.addEventListener("click", () => {
-                        tt.style.transform = "translateY(-550px)";
-                        popupDiv.style.display = "none";
-                    })
-                tt.style.transform = "translateY(10px)";
-                window.scrollTo(0,0);
-            }
+            bodyForLoadpopup[0].addEventListener("click",()=>{
+                tt.style.transform="translateY(-550px)";
+                popupDiv.style.display="none";
+            }),
+            crossIcon.addEventListener("click",()=>{
+                tt.style.transform="translateY(-550px)";
+                popupDiv.style.display="none";
+            })
+            tt.style.transform="translateY(103px)";
+            })
         </script>
+
+        
 </body>
 
 </html>

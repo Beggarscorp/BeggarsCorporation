@@ -28,14 +28,22 @@
     <meta name="twitter:title" content="beggarscorporation" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-5PDV5P9');</script>
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5PDV5P9');
+    </script>
     <!-- End Google Tag Manager -->
     <!-----------------end Seo------------->
 
@@ -174,7 +182,7 @@ add_chatinline();</script>-->
 
     <!-- whatsapp Button -->
     <script type="text/javascript">
-        (function () {
+        (function() {
             var options = {
                 whatsapp: "+91 85956 17274", // WhatsApp number
                 call_to_action: "Drop a Message", // Call to action
@@ -182,10 +190,18 @@ add_chatinline();</script>-->
                 position: "right", // Position may be 'right' or 'left'
                 pre_filled_message: "Hello", // WhatsApp pre-filled message
             };
-            var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
-            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-            s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-            var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+            var proto = 'https:',
+                host = "getbutton.io",
+                url = proto + '//static.' + host;
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = url + '/widget-send-button/js/init.js';
+            s.onload = function() {
+                WhWidgetSendButton.init(host, proto, options);
+            };
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
         })();
     </script>
     <!--------------end button------------>
@@ -291,7 +307,7 @@ add_chatinline();</script>-->
         
    </div>-->
 
-        <nav class="mainmenu-area stricky">
+        <nav class="mainmenu-area stricky" style="position:relative;">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-3 col-xs-12 col-sm-12">
@@ -337,11 +353,25 @@ add_chatinline();</script>-->
                                     <li>
                                         <a href="cbfi.html"> Citizens for Begging Free India</a>
                                     </li>
-                                    <li>
-                                    <i class="fa fa-shopping-cart" style="color:white;font-size:20px;padding:0 2px"></i>
+                                    <li class="user-icon">
+                                        <i class="fa fa-user" style="color:white;font-size:20px;padding:0 2px;cursor:pointer;"></i>
+                                        <div class="user-details">
+                                            <h3>
+                                                <?php
+                                                if(isset($_SESSION['user']))
+                                                {
+                                                    echo $_SESSION['user'];
+                                                }
+                                                else
+                                                {
+                                                    echo "No user";
+                                                }
+                                                ?>
+                                            </h3>
+                                        </div>
                                     </li>
-                                    <li>
-                                    <i class="fa fa-user" style="color:white;font-size:20px;padding:0 2px"></i>
+                                    <li class="cart-icon">
+                                        <i class="fa fa-shopping-cart" style="color:white;font-size:20px;padding:0 2px;cursor:pointer;"></i>
                                     </li>
                                     <!--   <li>
                                <a href="media.html">Impact</a>
@@ -362,3 +392,72 @@ add_chatinline();</script>-->
                 </div>
             </div>
         </nav>
+
+        <div class="addtocart">
+            <div class="addtocart-main">
+                <div class="container-fluid p-0">
+                    <div class="row">
+                        <div class="col-sm-8 p-0">
+                            <div class="blank-area">
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4" style="background-color:#fff;">
+                            <div class="addtocart-content-area">
+                                <h3>Cart</h3>
+                                <div class="addtocart-main-card">
+                                    <?php
+                                    // include_once('BackendAssets/mysqlcode/allproducts.php');
+                                    for ($i = 0; $i < 10; $i++) {
+                                    ?>
+                                        <div class="addtocart-card">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <img src="/BackendAssets/assets/images/ProductImages/<?= $row['productimage'] ?>" alt="" srcset="">
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <h5>Lorem, ipsum dolor.</h5>
+                                                    <p class="font-13">Lorem ipsum dolor sit amet consectetur.</p>
+                                                    <h5>QTY : 1</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div class="checkout-button">
+                                    <button>Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const cartIcon = document.getElementsByClassName("cart-icon");
+                const blankArea = document.getElementsByClassName("blank-area");
+                let mainAddtocart = document.getElementsByClassName("addtocart");
+                blankArea[0].addEventListener("click", () => {
+                    mainAddtocart[0].classList.remove("addtocart-transfor-0");
+                    document.body.style.overflowY = "scroll";
+                })
+                cartIcon[0].addEventListener("click", () => {
+                    mainAddtocart[0].classList.toggle("addtocart-transfor-0");
+                    if (mainAddtocart[0].classList.contains("addtocart-transfor-0")) {
+                        document.body.style.overflowY = "hidden";
+                    } else {
+                        document.body.style.overflowY = "scroll";
+                    }
+                })
+
+                const usericon=document.getElementsByClassName("user-icon");
+                const userdiv=document.getElementsByClassName("user-details");
+                usericon[0].addEventListener("click",()=>{
+                    userdiv[0].classList.toggle("user-details-show");
+                })
+            })
+        </script>
