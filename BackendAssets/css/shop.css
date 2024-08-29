@@ -1,4 +1,69 @@
+@import url("/BackendAssets/css/admin.css");
 .productCard
 {
     padding: 18px 0;
+}
+.add-to-cart-btn
+{
+    border: none;
+    background-color: var(--color-6);
+    color: var(--color-5);
+    padding: 2px 15px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.cate-heading
+{
+    padding: 0 5px;
+}
+.cate-heading::first-letter
+{
+    text-transform: capitalize;
+}
+.category-container
+{
+    padding: 0 5px;
+}
+.category-container a
+{
+    color: #9c9c9c !important;
+}
+.product-container
+{
+    border-left: 1px solid gray;
+    padding: 10px;
+    margin: 10px;
+}
+.pegination-div ul
+{
+    list-style: none;
+    display: flex;
+    justify-content: end;
+}
+.pegination-div ul li
+{
+    border: 1px solid #b3700b;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 0.2s linear;
+    margin: 0 5px;
+    box-shadow: -3px -1px 0px 0px #b3700b;
+}
+.pegination-div ul li:hover
+{
+    background-color: #b3700b;
+    color: #fff;
+}
+.li-active
+{
+    background-color: #b3700b;
+    color: #fff;
+}
+.pegination-div ul button
+{
+    border: none;
+    background-color: #b3700b;
+    color: #fff;
+    padding: 0 10px;
+    font-size: 25px;
 }

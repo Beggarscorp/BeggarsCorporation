@@ -1,0 +1,58 @@
+@import url('admin.css');
+
+input:focus-visible
+{
+    border: none;
+    outline: 0;
+}
+input,textarea
+{
+    border: none;
+    width: 100%;
+    margin: 10px 0 !important;
+    background-color: #746a5a !important;
+    color: var(--color-5) !important;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+input::placeholder,textarea::placeholder
+{
+    color: var(--color-5) !important; 
+}
+label
+{
+    margin: 0 10px;
+}
+.product-div
+{
+     margin: 45px 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+/* input[type=number] {
+  -moz-appearance: textfield;
+} */
+.order-button
+{
+    border: none;
+    color: #b26f0a !important;
+    background-color: #fff !important;    
+    padding: 8px 28px;
+    margin: 10px 0 !important;
+    border-radius: 15px !important;
+    box-shadow: 0 0 4px 0 gray;
+    font-weight: 600;
+    width: 100%;
+}
+.total-price
+{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid darkgray;
+    padding: 0 10px;
+}

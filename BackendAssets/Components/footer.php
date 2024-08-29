@@ -173,5 +173,46 @@
         <!-- thm custom script -->
         <script src="js/custom.js"></script>
 </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        window.scrollTo(0,0);
+                const cartIcon = document.getElementsByClassName("cart-icon");
+                const blankArea = document.getElementsByClassName("blank-area");
+                let mainAddtocart = document.getElementsByClassName("addtocart");
+                blankArea[0].addEventListener("click", () => {
+                    mainAddtocart[0].classList.remove("addtocart-transfor-0");
+                    document.body.style.overflowY = "scroll";
+                })
+                cartIcon[0].addEventListener("click", () => {
+                    mainAddtocart[0].classList.toggle("addtocart-transfor-0");
+                    if (mainAddtocart[0].classList.contains("addtocart-transfor-0")) {
+                        document.body.style.overflowY = "hidden";
+                    } else {
+                        document.body.style.overflowY = "scroll";
+                    }
+                })
 
+                const usericon=document.getElementsByClassName("user-icon");
+                const userdiv=document.getElementsByClassName("user-details");
+                usericon[0].addEventListener("click",()=>{
+                    userdiv[0].classList.toggle("user-details-show");
+                })
+                setTimeout(() => {
+                    const msgDiv=document.getElementsByClassName("msg");
+                    msgDiv[0].style.display="none";
+                }, 5000);
+                const cartElement=document.querySelectorAll(".addtocart-main-card .addtocart-card");
+                const cartcountElement=document.getElementsByClassName("cartcountval");
+                if(cartElement.length > 0)
+                {
+                    cartcountElement[0].innerHTML=cartElement.length;
+                }
+                else
+                {
+                    cartcountElement[0].style.display="none";
+                }
+
+                
+            })
+  </script>
 </html>

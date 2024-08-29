@@ -1,3 +1,34 @@
+<?php
+include("./BackendAssets/db.php");
+// product count code start from here
+
+$sqlproductcount="SELECT COUNT(*) FROM `products`";
+$sqlproductcountresult=mysqli_query($conn,$sqlproductcount);
+$sqlproductcountval= mysqli_fetch_assoc($sqlproductcountresult);
+$productcountvalue="";
+if($sqlproductcount)
+{
+  $productcountvalue=$sqlproductcountval['COUNT(*)'];
+}
+
+// product count code end here
+
+// user count code start from here
+
+$usercount="SELECT COUNT(*) FROM `user`";
+$usercountresult=mysqli_query($conn,$usercount);   
+$usercountrow=mysqli_fetch_assoc($usercountresult);
+$usercountvalue="";
+if($usercountresult)
+{
+    $usercountvalue=$usercountrow["COUNT(*)"];
+} 
+
+// user count code end here
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +45,58 @@
 </head>
 <body>
    <div class="main">
-    
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-2 p-0">
+        <?php include 'sidebar.php'; ?>
+    </div>
+    <div class="col-sm-10">
+        <h2 class="m-3">Admin Panel</h2>
+        <div class="row m-3">
+            <div class="col-sm-3">
+                <div class="products-box text-center">
+                    <a href="/allproduct.php">
+                        <h3>Products</h3>
+                        <div class="productcount">
+                            <?=$productcountvalue?>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-3">
+            <div class="products-box text-center">
+                    <a href="/allproduct.php">
+                        <h3>Users</h3>
+                        <div class="productcount">
+                            <?=$usercountvalue?>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-3">
+            <div class="products-box text-center">
+                    <a href="/allproduct.php">
+                        <h3>Stock</h3>
+                        <div class="productcount">
+                            0
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-3">
+            <div class="products-box text-center">
+                    <a href="/allproduct.php">
+                        <h3>Orders</h3>
+                        <div class="productcount">
+                            0
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
    </div>
 
    <script src="/BackendAssets/JS/newuser.js"></script>

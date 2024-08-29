@@ -1,3 +1,10 @@
+<?php
+include("BackendAssets/db.php");
+error_reporting(0);
+$sql="SELECT * FROM `category`";
+$result=mysqli_query($conn,$sql);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,40 +23,115 @@
                 <?php include 'sidebar.php'; ?>
             </div>
             <div class="col-sm-10">
-            <div class="content vh-100 overflowY-visible p-3">
+                <div class="content vh-100 overflowY-visible p-3">
+                    <div class="msg">
+                    <?php
+                    if (isset($_GET['msg'])) {
+                        echo "<div class='alert alert-success' role='alert'>
+                      " . $_GET['msg'] . "
+                    </div>";
+                    }
+                    ?>
+                    </div>
                     <h3>Add Product from here</h3>
                     <form action="BackendAssets/mysqlcode/addproduct.php" method="post" enctype="multipart/form-data">
-                    <label for="name">Product Name:</label><br>
-                    <input type="text" id="name" placeholder="Enter product name here"  name="name" required><br>
+                        <label for="name">Product Name:</label><br>
+                        <input type="text" id="name" placeholder="Enter product name here" name="name" required><br>
 
-                    <label for="description">Description:</label><br>
-                    <textarea id="description" placeholder="Enter prouduct discription here"  name="description"></textarea><br>
+                        <label for="description">Short Description:</label><br>
+                        <textarea id="description" placeholder="Enter prouduct short discription here" name="description"></textarea><br>
+                        
+                        <label for="sizeAndfit">Size & fit:</label><br>
+                        <textarea id="sizeAndfit" placeholder="Enter prouduct size & fit here" name="sizeAndfit"></textarea><br>
+                        
+                        <label for="materialAndCare">Material & Care:</label><br>
+                        <textarea id="materialAndCare" placeholder="Enter prouduct material & care here" name="materialAndCare"></textarea><br>
+                        
+                        <label for="spacification">Spacification:</label><br>
+                        <textarea id="spacification" placeholder="Enter prouduct spacification here" name="spacification"></textarea><br>
 
-                    <label for="price">Price:</label><br>
-                    <input type="number" id="price" placeholder="Enter product price here"  name="price" step="0.01" required><br>
+                        <label for="price">Price:</label><br>
+                        <input type="number" id="price" placeholder="Enter product price here" name="price" step="0.01" required><br>
 
-                    <label for="category">Category:</label><br>
-                    <input type="text" id="category" placeholder="Enter product category here"  name="category"><br>
+                        <label for="category">Category:</label><br>
+                        <select name="category" id="category" class="addcate-select" required>
+                            <option value="default" disabled selected>Select product category</option>
+                            <?php
+                            foreach ($result as $row) {
+                            ?>
+                                <option value="<?=$row['category']?>"><?=$row['category']?></option> 
+                            <?php
+                            }
+                            ?>
+                        </select>
+                        <br>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add category</button><br>
 
-                    <label for="stock">Stock:</label><br>
-                    <input type="number" id="stock" placeholder="Enter product stock here"  name="stock" value="0"><br>
+                        <label for="stock">Stock:</label><br>
+                        <input type="number" id="stock" placeholder="Enter product stock here" name="stock" value="0"><br>
 
-                    <label for="image">Product Image:</label><br>
-                    <input type="file" accept="image/*" name="image" required><br>
-                    <button type="submit" name="submit">Add Product</button>
+                        <label for="image">Product Image:</label><br>
+                        <input type="file" id="image" accept="image/*" name="image" required><br>
+
+                        <label for="productGallery">Upload Product Images for Gallery:</label><br>
+                        <span id="error" style="color:red;" class="error"></span><br>
+                        <input type="file" id="productGallery" name="productGallery[]" accept="image/*" multiple required><br>
+
+                        <button type="submit" name="submit">Add Product</button>
                     </form>
+
+                    <!-- category add form start from here -->
+
+                    <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/BackendAssets/mysqlcode/addcategory.php" method="POST">
+                                        <label for="category">Category:</label><br>
+                                        <input type="text" name="category" placeholder="Enter your category here" class="w-100">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary px-2" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="cateSubmit" class="btn btn-primary">Submit</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- category add form end here -->
+
                     <?php
-                    if(isset($_GET['uploaded'])) {
-                        ?>
+                    if (isset($_GET['uploaded'])) {
+                    ?>
                         <script>
                             alert("Product uploaded");
                         </script>
-                    <?php    
+                    <?php
                     }
                     ?>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        const chooseImageElement=document.getElementById("productGallery");
+        chooseImageElement.addEventListener("change",(e)=>{
+            const errorSpan = document.getElementById('error');
+            if(e.target.files.length > 3)
+        {
+            errorSpan.textContent = 'You can only select up to 3 images.';
+            e.target.value='';
+        }else
+        {
+            errorSpan.textContent="";
+        }
+        })
+    </script>
 </body>
+
 </html>

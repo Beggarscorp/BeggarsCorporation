@@ -18,7 +18,7 @@ include('BackendAssets/mysqlcode/allproducts.php');
                 <?php include 'sidebar.php'; ?>
             </div>
             <div class="col-sm-10">
-            <div class="content vh-100 overflowY-visible p-3">
+            <div class="content vh-100 overflowY-visible p-3 table-responsiveness">
                     <h3>All products</h3>
                     <table class="w-100 py-2">
                         <thead>
@@ -30,6 +30,9 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 <td>Price</td>
                                 <td>Stock</td>
                                 <td>Description</td>
+                                <td>Size & Fit</td>
+                                <td>Material and Care</td>
+                                <td>Spacification</td>
                                 <td colspan="2">Operations</td>
                                 <!-- <td>Delete</td> -->
                             </tr>
@@ -49,7 +52,10 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 <td>INR <?=$row['price']?></td>
                                 <td><?=$row['stock']?></td>
                                 <td><?=$row['discription']?></td>
-                                <td class="update" onclick="updateProduct('<?=$row['id']?>','<?=$row['productname']?>','<?=$row['category']?>','<?=$row['price']?>','<?=$row['stock']?>','<?=$row['discription']?>','<?=$row['productimage']?>')"><i class="bi bi-pencil-square"></i></td>
+                                <td><?=$row['sizeandfit']?></td>
+                                <td><?=$row['materialandcare']?></td>
+                                <td><?=$row['spacification']?></td>
+                                <td class="update" onclick="updateProduct('<?=$row['id']?>','<?=$row['productname']?>','<?=$row['category']?>','<?=$row['price']?>','<?=$row['stock']?>','<?=$row['discription']?>','<?=$row['sizeandfit']?>','<?=$row['materialandcare']?>','<?=$row['spacification']?>','<?=$row['productimage']?>','<?=$row['productimagegallery']?>')"><i class="bi bi-pencil-square"></i></td>
                                 <td class="delete" onclick="deleteProduct(<?=$row['id'] ?>)"><i class="bi bi-trash"></i></td>
                             </tr>
                             <?php
@@ -73,10 +79,10 @@ include('BackendAssets/mysqlcode/allproducts.php');
             document.getElementById("delete").submit();
         }
         }
-        const updateProduct=(id,productname,productcategory,productprice,productstock,productdiscription,productimage)=>{
+        const updateProduct=(id,productname,productcategory,productprice,productstock,productdiscription,sizeandfit,materialandcare,spacification,productimage,productimagegallery)=>{
             if(confirm("Want to update product"))
         {
-            window.location.href="/productUpdate.php?Id="+id+'&productName='+productname+'&'+'productCategory='+productcategory+'&productPrice='+productprice+'&productStock='+productstock+'&productDiscription='+productdiscription+'&productImage='+productimage;
+            window.location.href="/productUpdate.php?Id="+id+'&productName='+productname+'&'+'productCategory='+productcategory+'&productPrice='+productprice+'&productStock='+productstock+'&productDiscription='+productdiscription+'&sizeandfit='+sizeandfit+'&materialandcare='+materialandcare+'&spacification='+spacification+'&productImage='+productimage+'&productImageGallery='+productimagegallery;
         }
         }
     </script>

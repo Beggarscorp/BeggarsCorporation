@@ -7,6 +7,7 @@
     --color-3:#6EACDA;
     --color-4:#E2E2B6;
     --color-5:#fff;
+    --color-6:#b3700b;
 }
 
 .lato-thin {
@@ -85,4 +86,24 @@ a{
 .overflowY-visible
 {
   overflow-y: scroll;
+}
+.products-box
+{
+  padding: 40px;
+  box-shadow: inset 0 0 6px 6px var(--color-4);
+  border-radius: 50%;
+  width: 75%;
+}
+.productcount
+{
+  border-radius: 50%;
+  color: #fff;
+  background-color: var(--color-2);
+  width: fit-content;
+  margin: auto;
+  padding: 8px;
+}
+.products-box a
+{
+  color: var(--color-1) !important;
 }

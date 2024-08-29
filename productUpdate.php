@@ -26,8 +26,17 @@ include('./BackendAssets/db.php');
                     <label for="name">Product Name:</label><br>
                     <input type="text" id="name" name="name" value="<?=$_GET['productName']?>"><br>
 
-                    <label for="description">Description:</label><br>
+                    <label for="description">Short Description:</label><br>
                     <textarea id="description" name="description"><?=$_GET['productDiscription']?></textarea><br>
+
+                    <label for="sizeAndfit">Size & fit:</label><br>
+                    <textarea id="sizeAndfit" name="sizeAndfit"><?=$_GET['sizeandfit']?></textarea><br>
+                        
+                    <label for="materialAndCare">Material & Care:</label><br>
+                    <textarea id="materialAndCare" name="materialAndCare"><?=$_GET['materialandcare']?></textarea><br>
+                        
+                    <label for="spacification">Spacification:</label><br>
+                    <textarea id="spacification" name="spacification"><?=$_GET['spacification']?></textarea><br>
 
                     <label for="price">Price:</label><br>
                     <input type="number" id="price" name="price" value="<?=$_GET['productPrice']?>"><br>
@@ -41,12 +50,42 @@ include('./BackendAssets/db.php');
                     <label for="image">Product Image:</label><br>
                     <img src="/BackendAssets/assets/images/ProductImages/<?=$_GET['productImage']?>" imgPath="<?=$_GET['productImage']?>" class="defaultImgName" style="height:80px;border:1px solid gray;margin:0 10px;">
                     <input type="hidden" name="defaultImgPath" value="<?=$_GET['productImage']?>">
-                    <input type="file" accept="image/*" class="chooseImgName" name="image" value="<?=$_GET['productImage']?>"><br>
+                    <input type="file" accept="image/*" class="chooseImgName" name="image" value="<?=$_GET['productImage']?>"><br><br>
+
+                    <label for="productGallery">Product Image Gallery:</label><br>
+                    <span id="error" style="color:red;" class="error"></span><br>
+                    <input type="file" id="productGallery" name="productGallery[]" accept="image/*" multiple><br>
+                    <input type="hidden" name="defaultImgGalleryPath" value="<?=$_GET['productImageGallery']?>">
+
+                    <?php
+                    $images=explode(',',$_GET['productImageGallery']);
+                    foreach ($images as $image) {
+                        ?>
+                            <img src="/BackendAssets/assets/images/ProductGalleryImages/<?=$image?>" imgPath="<?=$_GET['productImage']?>" class="defaultImgName" style="height:80px;border:1px solid gray;margin:0 10px;">
+                        <?php
+                    }
+                    ?>
+                    <br>
+
                     <button type="submit" name="submit">Update Product</button>
                 </form>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        const chooseImageElement=document.getElementById("productGallery");
+        chooseImageElement.addEventListener("change",(e)=>{
+            const errorSpan = document.getElementById('error');
+            if(e.target.files.length > 3)
+        {
+            errorSpan.textContent = 'You can only select up to 3 images.';
+            e.target.value='';
+        }else
+        {
+            errorSpan.textContent="";
+        }
+        })
+    </script>
 </body>
 </html>

@@ -1,9 +1,11 @@
-input:focus-visible,textarea:focus-visible
+@import url('admin.css');
+
+input:focus-visible,textarea:focus-visible,.addcate-select:focus-visible
 {
     border: none;
     outline: 0;
 }
-input,textarea
+input,textarea,.addcate-select
 {
     border: none;
     width: 50%;

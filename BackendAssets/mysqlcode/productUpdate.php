@@ -2,31 +2,54 @@
 include('../db.php');
 
 if (isset($_POST['submit'])) {
-    echo $productId = $_POST['id']."<br>";
-    echo $productName = $_POST['name']."<br>";
-    echo $productDescription = $_POST['description']."<br>";
-    echo $productPrice = $_POST['price']."<br>";
-    echo $productCategory = $_POST['category']."<br>";
-    echo $productStock = $_POST['stock']."<br>";
+    $productId = $_POST['id'];
+    $productName = $_POST['name'];
+    $productDescription = $_POST['description'];
+    $sizeAndfit=$_POST['sizeAndfit'];
+    $materialandcare=$_POST['materialAndCare'];
+    $spacification=$_POST['spacification'];
+    $productPrice = $_POST['price'];
+    $productCategory = $_POST['category'];
+    $productStock = $_POST['stock'];
     $productImage="";
+    $productImageGallery="";
+    $galleryfiles=$_FILES['productGallery']['name'];
+    
     if ($_FILES['image']['name'] != "") {    
        $productImage = $_FILES['image']['name'];
        $productImageTmpName = $_FILES['image']['tmp_name'];
        $folder = '../assets/images/ProductImages/'. $productImage;
        move_uploaded_file($productImageTmpName,$folder);
-    }
+
+    }   
     else
     {
         $productImage = $_POST['defaultImgPath'];
 
     }
+    if($galleryfiles != [""])
+    {
+        $imagesName=$_FILES['productGallery']['name'];
+       $productImageGallery=implode(',',$imagesName);
+       $targetFolder="../assets/images/ProductGalleryImages/";
+        if(!empty($productImageGallery)) {
+        foreach($imagesName as $i => $imageval) {
+           echo $targetPath= $targetFolder . $imageval;
+            move_uploaded_file($_FILES['productGallery']['tmp_name'][$i],$targetPath);
+        }
+    }else
+    {
+        echo "failed";
+    }
+   }
+    else
+    {
+        $productImageGallery=$_POST['defaultImgGalleryPath'];
+    }
 
-    echo $productId, $productName, $productDescription, $productPrice, $productCategory, $productStock, $productImage;
-
-    $sql = "UPDATE `products` SET `productname`='$productName',`discription`='$productDescription',`price`='$productPrice',`category`='$productCategory',`stock`='$productStock',`productimage`='$productImage' WHERE `id`='$productId'";
+    $sql = "UPDATE `products` SET `productname`='$productName',`discription`='$productDescription',`price`='$productPrice',`category`='$productCategory',`stock`='$productStock',`productimage`='$productImage',`sizeandfit`='$sizeAndfit',`materialandcare`='$materialandcare',`spacification`='$spacification', `productimagegallery`='$productImageGallery' WHERE `id`='$productId'";
     if ($conn->query($sql)) {
         header("Location: /allproduct.php");
         exit();
     }
-    echo $sql;
 }

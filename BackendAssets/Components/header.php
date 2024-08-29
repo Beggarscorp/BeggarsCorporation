@@ -1,3 +1,6 @@
+<?php
+include("./BackendAssets/Components/forsession.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -353,17 +356,23 @@ add_chatinline();</script>-->
                                     <li>
                                         <a href="cbfi.html"> Citizens for Begging Free India</a>
                                     </li>
+                                    <!-- <li>
+                                        <a href="shop.php"> Shop</a>
+                                    </li> -->
                                     <li class="user-icon">
                                         <i class="fa fa-user" style="color:white;font-size:20px;padding:0 2px;cursor:pointer;"></i>
                                         <div class="user-details">
                                             <h3>
                                                 <?php
-                                                if(isset($_SESSION['user']))
-                                                {
+                                                if (isset($_SESSION['user'])) {
                                                     echo $_SESSION['user'];
-                                                }
-                                                else
-                                                {
+                                                ?>
+                                                    <a href="/BackendAssets/mysqlcode/logout.php" style="color:red !important;">Logout</a><br>
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <span style="font-size:18px;"><a href="/login.php" style="color:green !important;">Login/</a><a href="/signup.php" style="color:green !important;">Sign up</a><br></span>
+                                                <?php
                                                     echo "No user";
                                                 }
                                                 ?>
@@ -371,6 +380,7 @@ add_chatinline();</script>-->
                                         </div>
                                     </li>
                                     <li class="cart-icon">
+                                    <div class="cartcountval"></div>
                                         <i class="fa fa-shopping-cart" style="color:white;font-size:20px;padding:0 2px;cursor:pointer;"></i>
                                     </li>
                                     <!--   <li>
@@ -393,6 +403,7 @@ add_chatinline();</script>-->
             </div>
         </nav>
 
+
         <div class="addtocart">
             <div class="addtocart-main">
                 <div class="container-fluid p-0">
@@ -402,32 +413,68 @@ add_chatinline();</script>-->
 
                             </div>
                         </div>
-                        <div class="col-sm-4" style="background-color:#fff;">
+                        <div class="col-sm-4" style="background-color:#fff;height:100vh;">
                             <div class="addtocart-content-area">
                                 <h3>Cart</h3>
                                 <div class="addtocart-main-card">
                                     <?php
-                                    // include_once('BackendAssets/mysqlcode/allproducts.php');
-                                    for ($i = 0; $i < 10; $i++) {
+                                    include("./BackendAssets/db.php");
+                                    if (isset($_SESSION["user"])) {
+                                    $user_name = $_SESSION["user"];
+                                    $sql = "SELECT * FROM `productscart` as pc INNER JOIN `products` as p WHERE pc.product_id=p.id";
+                                    $result = mysqli_query($conn, $sql);
+                                    $sqlTwo="SELECT `id` FROM `user` WHERE `First-name`='$user_name'";
+                                    $resultTwo = mysqli_query($conn, $sqlTwo);
+                                    $userRow= mysqli_fetch_array($resultTwo);
+                                    if ($result) {
+                                        foreach ($result as $val) {
+                                            if ($val['user_id'] == $userRow['id']) {
                                     ?>
-                                        <div class="addtocart-card">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <img src="/BackendAssets/assets/images/ProductImages/<?= $row['productimage'] ?>" alt="" srcset="">
+                                                <div class="addtocart-card">
+                                                    <div class="row">
+                                                        <div class="col-sm-4">
+                                                            <img src="/BackendAssets/assets/images/ProductImages/<?= $val['productimage'] ?>" alt="">
+                                                        </div>
+                                                        <div class="col-sm-8">
+                                                            <h5><?=$val['productname']?>
+                                                            <a href="/BackendAssets/mysqlcode/removecart.php?id=<?=$val['cartid']?>" style="color:gray !important;">
+                                                                <span class="remove_cart_cross_icon"><i class="fa fa-times-circle" style="font-size:20px;float:inline-end;"></i></span></h5>
+                                                            </a>
+                                                            <p class="font-13"><?=$val['discription']?></p>
+                                                            <h5>Category : <?=$val['category']?></h5>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-8">
-                                                    <h5>Lorem, ipsum dolor.</h5>
-                                                    <p class="font-13">Lorem ipsum dolor sit amet consectetur.</p>
-                                                    <h5>QTY : 1</h5>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                <!-- </div> -->
                                     <?php
+                                            }
+                                        }
+                                    } 
+                                    else 
+                                    {
+                                        echo "Your cart empty";
                                     }
+                                }
+                                else
+                                {
+                                    ?>
+                                    <a href="/login.php" style="color:#9c9c9c !important;">
+                                        <h4>Your are not logged in now <i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+                                    </a>
+                                    <?php
+                                }
                                     ?>
                                 </div>
                                 <div class="checkout-button">
-                                    <button>Checkout</button>
+                                    <?php
+                                    if(isset($_SESSION["user"])) {
+                                    ?>
+                                    <a href="/checkout.php" target="_blank">
+                                        <button>Checkout</button>
+                                    </a>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -435,29 +482,3 @@ add_chatinline();</script>-->
                 </div>
             </div>
         </div>
-
-        <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const cartIcon = document.getElementsByClassName("cart-icon");
-                const blankArea = document.getElementsByClassName("blank-area");
-                let mainAddtocart = document.getElementsByClassName("addtocart");
-                blankArea[0].addEventListener("click", () => {
-                    mainAddtocart[0].classList.remove("addtocart-transfor-0");
-                    document.body.style.overflowY = "scroll";
-                })
-                cartIcon[0].addEventListener("click", () => {
-                    mainAddtocart[0].classList.toggle("addtocart-transfor-0");
-                    if (mainAddtocart[0].classList.contains("addtocart-transfor-0")) {
-                        document.body.style.overflowY = "hidden";
-                    } else {
-                        document.body.style.overflowY = "scroll";
-                    }
-                })
-
-                const usericon=document.getElementsByClassName("user-icon");
-                const userdiv=document.getElementsByClassName("user-details");
-                usericon[0].addEventListener("click",()=>{
-                    userdiv[0].classList.toggle("user-details-show");
-                })
-            })
-        </script>
