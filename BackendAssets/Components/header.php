@@ -437,7 +437,7 @@ add_chatinline();</script>-->
                                                         </div>
                                                         <div class="col-sm-8">
                                                             <h5><?=$val['productname']?>
-                                                            <a href="/BackendAssets/mysqlcode/removecart.php?id=<?=$val['cartid']?>" style="color:gray !important;">
+                                                            <a href="/BackendAssets/mysqlcode/removecart.php?id=<?=$val['cartid']?>&page=<?=$_SERVER['PHP_SELF']?>" style="color:gray !important;">
                                                                 <span class="remove_cart_cross_icon"><i class="fa fa-times-circle" style="font-size:20px;float:inline-end;"></i></span></h5>
                                                             </a>
                                                             <p class="font-13"><?=$val['discription']?></p>

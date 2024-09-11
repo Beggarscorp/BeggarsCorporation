@@ -197,10 +197,7 @@
                 usericon[0].addEventListener("click",()=>{
                     userdiv[0].classList.toggle("user-details-show");
                 })
-                setTimeout(() => {
-                    const msgDiv=document.getElementsByClassName("msg");
-                    msgDiv[0].style.display="none";
-                }, 5000);
+                
                 const cartElement=document.querySelectorAll(".addtocart-main-card .addtocart-card");
                 const cartcountElement=document.getElementsByClassName("cartcountval");
                 if(cartElement.length > 0)
@@ -211,8 +208,8 @@
                 {
                     cartcountElement[0].style.display="none";
                 }
-
                 
+
             })
   </script>
 </html>

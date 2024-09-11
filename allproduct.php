@@ -23,7 +23,7 @@ include('BackendAssets/mysqlcode/allproducts.php');
                     <table class="w-100 py-2">
                         <thead>
                             <tr class="lato-black">
-                                <td>S No.</td>
+                                <td>Product code</td>
                                 <td>Image</td>
                                 <td>Name</td>
                                 <td>Category</td>
@@ -33,17 +33,18 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 <td>Size & Fit</td>
                                 <td>Material and Care</td>
                                 <td>Spacification</td>
+                                <td>Min order quantity</td>
                                 <td colspan="2">Operations</td>
                                 <!-- <td>Delete</td> -->
                             </tr>
                         </thead>
                         <tbody>
+                            <h6 class="text-end">Total products : <?=count($data)?></h6>
                             <?php
-                           $count=1;
                            foreach($data as $row) {
                             ?>
                             <tr>
-                                <td><?=$count++;?></td>
+                                <td><?=$row['id']?></td>
                                 <td>
                                 <img src="/BackendAssets/assets/images/ProductImages/<?=$row['productimage']?>" alt="<?=$row['productimage']?>" style="height:60px;">    
                                 </td>
@@ -55,7 +56,8 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 <td><?=$row['sizeandfit']?></td>
                                 <td><?=$row['materialandcare']?></td>
                                 <td><?=$row['spacification']?></td>
-                                <td class="update" onclick="updateProduct('<?=$row['id']?>','<?=$row['productname']?>','<?=$row['category']?>','<?=$row['price']?>','<?=$row['stock']?>','<?=$row['discription']?>','<?=$row['sizeandfit']?>','<?=$row['materialandcare']?>','<?=$row['spacification']?>','<?=$row['productimage']?>','<?=$row['productimagegallery']?>')"><i class="bi bi-pencil-square"></i></td>
+                                <td><?=$row['min_order']?></td>
+                                <td class="update" onclick="updateProduct('<?=$row['id']?>','<?=$row['productname']?>','<?=$row['category']?>','<?=$row['price']?>','<?=$row['stock']?>','<?=$row['discription']?>','<?=$row['sizeandfit']?>','<?=$row['materialandcare']?>','<?=$row['spacification']?>','<?=$row['min_order']?>','<?=$row['productimage']?>','<?=$row['productimagegallery']?>')"><i class="bi bi-pencil-square"></i></td>
                                 <td class="delete" onclick="deleteProduct(<?=$row['id'] ?>)"><i class="bi bi-trash"></i></td>
                             </tr>
                             <?php
@@ -79,10 +81,10 @@ include('BackendAssets/mysqlcode/allproducts.php');
             document.getElementById("delete").submit();
         }
         }
-        const updateProduct=(id,productname,productcategory,productprice,productstock,productdiscription,sizeandfit,materialandcare,spacification,productimage,productimagegallery)=>{
+        const updateProduct=(id,productname,productcategory,productprice,productstock,productdiscription,sizeandfit,materialandcare,spacification,min_order,productimage,productimagegallery)=>{
             if(confirm("Want to update product"))
         {
-            window.location.href="/productUpdate.php?Id="+id+'&productName='+productname+'&'+'productCategory='+productcategory+'&productPrice='+productprice+'&productStock='+productstock+'&productDiscription='+productdiscription+'&sizeandfit='+sizeandfit+'&materialandcare='+materialandcare+'&spacification='+spacification+'&productImage='+productimage+'&productImageGallery='+productimagegallery;
+            window.location.href="/productUpdate.php?Id="+id+'&productName='+productname+'&'+'productCategory='+productcategory+'&productPrice='+productprice+'&productStock='+productstock+'&productDiscription='+productdiscription+'&sizeandfit='+sizeandfit+'&materialandcare='+materialandcare+'&spacification='+spacification+'&min_order_quantity='+min_order+'&productImage='+productimage+'&productImageGallery='+productimagegallery;
         }
         }
     </script>

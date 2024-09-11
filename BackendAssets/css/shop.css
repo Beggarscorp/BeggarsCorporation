@@ -1,7 +1,18 @@
 @import url("/BackendAssets/css/admin.css");
 .productCard
 {
-    padding: 18px 0;
+    padding: 10px 0;
+    margin: 10px;
+    transition: 0.5s linear;
+    transition: transform 0.5s linear;
+}
+.productCard:hover.productCard img
+{
+    transform: scale(1.1);
+} 
+.productCard img
+{
+    transition: transform 0.5s linear;
 }
 .add-to-cart-btn
 {
@@ -11,6 +22,11 @@
     padding: 2px 15px;
     border-radius: 10px;
     font-weight: 600;
+    transition: background-color 0.5s linear;
+}
+.add-to-cart-btn:hover
+{
+    background-color: #99866a;
 }
 .cate-heading
 {
@@ -66,4 +82,9 @@
     color: #fff;
     padding: 0 10px;
     font-size: 25px;
+}
+.productCard-animation
+{
+    opacity: 1;
+    transform: translateY(-10px);
 }

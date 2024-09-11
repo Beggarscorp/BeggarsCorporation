@@ -3,6 +3,7 @@
 include("../db.php");
 
 $productId=$_GET['id'];
+$cate=$_GET['cate'];
 
 session_start();
 if(isset($_SESSION['user']) && $productId != "")
@@ -25,19 +26,35 @@ if(isset($_SESSION['user']) && $productId != "")
         $resultTwo = mysqli_query($conn,$sqlTwo);
         if($resultTwo)
         {
-            header("Location: /shop.php?cart=updated");
-            exit();
+            if(isset($_GET['page']))
+            {
+                header("Location: /singleProduct.php?cart=updated&id=$productId&cate=$cate");
+                exit();
+            }
+            else
+            {
+                header("Location: /shop.php?cart=updated");
+                exit();
+            }
         }
         else
         {
-            header("Location: /shop.php?cart=not_updated&cartcount=gfs");
+            header("Location: /shop.php?cart=not_updated");
             exit();
         }   
     }
     else
     {
-        header("Location:/shop.php?cart=added_already");
-        exit();
+        if(isset($_GET['page']))
+        {
+            header("Location:/singleProduct.php?cart=added_already&id=$productId&cate=$cate");
+            exit();
+        }
+        else
+        {
+            header("Location:/shop.php?cart=added_already");
+            exit();
+        }
     }
 
 }

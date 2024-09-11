@@ -1,5 +1,6 @@
 <?php
 include("BackendAssets/db.php");
+include("BackendAssets/Components/popup.php");
 error_reporting(0);
 $sql="SELECT * FROM `category`";
 $result=mysqli_query($conn,$sql);
@@ -70,6 +71,9 @@ $result=mysqli_query($conn,$sql);
                         <label for="stock">Stock:</label><br>
                         <input type="number" id="stock" placeholder="Enter product stock here" name="stock" value="0"><br>
 
+                        <label for="min_order">Min order quantity</label><br>
+                        <input type="number" id="min_order" placeholder="Enter min order pices of the product" name="min_order"><br>
+
                         <label for="image">Product Image:</label><br>
                         <input type="file" id="image" accept="image/*" name="image" required><br>
 
@@ -106,12 +110,9 @@ $result=mysqli_query($conn,$sql);
                     <!-- category add form end here -->
 
                     <?php
-                    if (isset($_GET['uploaded'])) {
-                    ?>
-                        <script>
-                            alert("Product uploaded");
-                        </script>
-                    <?php
+                    if (isset($_GET['uploaded'])) 
+                    {
+                        popupshow("Product uploaded");
                     }
                     ?>
                 </div>

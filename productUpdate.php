@@ -47,6 +47,9 @@ include('./BackendAssets/db.php');
                     <label for="stock">Stock:</label><br>
                     <input type="number" id="stock" name="stock" value="<?=$_GET['productStock']?>"><br>
 
+                    <label for="min_order">Min order pices</label><br>
+                    <input type="number" id="min_order" value="<?=$_GET['min_order_quantity']?>" name="min_order"><br>
+
                     <label for="image">Product Image:</label><br>
                     <img src="/BackendAssets/assets/images/ProductImages/<?=$_GET['productImage']?>" imgPath="<?=$_GET['productImage']?>" class="defaultImgName" style="height:80px;border:1px solid gray;margin:0 10px;">
                     <input type="hidden" name="defaultImgPath" value="<?=$_GET['productImage']?>">

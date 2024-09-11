@@ -1,19 +1,36 @@
 <?php
 include("../db.php");
 $cartid=$_GET['id'];
+$page=$_GET['page'];
 if(isset($cartid))
 {
     $sql="DELETE FROM `productscart` WHERE `cartid`=$cartid";
     $result=mysqli_query($conn,$sql);
     if($result)
     {
-        header("Location:/shop.php?delete=true");
-        exit();
+        if($_GET['page'] == "/checkout.php")
+        {
+            header("Location:$page?delete=true&id=$cartid");
+            exit();
+        }
+        else
+        {
+            header("Location:$page?delete=true");
+            exit();
+        }
     }
     else
     {
-        header("Location:/shop.php?delete=false");
-        exit();
+        if($_GET['page'] == "/checkout.php")
+        {
+            header("Location:$page?delete=false&id=$cartid");
+            exit();
+        }
+        else
+        {
+            header("Location:$page?delete=false");
+            exit();
+        }
 
     }
 }

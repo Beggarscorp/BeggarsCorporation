@@ -1,5 +1,6 @@
+
 <?php
-include 'BackendAssets/components/header.php';
+include 'BackendAssets/Components/header.php';
 include('./BackendAssets/db.php');
 $id=$_GET['id'];
 $sql = "SELECT * FROM `products` WHERE id=$id";
@@ -7,6 +8,17 @@ $Allproducts = $conn->query($sql);
 $row=mysqli_fetch_array($Allproducts);
 ?>
 <link rel="stylesheet" href="BackendAssets/css/singleProduct.css">
+<?php
+if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
+    echo "<div class='alert alert-success' role='alert'>
+  Product added to the cart
+</div>";
+} else if (isset($_GET["cart"]) && $_GET['cart'] == "added_already") {
+    echo "<div class='alert alert-warning' role='alert'>
+  Product already in the cart
+</div>";
+}
+?>
 <div class="container">
     <div class="smain">
     <div class="row">
@@ -25,7 +37,12 @@ $row=mysqli_fetch_array($Allproducts);
                     </div>
                 </div>
                 <div class="col-sm-9">
-                    <div class="productImg">
+                    <div class="productImg" style="
+                    --display:'none';
+                    --zoom-x:0%;
+                    --zoom-y:0%;
+                    --imageurl:url('/BackendAssets/assets/images/ProductImages/<?=$row['productimage']?>');
+;                    ">
                         <img src="BackendAssets/assets/images/ProductImages/<?=$row['productimage']?>" alt="">
                     </div>
                 </div>
@@ -38,30 +55,52 @@ $row=mysqli_fetch_array($Allproducts);
             </div>
             <h4 class="productPrice">Price: ₹ <?=$row['price']?></h4>
             <div class="buttons">
-                <a href="/singleProduct.php?id=<?=$row['id']?>&cate=<?=$row['category']?>" target="_blank">
+                <a href="BackendAssets/mysqlcode/addtocart.php?id=<?= $row['id']?>&page=<?=$_SERVER['PHP_SELF']?>&cate=<?=$row['category']?>">
                     <button class="add-to-cart-btn">Add to Cart <span style="padding: 0 5px;"><i class="fa fa-shopping-bag" aria-hidden="true"></i>
                 </a>
                 </span>
                 </button>
             </div>
+            <?php
+            if($row['sizeandfit'] != "")
+            {
+            ?>
             <div class="size_fit">
                 <h4>Size & Fit</h4>
                 <p class="font-16">
                     <?=$row['sizeandfit']?>
                 </p>
             </div>
+            <?php
+            }
+            ?>
+            <?php
+            if($row['materialandcare'] != "")
+            {
+            ?>
             <div class="material_care">
                 <h4>Material & Care</h4>
                 <div class="font-16">
                     <?=$row['materialandcare']?>
                 </div>
             </div>
-            <div class="spacifications">
-                <h4>Spacification</h4>
-                <p class="font-16">
-                    <?=$row['spacification']?>
-                </p>
-            </div>
+            <?php
+            }
+            ?>
+            <?php
+            if($row['spacification'] != "")
+            {
+
+            ?>
+                <div class="spacifications">
+                    <h4>Spacification</h4>
+                    <p class="font-16">
+                        <?=$row['spacification']?>
+                    </p>
+                </div>
+            <?php
+            }
+            ?>
 
         </div>
     </div>
@@ -93,8 +132,27 @@ $row=mysqli_fetch_array($Allproducts);
     </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded",()=>{
+        const imagediv=document.getElementsByClassName("productImg");
+    imagediv[0].addEventListener("mousemove",(e)=>{
+        imagediv[0].style.setProperty('--display', 'block');
+        imagediv[0].style.cursor="zoom-in";
+        let pointer={
+            x:(e.offsetX * 100) / imagediv[0].offsetWidth,
+            y:(e.offsetY * 100) / imagediv[0].offsetHeight 
+        }
+        imagediv[0].style.setProperty('--zoom-x', pointer.x + '%');
+        imagediv[0].style.setProperty('--zoom-y', pointer.y + '%');
+    })
+    imagediv[0].addEventListener("mouseout",()=>{
+        imagediv[0].style.setProperty('--display', 'none');
+    })
+    })
+    
+</script>
 
 <?php
-include 'BackendAssets/components/footer.php';
+include 'BackendAssets/Components/footer.php';
 
 ?>

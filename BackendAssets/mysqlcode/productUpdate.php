@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
     $productPrice = $_POST['price'];
     $productCategory = $_POST['category'];
     $productStock = $_POST['stock'];
+    $min_order= $_POST['min_order'];
     $productImage="";
     $productImageGallery="";
     $galleryfiles=$_FILES['productGallery']['name'];
@@ -47,7 +48,7 @@ if (isset($_POST['submit'])) {
         $productImageGallery=$_POST['defaultImgGalleryPath'];
     }
 
-    $sql = "UPDATE `products` SET `productname`='$productName',`discription`='$productDescription',`price`='$productPrice',`category`='$productCategory',`stock`='$productStock',`productimage`='$productImage',`sizeandfit`='$sizeAndfit',`materialandcare`='$materialandcare',`spacification`='$spacification', `productimagegallery`='$productImageGallery' WHERE `id`='$productId'";
+    $sql = "UPDATE `products` SET `productname`='$productName',`discription`='$productDescription',`price`='$productPrice',`category`='$productCategory',`stock`='$productStock',`productimage`='$productImage',`sizeandfit`='$sizeAndfit',`materialandcare`='$materialandcare',`spacification`='$spacification', `productimagegallery`='$productImageGallery' , `min_order`='$min_order' WHERE `id`='$productId'";
     if ($conn->query($sql)) {
         header("Location: /allproduct.php");
         exit();

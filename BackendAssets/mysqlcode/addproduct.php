@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   $sizeAndfit = $_POST['sizeAndfit'];
   $materialAndCare = $_POST['materialAndCare'];
   $spacification = $_POST['spacification'];
+  $min_order = $_POST['min_order'];
 
   // Check if file was uploaded without errors
   if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK && isset($_FILES["productGallery"])) {
@@ -30,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 
     // Insert data into the database
-    $sql = "INSERT INTO products (`productname`, `discription`, `price`, `category`, `stock`, `productimage`, `sizeandfit`, `materialandcare`, `spacification`, `productimagegallery`) 
-                VALUES ('$proname', '$prodis', '$proprice', '$procategory', '$prostock', '$imageName', '$sizeAndfit', '$materialAndCare', '$spacification', '$imagesNames')";
+    $sql = "INSERT INTO products (`productname`, `discription`, `price`, `category`, `stock`, `productimage`, `sizeandfit`, `materialandcare`, `spacification`, `productimagegallery`, `min_order`) 
+                VALUES ('$proname', '$prodis', '$proprice', '$procategory', '$prostock', '$imageName', '$sizeAndfit', '$materialAndCare', '$spacification', '$imagesNames', '$min_order')";
 
     $responseMsg = "";
 
