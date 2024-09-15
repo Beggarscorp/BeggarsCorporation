@@ -70,7 +70,8 @@ if (isset($_SESSION['user'])) {
                         $productid = json_decode($result[$t][3])->productid;
                         $productidArray = explode(',', $productid);
                         $productidArray = array_filter($productidArray);
-                        $productides = array_merge($productides, $productidArray);
+                        $integerArray = array_map('intval', $stringArray);
+                        // $productides = array_merge($productides, $productidArray);
                     }
                     
                     print_r($productides);
