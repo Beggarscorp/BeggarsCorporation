@@ -40,16 +40,16 @@ $result=mysqli_query($conn,$sql);
                         <input type="text" id="name" placeholder="Enter product name here" name="name" required><br>
 
                         <label for="description">Short Description:</label><br>
-                        <textarea id="description" placeholder="Enter prouduct short discription here" name="description"></textarea><br>
+                        <textarea id="description" rows="10" oninput="convertText(this)" placeholder="Enter prouduct short discription here" name="description" required></textarea><br>
                         
                         <label for="sizeAndfit">Size & fit:</label><br>
-                        <textarea id="sizeAndfit" placeholder="Enter prouduct size & fit here" name="sizeAndfit"></textarea><br>
+                        <textarea id="sizeAndfit" rows="10" oninput="convertText(this)" placeholder="Enter prouduct size & fit here" name="sizeAndfit" required></textarea><br>
                         
                         <label for="materialAndCare">Material & Care:</label><br>
-                        <textarea id="materialAndCare" placeholder="Enter prouduct material & care here" name="materialAndCare"></textarea><br>
+                        <textarea id="materialAndCare" rows="10" oninput="convertText(this)" placeholder="Enter prouduct material & care here" name="materialAndCare" required></textarea><br>
                         
                         <label for="spacification">Spacification:</label><br>
-                        <textarea id="spacification" placeholder="Enter prouduct spacification here" name="spacification"></textarea><br>
+                        <textarea id="spacification" rows="10" oninput="convertText(this)" placeholder="Enter prouduct spacification here" name="spacification" required></textarea><br>
 
                         <label for="price">Price:</label><br>
                         <input type="number" id="price" placeholder="Enter product price here" name="price" step="0.01" required><br>
@@ -132,6 +132,13 @@ $result=mysqli_query($conn,$sql);
             errorSpan.textContent="";
         }
         })
+
+        const convertText=(e)=>{
+            let text=e.value;
+            let html=text.replace(/(\r\n|\n|\r)/g, '<br>');
+            e.value=html;
+        }
+
     </script>
 </body>
 

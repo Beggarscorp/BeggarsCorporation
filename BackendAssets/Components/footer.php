@@ -121,6 +121,10 @@
         <script src="js/popup.js"></script>
         <script src="js/jquery.min.js"></script>
 
+        <!-- sweet alert 2 cdn start from here -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- sweet alert 2 cdn end here -->
+
         <!-- main jQuery -->
         <script src="js/jquery-1.11.1.min.js"></script>
         <!-- bootstrap -->

@@ -85,7 +85,7 @@ if($usercountresult)
             </div>
             <div class="col-sm-3">
             <div class="products-box text-center">
-                    <a href="/allproduct.php">
+                    <a href="/orders.php">
                         <h3>Orders</h3>
                         <div class="productcount">
                             0

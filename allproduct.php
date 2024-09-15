@@ -57,7 +57,43 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 <td><?=$row['materialandcare']?></td>
                                 <td><?=$row['spacification']?></td>
                                 <td><?=$row['min_order']?></td>
-                                <td class="update" onclick="updateProduct('<?=$row['id']?>','<?=$row['productname']?>','<?=$row['category']?>','<?=$row['price']?>','<?=$row['stock']?>','<?=$row['discription']?>','<?=$row['sizeandfit']?>','<?=$row['materialandcare']?>','<?=$row['spacification']?>','<?=$row['min_order']?>','<?=$row['productimage']?>','<?=$row['productimagegallery']?>')"><i class="bi bi-pencil-square"></i></td>
+                                <?php
+                                $id=$row['id'];
+                                $productname=$row['productname'];
+                                $category=$row['category'];
+                                $price=$row['price'];
+                                $stock=$row['stock'];
+                                $discription=$row['discription'];
+                                $sizeandfit=$row['sizeandfit'];
+                                $materialandcare=$row['materialandcare'];
+                                $specification=$row['spacification'];
+                                $min_order=$row['min_order'];
+                                $productimage=$row['productimage'];
+                                $productImageGallery=$row['productimagegallery'];
+
+                                // $discriptionJson=json_encode($row['discription']);
+                                // $sizeandfitJson=json_encode($row['sizeandfit']);
+                                // $materialandcareJson=json_encode($row['materialandcare']);
+                                // $specificationJson=json_encode($row['spacification']);
+                                
+                                ?>
+                                <td class="update" 
+                                data-id="<?= $id ?>"
+                                data-productname="<?= $productname ?>"
+                                data-productcategory="<?= $category ?>"
+                                data-productprice="<?= $price ?>"
+                                data-productstock="<?= $stock ?>"
+                                data-productdis="<?= $discription?>"
+                                data-productsizeandfit="<?= $sizeandfit ?>"
+                                data-productmaterialandcare="<?= $materialandcare ?>"
+                                data-productspecification="<?= $specification ?>"
+                                data-productmin_order="<?= $min_order ?>"
+                                data-productimage="<?= $productimage ?>"
+                                
+                                data-imggallery="<?= $productImageGallery ?>" 
+                                onclick="sendUpdateProduct(this)"
+                                >
+                                <i class="bi bi-pencil-square"></i></td>
                                 <td class="delete" onclick="deleteProduct(<?=$row['id'] ?>)"><i class="bi bi-trash"></i></td>
                             </tr>
                             <?php
@@ -65,7 +101,7 @@ include('BackendAssets/mysqlcode/allproducts.php');
                            ?>
                            <form action="/BackendAssets/mysqlcode/allproducts.php" method="post" id="delete">
                                <input type="hidden" name="delete">
-                               <input type="hidden" name="id" value="<?=$row['id'] ?>">
+                               <input type="hidden" name="id" class="deleteProductid" value="<?=$row['id'] ?>">
                            </form>
                         </tbody>
                     </table> 
@@ -76,17 +112,40 @@ include('BackendAssets/mysqlcode/allproducts.php');
     <script>
        
         const deleteProduct=(id)=>{
+            let deleteProductid=document.getElementsByClassName("deleteProductid");
+            deleteProductid[0].value=id;
             if(confirm("Want to delete product"))
         {
             document.getElementById("delete").submit();
         }
         }
-        const updateProduct=(id,productname,productcategory,productprice,productstock,productdiscription,sizeandfit,materialandcare,spacification,min_order,productimage,productimagegallery)=>{
+
+        const sendUpdateProduct=(updateproductdata)=>{
+            const data=updateproductdata.dataset;
+            
             if(confirm("Want to update product"))
         {
-            window.location.href="/productUpdate.php?Id="+id+'&productName='+productname+'&'+'productCategory='+productcategory+'&productPrice='+productprice+'&productStock='+productstock+'&productDiscription='+productdiscription+'&sizeandfit='+sizeandfit+'&materialandcare='+materialandcare+'&spacification='+spacification+'&min_order_quantity='+min_order+'&productImage='+productimage+'&productImageGallery='+productimagegallery;
+            window.location.href="/productUpdate.php?Id="+encodeURIComponent(data.id)
+            +'&productName='+encodeURIComponent(data.productname)
+            +'&'+'productCategory='+encodeURIComponent(data.productcategory)
+            +'&productPrice='+encodeURIComponent(data.productprice)
+            +'&productStock='+encodeURIComponent(data.productstock)
+            +'&productDiscription='+encodeURIComponent(data.productdis)
+            +'&sizeandfit='+encodeURIComponent(data.productsizeandfit)
+            +'&materialandcare='+encodeURIComponent(data.productmaterialandcare)
+            +'&spacification='+encodeURIComponent(data.productspecification)
+            +'&min_order_quantity='+encodeURIComponent(data.productmin_order)
+            +'&productImage='+encodeURIComponent(data.productimage)
+            +'&productImageGallery='+encodeURIComponent(data.imggallery);
         }
         }
+
+
+        // const updateProduct=(id,productname,productcategory,productprice,productstock,productdiscription,sizeandfit,materialandcare,spacification,min_order,productimage,productimagegallery)=>{
+        //     // console.log(id+"<br>",productname+"<br>",productcategory+"<br>",productprice+"<br>",productstock+"<br>",productdiscription+"<br>",sizeandfit+"<br>",materialandcare+"<br>",spacification+"<br>",min_order+"<br>",productcategory)
+        //     // console.log(id+"<br>",productname+"<br>",productcategory+"<br>",productprice+"<br>",productstock+"<br>",productdiscription+"<br>",sizeandfit+"<br>",materialandcare+"<br>",spacification+"<br>",min_order+"<br>",productimage,productimagegallery);
+            
+        // }
     </script>
 </body>
 

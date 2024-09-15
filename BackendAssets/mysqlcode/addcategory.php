@@ -11,7 +11,7 @@ if (isset($_POST['category']) && isset($_POST['cateSubmit'])) {
         $sql = "INSERT INTO `category`(`category`) VALUES ('$category')";
         if ($conn->query($sql)) {
             $msg = "Category added";
-            header("Location:/addproduct.php?msg=" . $msg);
+            header("Location:/addProduct.php?msg=" . $msg);
             exit();
         }
         $conn->close();
@@ -19,10 +19,10 @@ if (isset($_POST['category']) && isset($_POST['cateSubmit'])) {
     else
     {
         $msg = "Category already exists";
-        header("Location:/addproduct.php?msg=". $msg);
+        header("Location:/addProduct.php?msg=". $msg);
     }
 }
  else 
  {
-    echo "Hello world";
+    echo "Something gone wrong";
 }

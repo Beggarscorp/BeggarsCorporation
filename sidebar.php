@@ -29,10 +29,10 @@
             </div>
 
             <script>
-                setTimeout(() => {
-                    const msgDiv=document.getElementsByClassName("msg");
-                    msgDiv[0].style.display="none";
-                }, 5000);
+                // setTimeout(() => {
+                //     const msgDiv=document.getElementsByClassName("msg");
+                //     msgDiv[0].setAttribute("style","display:none;");
+                // }, 5000);
                 document.addEventListener("DOMContentLoaded",()=>{
                     window.scrollTo(0,0);
                 })

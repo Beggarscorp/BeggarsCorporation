@@ -4,7 +4,7 @@ include("BackendAssets/Components/header.php");
 include('BackendAssets/mysqlcode/allproducts.php');
 include("BackendAssets/db.php");
 include("BackendAssets/Components/popup.php");
-error_reporting(0);
+// error_reporting(0);
 $sql = "SELECT * FROM `category`";
 $result = mysqli_query($conn, $sql);
 ?>
@@ -57,7 +57,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                                         <a href="/singleProduct.php?id=<?= $row['id'] ?>&cate=<?= $row['category'] ?>" target="_blank">
                                             <img src="/BackendAssets/assets/images/ProductImages/<?= $row['productimage'] ?>" alt="">
                                         </a>
-                                        <h4><?= $row['productname'] ?></h4>
+                                        <h5><?= $row['productname'] ?></h5>
                                         <h5>INR <?= $row['price'] ?></h5>
                                         <a href="/BackendAssets/mysqlcode/addtocart.php?id=<?= $row['id'] ?>">
                                             <button class="add-to-cart-btn">Add to cart</button>
@@ -73,7 +73,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                                     <a href="/singleProduct.php?id=<?= $row['id'] ?>&cate=<?= $row['category'] ?>" target="_blank">
                                         <img src="/BackendAssets/assets/images/ProductImages/<?= $row['productimage'] ?>" alt="">
                                     </a>
-                                    <h4><?= $row['productname'] ?></h4>
+                                    <h5><?= $row['productname'] ?></h5>
                                     <h5>INR <?= $row['price'] ?></h5>
                                     <a href="/BackendAssets/mysqlcode/addtocart.php?id=<?= $row['id'] ?>">
                                         <button class="add-to-cart-btn">Add to cart <span style="padding: 0 5px;"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span></button>

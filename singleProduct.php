@@ -30,7 +30,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                         $galleryImages=explode(",",$row["productimagegallery"]);
                         foreach($galleryImages as $galleryImage) {
                         ?>
-                        <img src="BackendAssets/assets/images/ProductGalleryImages/<?=$galleryImage?>" alt="<?=$galleryImage?>">
+                        <img src="BackendAssets/assets/images/ProductGalleryImages/<?=$galleryImage?>" alt="<?=$galleryImage?>" onclick="galleryimages(this)">
                         <?php
                         }
                         ?>
@@ -93,7 +93,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
 
             ?>
                 <div class="spacifications">
-                    <h4>Spacification</h4>
+                    <h4>Specification</h4>
                     <p class="font-16">
                         <?=$row['spacification']?>
                     </p>
@@ -101,7 +101,8 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             <?php
             }
             ?>
-
+            <a href="/checkout.php"><button class="go_to_checkout">Proceed to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </button></a>
         </div>
     </div>
     <div class="row">
@@ -120,7 +121,6 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                         <img src="BackendAssets/assets/images/ProductImages/<?=$row2['productimage']?>" alt="">
                     </a>
                     <h5><?=$row2['productname']?></h5>
-                    <h5><?=$row2['category']?></h5>
                     <h5>Rs . <?=$row2['price']?></h5>
                 </div>
             </div>
@@ -133,8 +133,9 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
     </div>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded",()=>{
-        const imagediv=document.getElementsByClassName("productImg");
+
+
+    const imagediv=document.getElementsByClassName("productImg");
     imagediv[0].addEventListener("mousemove",(e)=>{
         imagediv[0].style.setProperty('--display', 'block');
         imagediv[0].style.cursor="zoom-in";
@@ -148,7 +149,18 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
     imagediv[0].addEventListener("mouseout",()=>{
         imagediv[0].style.setProperty('--display', 'none');
     })
-    })
+
+
+
+    const galleryimages=(e)=>{
+        let productImgImate=document.querySelector(".productImg img");
+        let productImg=document.getElementsByClassName("productImg");
+        productImgImate.setAttribute("src",e.getAttribute("src"));
+        let tt="'/"+e.getAttribute("src")+"'";
+        productImg[0].setAttribute("style","--imageurl:url("+tt+")");
+    }
+
+
     
 </script>
 

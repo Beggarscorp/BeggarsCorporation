@@ -8,7 +8,7 @@ thead tr td,tbody tr td
 {
     padding: 8px 10px;
     word-break: break-all;
-    white-space: nowrap;
+    white-space: pre-wrap;
 }
 .order-product-details tr:nth-child(even)
 {

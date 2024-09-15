@@ -27,16 +27,16 @@ include('./BackendAssets/db.php');
                     <input type="text" id="name" name="name" value="<?=$_GET['productName']?>"><br>
 
                     <label for="description">Short Description:</label><br>
-                    <textarea id="description" name="description"><?=$_GET['productDiscription']?></textarea><br>
+                    <textarea id="description" rows="10" oninput="convertText(this)" name="description"><?=$_GET['productDiscription']?></textarea><br>
 
                     <label for="sizeAndfit">Size & fit:</label><br>
-                    <textarea id="sizeAndfit" name="sizeAndfit"><?=$_GET['sizeandfit']?></textarea><br>
+                    <textarea id="sizeAndfit" rows="10" oninput="convertText(this)" name="sizeAndfit"><?=$_GET['sizeandfit']?></textarea><br>
                         
                     <label for="materialAndCare">Material & Care:</label><br>
-                    <textarea id="materialAndCare" name="materialAndCare"><?=$_GET['materialandcare']?></textarea><br>
+                    <textarea id="materialAndCare" rows="10" oninput="convertText(this)" name="materialAndCare"><?=$_GET['materialandcare']?></textarea><br>
                         
                     <label for="spacification">Spacification:</label><br>
-                    <textarea id="spacification" name="spacification"><?=$_GET['spacification']?></textarea><br>
+                    <textarea id="spacification" rows="10" oninput="convertText(this)" name="spacification"><?=$_GET['spacification']?></textarea><br>
 
                     <label for="price">Price:</label><br>
                     <input type="number" id="price" name="price" value="<?=$_GET['productPrice']?>"><br>
@@ -89,6 +89,13 @@ include('./BackendAssets/db.php');
             errorSpan.textContent="";
         }
         })
+
+        const convertText=(e)=>{
+            let text=e.value;
+            let html=text.replace(/(\r\n|\n|\r)/g, '<br>');
+            e.value=html;
+        }
+
     </script>
 </body>
 </html>

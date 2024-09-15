@@ -9,7 +9,7 @@ session_start();
 if(isset($_SESSION['user']) && $productId != "")
 {
     $user = $_SESSION['user'];
-    $sql="SELECT * FROM `user` WHERE `First-name` = '$user'";
+    $sql="SELECT * FROM `user` WHERE `First_name` = '$user'";
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_assoc($result);
     $user_id= $row["id"];

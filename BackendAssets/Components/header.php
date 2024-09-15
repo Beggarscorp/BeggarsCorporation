@@ -1,3 +1,4 @@
+
 <?php
 include("./BackendAssets/Components/forsession.php");
 ?>
@@ -423,7 +424,7 @@ add_chatinline();</script>-->
                                     $user_name = $_SESSION["user"];
                                     $sql = "SELECT * FROM `productscart` as pc INNER JOIN `products` as p WHERE pc.product_id=p.id";
                                     $result = mysqli_query($conn, $sql);
-                                    $sqlTwo="SELECT `id` FROM `user` WHERE `First-name`='$user_name'";
+                                    $sqlTwo="SELECT `id` FROM `user` WHERE `First_name`='$user_name'";
                                     $resultTwo = mysqli_query($conn, $sqlTwo);
                                     $userRow= mysqli_fetch_array($resultTwo);
                                     if ($result) {

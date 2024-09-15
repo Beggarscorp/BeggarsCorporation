@@ -1,12 +1,11 @@
 <?php
-error_reporting(0);
-include '../db.php';
-
+require("../Components/forsession.php");
+include("../db.php");
 
 $email = isset($_POST['email']) ? $_POST['email'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
 $msg="";
-session_start();
+
 if($email != '' && $password != ""){
     if(!isset($_SESSION['user']))
     {
@@ -16,8 +15,7 @@ if($email != '' && $password != ""){
         $row=mysqli_fetch_array($result);
         if(password_verify($password,$row['password']))
         {
-            session_start();
-            $_SESSION["user"] = $row['First-name'];
+            $_SESSION["user"] = $row['First_name'];
             header("Location: /shop.php");
             exit();
         }

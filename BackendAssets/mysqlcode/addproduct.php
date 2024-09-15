@@ -31,12 +31,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 
     // Insert data into the database
-    $sql = "INSERT INTO products (`productname`, `discription`, `price`, `category`, `stock`, `productimage`, `sizeandfit`, `materialandcare`, `spacification`, `productimagegallery`, `min_order`) 
-                VALUES ('$proname', '$prodis', '$proprice', '$procategory', '$prostock', '$imageName', '$sizeAndfit', '$materialAndCare', '$spacification', '$imagesNames', '$min_order')";
+    $sql = $conn->prepare("INSERT INTO products (productname, discription, price, category, stock, productimage, sizeandfit, materialandcare, spacification, productimagegallery, min_order) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+
+    if ($sql === false)
+    {
+      die("Prepare failed". $conn->error);
+    }
+
+  $sql->bind_param("ssisisssssi", $proname, $prodis, $proprice, $procategory, $prostock, $imageName, $sizeAndfit, $materialAndCare, $spacification, $imagesNames, $min_order);
+
+  $sql->execute(); 
 
     $responseMsg = "";
 
-    if ($conn->query($sql) === TRUE) {
+    $result=$sql->get_result();
+
+
+    
+    if ($sql->affected_rows != 0) {
       // Move the uploaded file
       if (move_uploaded_file($tmpName, $folder)) {
         $responseMsg = "File uploaded and moved successfully.";
@@ -53,4 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   } else {
     echo "No file uploaded or file upload error.";
   }
+  $sql->close();
+  $conn->close();
 }
