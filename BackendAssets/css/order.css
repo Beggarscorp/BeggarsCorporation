@@ -1,18 +1,43 @@
-table
+.cancel_order
 {
-    width: 100%;
-}
-td
-{
-    padding: 5px ;
-    text-align: center;
-    border: 1px solid lightgray;
-}
-.view_order
-{
+    margin: 5px;
     border: none;
-    background-color: #b4710b;
+    background-color: red;
     color: #fff;
     border-radius: 5px;
     font-size: 15px ;
+}
+.imagetd img
+{
+    width: 160px;
+}
+.product_inner_div
+{
+    padding: 10px;
+}
+.order_product_main_div
+{
+    margin: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: inset 3px 2px 4px 1px #ab9f83;
+    height: fit-content;
+}
+.product_inner_div div
+{
+    display: flex;
+}
+.product_inner_div h3
+{
+    margin: 0;
+    font-size: large;
+}
+.product_inner_div p
+{
+    margin: 0 10px;
+    display: flex;
+}
+.cancel_order_icon
+{
+    float: right;
 }

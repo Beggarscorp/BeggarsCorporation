@@ -79,12 +79,11 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true")
                     $result = mysqli_query($conn, $sql);
                     $sqlTwo = "SELECT `id` FROM `user` WHERE `First_name`='$user_name'";
                     $resultTwo = mysqli_query($conn, $sqlTwo);
-                    $echoTimes = false;
                     $productCount = [];
 
                     if ($result) {
                         foreach ($result as $val) {
-                            if ($val['user_id'] == $userRow['id']) {
+                            if ($val['user_id'] === $userRow['id']) {
 
                                 array_push($productCount, count($val));
                     ?>
@@ -114,7 +113,7 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true")
                                             {
                                                 
                                                 if (in_array((int)$val['id'], $rr)) 
-                                                {
+                                                { 
                                                     foreach ($cartdata as $value) {
 
                                                         if ($val['id'] === $value[2]) {
@@ -148,14 +147,11 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true")
                                 </div>
                                 <input type="hidden" name="useridforstoreindatabase" value="<?=$val['user_id']?>">
                     <?php
-                            } else {
-                                if (!$echoTimes) {
-                                    $echoTimes = true;
-                                    echo "<h4 style='padding:0 10px'>Cart empty now</h4>";
-                                }
-                            }
+                            } 
                         }
-                    } else {
+                    } 
+                    else 
+                    {
                         echo "Your cart empty";
                     }
                     ?>
