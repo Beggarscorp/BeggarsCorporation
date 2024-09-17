@@ -363,12 +363,13 @@ add_chatinline();</script>-->
                                     <li class="user-icon">
                                         <i class="fa fa-user" style="color:white;font-size:20px;padding:0 2px;cursor:pointer;"></i>
                                         <div class="user-details">
-                                            <h3>
+                                            <h4>
                                                 <?php
                                                 if (isset($_SESSION['user'])) {
                                                     echo $_SESSION['user'];
                                                 ?>
                                                     <a href="/BackendAssets/mysqlcode/logout.php" style="color:red !important;">Logout</a><br>
+                                                    <a href="/order.php" target="_blank">My orders</a>
                                                 <?php
                                                 } else {
                                                 ?>
@@ -377,7 +378,7 @@ add_chatinline();</script>-->
                                                     echo "No user";
                                                 }
                                                 ?>
-                                            </h3>
+                                            </h4>
                                         </div>
                                     </li>
                                     <li class="cart-icon">
@@ -441,8 +442,8 @@ add_chatinline();</script>-->
                                                             <a href="/BackendAssets/mysqlcode/removecart.php?id=<?=$val['cartid']?>&page=<?=$_SERVER['PHP_SELF']?>" style="color:gray !important;">
                                                                 <span class="remove_cart_cross_icon"><i class="fa fa-times-circle" style="font-size:20px;float:inline-end;"></i></span></h5>
                                                             </a>
-                                                            <p class="font-13"><?=$val['discription']?></p>
                                                             <h5>Category : <?=$val['category']?></h5>
+                                                            <h5>Price : <?=$val['price']?></h5>
                                                         </div>
                                                     </div>
                                                 </div>

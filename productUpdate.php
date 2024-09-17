@@ -1,5 +1,9 @@
 <?php
 include('./BackendAssets/db.php');
+
+$sql="SELECT * FROM `category`";
+$result=mysqli_fetch_all(mysqli_query($conn,$sql));
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,6 +46,20 @@ include('./BackendAssets/db.php');
                     <input type="number" id="price" name="price" value="<?=$_GET['productPrice']?>"><br>
 
                     <label for="category">Category:</label><br>
+                    <?php
+                    if(isset($_GET['productCategory']))
+                    {
+                    ?>
+                    <?php
+                    }
+                    else
+                    {
+                        ?>
+                        <select name="" id=""></select>
+                        <?php
+                    }
+                    // <?=$result[$p][1]?>
+                        ?>
                     <input type="text" id="category" name="category" value="<?=$_GET['productCategory']?>"><br>
 
                     <label for="stock">Stock:</label><br>

@@ -19,32 +19,43 @@ if($email != '' && $password != ""){
     $result = mysqli_query($conn, $sql);
 
     $userdata=mysqli_fetch_assoc($result);
+    
+    if(mysqli_num_rows($result) === 1){
 
-    if(mysqli_num_rows($result) === 1 && $userdata['user_verified'] === 1){
-
-        $row=mysqli_fetch_array($result);
-
-        if(password_verify($password,$row['password']))
-
+        if((int)$userdata['user_verified'] === 1)
         {
-            $_SESSION["user"] = $row['First_name'];
 
-            header("Location: /shop.php");
-
-            exit();
+    
+            if(password_verify($password,$userdata['password']))
+    
+            {
+                $_SESSION["user"] = $userdata['First_name'];
+    
+                header("Location: /shop.php");
+    
+                exit();
+            }
+            else
+            {
+                $msg="Credential wrong";
+    
+                header("Location: /login.php?msg=".$msg);
+    
+                exit();
+            }
         }
         else
         {
-            $msg="Credential wrong";
+            $msg="Your email not verified";
 
             header("Location: /login.php?msg=".$msg);
 
             exit();
         }
-    }
+    }       
     else
     {
-        $msg="Your email not verified";
+        $msg="Email or password wrong";
 
         header("Location: /login.php?msg=".$msg);
 

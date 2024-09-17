@@ -1,5 +1,5 @@
 <?php
-include("BackendAssets/Components/wholecountries.php");
+
 include("BackendAssets/Components/header.php");
 include("./BackendAssets/db.php");
 if (isset($_SESSION['user'])) {
@@ -46,24 +46,37 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true")
 
                     <div class="row">
                         <div class="col-sm-4">
+                            <label for="country">Selcet country</label>
+                            <select name="country" id="country"></select>
+                        </div>
+                        
+                        <div class="col-sm-4">
                             <label for="states">Select state</label><br>
                             <select name="state" id="states" name="userstate" required></select>
                         </div>
 
                         <div class="col-sm-4">
-                            <label for="city">Select city</label>
+                            <label for="city">Select District</label>
                             <select name="city" id="city" name="usercity" required>
                             </select>
                         </div>
+                    </div>
 
+                    <div class="row">
                         <div class="col-sm-4">
                             <label for="pincode">Enter pin code</label>
                             <input type="number" id="pincode" name="userpincode" placeholder="Enter pin code here" required>
                         </div>
                     </div>
 
-                    <label for="useraddress">Address :</label><br>
-                    <textarea name="useraddress" placeholder="Enter your address" id="useraddress" required></textarea><br>
+                    <label for="useraddress">Home Address :</label><br>
+                    <textarea name="useraddress" placeholder="Flat/House no./Floor/Building" id="useraddress" required></textarea><br>
+
+                    <label for="useraddress">Office Address :</label><br>
+                    <textarea name="useraddress" placeholder="Flat/House no./Floor/Building" id="useraddress" required></textarea><br>
+
+                    <label for="useraddress">Gift Address :</label><br>
+                    <textarea name="useraddress" placeholder="Flat/House no./Floor/Building" id="useraddress" required></textarea><br>
 
 
             </div>
@@ -191,33 +204,13 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true")
 
     // this code for insert country and states option according to user select start from here
 
+     const countryStateEle=document.getElementById("country");
+     const stateSelectEle = document.getElementById("states");
+     const citySelectEle = document.getElementById("city");
+    
 
-    const countryAndstates = <?php echo json_encode($stateAndcity); ?>;
-    const stateSelectEle = document.getElementById("states");
-    const citySelectEle = document.getElementById("city");
-    let stateSelectValue = "Andhra Pradesh (AP)";
-    for (const key in countryAndstates) {
-        let option = document.createElement("option");
-        option.value = key;
-        option.textContent = key;
-        stateSelectEle.append(option);
-    }
-    const optionSelct = document.querySelectorAll("#states");
-    optionSelct[0].addEventListener("change", (e) => {
-        stateSelectValue = e.target.value;
-        for (const i of countryAndstates[stateSelectValue]) {
-            let cityoption = document.createElement("option");
-            cityoption.textContent = i;
-            cityoption.value = i;
-            citySelectEle.append(cityoption);
-        }
-    })
-    for (const i of countryAndstates[stateSelectValue]) {
-        let cityoption = document.createElement("option");
-        cityoption.textContent = i;
-        cityoption.value = i;
-        citySelectEle.append(cityoption);
-    }
+
+    
 
     // end here
 
