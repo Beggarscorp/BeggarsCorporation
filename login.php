@@ -27,7 +27,8 @@ include 'BackendAssets/Components/header.php';
         <button type="submit">Login</button>
       </form>
         <div class="forgot_password">
-            <a href="/forgot_password.php"><span>Forgot password</span></a>
+            <a href="/forgot_password.php"><span>Forgot password</span></a>&nbsp;
+            <a href="/signup.php" style="text-decoration: underline !important;font-size:15px;"><span>Create account</span></a>
         </div>
     </div>
   </div>
