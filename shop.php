@@ -23,8 +23,13 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2">
-            <h3>Filters</h3>
-            <div class="category-container">
+            <div class="filter-main-head">
+                <h3>Filters</h3>
+                <div class="filter-icon-div">
+                    <i class="fa fa-filter"></i>
+                </div>
+            </div>
+            <div class="filter-container">
                 <h4>Category</h4>
                 <?php
                 foreach ($result as $row) {
@@ -52,7 +57,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                         if (isset($_GET['cate'])) {
                             if ($_GET['cate'] == $row['category']) {
                     ?>
-                                <div class="col-sm-3">
+                                <div class="col-sm-6 col-md-3">
                                     <div class="productCard text-center">
                                         <a href="/singleProduct.php?id=<?= $row['id'] ?>&cate=<?= $row['category'] ?>" target="_blank">
                                             <img src="/BackendAssets/assets/images/ProductImages/<?= $row['productimage'] ?>" alt="">
@@ -88,17 +93,27 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                     if ($datacountnumber / 10) {
                         $countnumber++;
                     }
+                    else
+                    {
+                        $countnumber = 0;
+                    }
                     ?>
                 </div>
                 <div class="pegination-div">
                     <ul>
                         <?php
+                        if($countnumber < 0)
+                        {
                         for ($i = 1; $i <= $countnumber; $i++) {
                         ?>
                             <li><?= $i ?></li>
                         <?php
                         }
+                        }
+                        else
+                        {
 
+                        }
                         ?>
                     </ul>
                 </div>
@@ -137,6 +152,18 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
         //         console.log("Hello world");
         //     }
     })
+
+
+    // filter show hide for mobile device start from here
+
+    const filter_main_head=document.getElementsByClassName("filter-main-head");
+    const filter_container=document.getElementsByClassName("filter-container");
+    filter_main_head[0].addEventListener("click",()=>{
+        filter_container[0].classList.toggle("filter-container-show");
+    })
+
+    // end here
+
 </script>
 
 <!--Footer Section-->

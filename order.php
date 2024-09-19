@@ -19,9 +19,33 @@ if (isset($_SESSION['user'])) {
 
     $result = mysqli_fetch_all(mysqli_query($conn, $sql));
 
-    // echo "<pre>";
-    // print_r($result);
-    // echo "</pre>";
+    if(isset($_GET['order']) && $_GET['order'] === 'successful')
+    {
+        echo "<script>
+            Swal.fire({
+                title:'Order Placed Successfully',
+                icon: 'success'
+            })
+        </script>";
+    }
+    else if(isset($_GET['order']) && $_GET['order'] === 'failed')
+    {
+        echo "<script>
+            Swal.fire({
+                title:'Order Failed',
+                icon: 'error'
+            })
+        </script>";
+    }
+    else if(isset($_GET['delete']) && $_GET['delete'] === 'successfully')
+    {
+        echo "<script>
+            Swal.fire({
+                title:'Order Deleted',
+                icon: 'success'
+            })
+        </script>";
+    }
 
 
 ?>
@@ -38,12 +62,13 @@ if (isset($_SESSION['user'])) {
                         {
                             foreach($result as $orders)
                             {
+                                // print_r($orders);
                                 ?>
 
                                     <div class="order_product_main_div">
                                         <div class="row">
                                             <div class="col-sm-2">
-                                                <div class="imagetd"> <img src="BackendAssets/assets/images/productimages/<?= $orders[16] ?>" alt="" srcset=""> </div>
+                                                <div class="imagetd"> <img src="BackendAssets/assets/images/productimages/<?= $orders[17] ?>" alt="" srcset=""> </div>
                                             </div>
                                             <div class="col-sm-10">
                                                 <div class="product_inner_div">
@@ -52,7 +77,7 @@ if (isset($_SESSION['user'])) {
                                                     </a>
                                                     <div>
                                                         <h3>Product Name :</h3>
-                                                        <p><?= $orders[14] ?></p>
+                                                        <p><?= $orders[15] ?></p>
                                                     </div>
                                                     <div>
                                                         <h3>Qty :</h3>
@@ -60,11 +85,11 @@ if (isset($_SESSION['user'])) {
                                                     </div>
                                                     <div>
                                                         <h3>Price :</h3>
-                                                        <p><?= $orders[15] ?></p>
+                                                        <p><?= $orders[16] ?></p>
                                                     </div>
                                                     <div>
                                                         <h3>Total Price :</h3>
-                                                        <p><?= $orders[4] * $orders[15] ?></p>
+                                                        <p>INR <?= $orders[4] * $orders[16] ?></p>
                                                     </div>
                                                 </div>
                                             </div>

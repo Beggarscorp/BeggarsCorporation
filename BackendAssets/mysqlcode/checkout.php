@@ -3,10 +3,12 @@
 include('../db.php');
 
 if (isset($_POST["place_order"])) {
+
     $name = $_POST["username"];
     $email = $_POST["useremail"];
     $number = $_POST["usernumber"];
     $userid = $_POST['useridforstoreindatabase'];
+    $usercountry=$_POST['country'];
     $userstate = $_POST["state"];
     $usercity = $_POST["city"];
     $userpincode = $_POST["userpincode"];
@@ -14,7 +16,7 @@ if (isset($_POST["place_order"])) {
     $totalPrice = $_POST["totalPrice"];
     $productidandquantity = $_POST['productidandquantity'];
 
-    if ($name != "" && $email != "" && $number != "" && $userstate != "" && $usercity != "" && $userpincode != "" && $useraddress != ""  && $userid != "" && $userid != "" && $totalPrice != "" && $productidandquantity != "") {
+    if ($name != "" && $email != "" && $number != "" && $usercountry != "" && $userstate != "" && $usercity != "" && $userpincode != "" && $useraddress != ""  && $userid != "" && $userid != "" && $totalPrice != "" && $productidandquantity != "") {
 
         $productId = explode(',', rtrim(json_decode($productidandquantity)->productid, ','));
 
@@ -27,11 +29,12 @@ if (isset($_POST["place_order"])) {
             $proID = $productId[$pq];
             $proQTY = $productQty[$pq];
 
-            $stmt = $conn->prepare("INSERT INTO `orders` (`userid`, `productid`, `productquantity`, `username`, `useremail`, `usernumber`, `userstate`, `usercity`, `userpincode`, `useraddress`, `totalprice`) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO `orders` (`userid`, `productid`, `productquantity`, `username`, `usercountry`, `useremail`, `usernumber`, `userstate`, `usercity`, `userpincode`, `useraddress`, `totalprice`) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 // ON DUPLICATE KEY UPDATE `productquantity` = VALUES(`productquantity`)
 
-            $stmt->bind_param('iiississisi', $userid, $proID, $proQTY, $name, $email, $number, $userstate, $usercity, $userpincode, $useraddress, $totalPrice);
+            $stmt->bind_param('iiisssissisi', $userid, $proID, $proQTY, $name,
+            $usercountry, $email, $number, $userstate, $usercity, $userpincode, $useraddress, $totalPrice);
 
             if (!$stmt->execute()) {
                 $success = false;

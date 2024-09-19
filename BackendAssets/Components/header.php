@@ -12,6 +12,13 @@ include("./BackendAssets/Components/forsession.php");
     <title>Beggars Corporation</title>
     <link rel="shortcut icon" type="image/x-icon" href="images/main/favicon.png">
 
+    <!-- sweet alert css link start from here -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- sweet alert css link end here -->
+
     <!-----------------SEO Part-------------------->
     <meta property="og:title" content="Beggars Corporation">
     <meta property="og:description" name="description"
@@ -380,10 +387,11 @@ add_chatinline();</script>-->
                                                 ?>
                                             </h4>
                                         </div>
-                                    </li>
-                                    <li class="cart-icon">
-                                    <div class="cartcountval"></div>
-                                        <i class="fa fa-shopping-cart" style="color:white;font-size:20px;padding:0 2px;cursor:pointer;"></i>
+                                        <div class="cart-icon">
+                                            <div class="cartcountval"></div>
+                                            <i class="fa fa-shopping-cart" style="color:white;font-size:20px;padding:0 2px;cursor:pointer;"></i>
+
+                                        </div>
                                     </li>
                                     <!--   <li>
                                <a href="media.html">Impact</a>
@@ -417,7 +425,10 @@ add_chatinline();</script>-->
                         </div>
                         <div class="col-sm-4" style="background-color:#fff;height:100vh;">
                             <div class="addtocart-content-area">
-                                <h3>Cart</h3>
+                                <div class="h5andcrossicon">
+                                    <h3>Cart</h3>
+                                    <span><i class="fa fa-close" id="removeAddtoCartDiv"></i></span>
+                                </div>
                                 <div class="addtocart-main-card">
                                     <?php
                                     include("./BackendAssets/db.php");
