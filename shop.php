@@ -26,6 +26,9 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             <div class="filter-main-head">
                 <h3>Filters</h3>
                 <div class="filter-icon-div">
+                    <a href="<?=$_SERVER['PHP_SELF']?>">
+                        <button class="clear_all_category_btn">Clear all</button>
+                    </a>
                     <i class="fa fa-filter"></i>
                 </div>
             </div>

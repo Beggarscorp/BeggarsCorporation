@@ -126,3 +126,17 @@
         cursor: pointer;
     }
 }
+.clear_all_category_btn
+{
+    margin: 0 10px;
+    border: none;
+    background: #b2700a;
+    font-size: 14px;
+    border-radius: 10px;
+    color: #fff;
+    font-family: 'Lato';
+}
+.filter-main-head h3
+{
+    margin: 0 !important;
+}
