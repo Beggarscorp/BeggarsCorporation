@@ -53,7 +53,7 @@ if (isset($_SESSION['user'])) {
     <div class="container">
         <div class="row">
             <div class="col-sm-12 my-5">
-                    <h2>Order Products Details</h2>
+                    <h2>Ordered <span class="golden">Products</span></h2>
                     <?php
                     $sno = 1;
                     ?>
@@ -68,40 +68,57 @@ if (isset($_SESSION['user'])) {
                                     <div class="order_product_main_div">
                                         <div class="row">
                                             <div class="col-sm-2">
-                                                <div class="imagetd"> <img src="BackendAssets/assets/images/productimages/<?= $orders[17] ?>" alt="" srcset=""> </div>
+                                                <div class="imagetd"> <img src="BackendAssets/assets/images/productimages/<?= $orders[17] ?>" alt="<?= $orders[17] ?>"> </div>
                                             </div>
                                             <div class="col-sm-10">
                                                 <div class="product_inner_div">
                                                     <a href="BackendAssets/mysqlcode/cancelorder.php?id=<?= $orders[0] ?>&pa=<?=$_SERVER['PHP_SELF']?>">
-                                                        <div class="cancel_order_icon"><i class="fa fa-close" style="font-size:24px"></i></div>
+                                                        <div class="cancel_order_icon"><i class="fa fa-close" style="font-size:15px"></i></div>
                                                     </a>
                                                     <div>
                                                         <h3>Product Name :</h3>
-                                                        <p><?= $orders[15] ?></p>
+                                                        <p class="change_text_format"><?= $orders[15] ?></p>
                                                     </div>
                                                     <div>
                                                         <h3>Qty :</h3>
-                                                        <p><?= $orders[4] ?></p>
+                                                        <p class="change_text_format"><?= $orders[4] ?></p>
                                                     </div>
                                                     <div>
                                                         <h3>Price :</h3>
-                                                        <p><?= $orders[16] ?></p>
+                                                        <p class="change_text_format">INR - <?= $orders[16] ?></p>
                                                     </div>
-                                                    <div>
+                                                    <div class="product_total_price_amt">
                                                         <h3>Total Price :</h3>
-                                                        <p>INR <?= $orders[4] * $orders[16] ?></p>
+                                                        <p class="change_text_format">INR <?= $orders[4] * $orders[16] ?></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                <?php
+                                    
+                                    <?php
                             }
+                            ?>
+                            <div class="grand_total_div">
+                                <div class="row">
+                                    <div class="col-sm-8"></div>
+                                    <div class="col-sm-4">
+                                        <div class="row" style="border-bottom:1px solid;">
+                                            <div class="col-md-6 col-sm-6 col-xs-6 col-6">
+                                                <h4>Grand Total Price</h4>
+                                            </div>
+                                            <div class="col-md-6 col-sm-4 col-xs-6 col-6">
+                                                <h5 id="grand_total" class="change_text_format">-</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
                         }
                         else
                         {
-                            echo "<h1>No Order Available</h1>";
+                            echo "<h1>No Order <span class='golden'>Available</span></h1>";
                         }
                         ?>
             </div>
@@ -119,3 +136,16 @@ if (isset($_SESSION['user'])) {
     exit();
 }
 ?>
+<script>
+
+    const product_total_price_amt=document.querySelectorAll(".product_total_price_amt p");
+    const grand_total=document.getElementById("grand_total");
+    let grand_total_price_array=[];
+    let grand_total_price;
+    for($i=0;$i<product_total_price_amt.length;$i++)
+    {
+        grand_total_price_array.push(parseInt(product_total_price_amt[$i].innerText.replace("INR","").trim(),10));
+    }
+    grand_total_price="INR - "+ grand_total_price_array.reduce((a,c)=> a + c,0);
+    grand_total.innerText=grand_total_price;
+</script>
