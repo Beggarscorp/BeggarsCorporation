@@ -2,8 +2,9 @@
 include('BackendAssets/mysqlcode/allproducts.php');
 include("BackendAssets/db.php");
 
-$sql="SELECT p.*,c.product_qty,o.* FROM `products` AS p JOIN `checkout`as c on p.id=c.product_id JOIN `orders` as o ON o.userid=c.userid";
+$sql="SELECT * FROM `orders` AS o JOIN `products` AS p ON p.id=o.productid";
 $result=mysqli_query($conn,$sql);
+$row=mysqli_fetch_all($result,MYSQLI_ASSOC);
 
 ?>
 <link rel="stylesheet" href="/BackendAssets/css/orders.css">
@@ -30,7 +31,7 @@ $result=mysqli_query($conn,$sql);
                     </thead>
                     <tbody>
                         <?php
-                       foreach($result as $order)
+                       foreach($row as $order)
                        {
                            
                            
@@ -38,7 +39,7 @@ $result=mysqli_query($conn,$sql);
                     <tr>
                        <td> <?= $order['id'] ?> </td>
                        <td> <?= $order['productname'] ?> </td>
-                       <td> <?= $order['product_qty'] ?> </td>
+                       <td> <?= $order['productquantity'] ?> </td>
                        <td> <?= $order['date'] ?> </td>
                        <td> <?= $order['username'] ?> </td>
                        <td> <?= $order['useremail'] ?> </td>
@@ -56,7 +57,7 @@ $result=mysqli_query($conn,$sql);
     </div>
 </div>
 <script>
-    document.addEventListener("DOMContentLoaded",()=>{
+
         console.log("Hello orders page");
-    });
+
 </script>

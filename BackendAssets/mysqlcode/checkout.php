@@ -2,7 +2,12 @@
 <?php
 include('../db.php');
 
-if (isset($_POST["place_order"])) {
+// if (isset($_POST["place_order"])) {
+
+
+
+
+
 
     $name = $_POST["username"];
     $email = $_POST["useremail"];
@@ -54,5 +59,5 @@ if (isset($_POST["place_order"])) {
     {
         echo "NOt get values";
     }
-}
+// }
 ?>

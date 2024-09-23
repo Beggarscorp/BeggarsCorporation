@@ -27,9 +27,7 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true") {
             icon: 'success'
         });
     </script>";
-}
-else if(isset($_GET["delete"]) && $_GET['delete'] === "false")
-{
+} else if (isset($_GET["delete"]) && $_GET['delete'] === "false") {
     echo "<script>
         Swal.fire({
             title: 'Product not Deleted',
@@ -44,7 +42,7 @@ else if(isset($_GET["delete"]) && $_GET['delete'] === "false")
         <div class="col-sm-8">
             <h3></h3>
             <div class="checkout-form">
-                <form action="BackendAssets/mysqlcode/checkout.php" method="post">
+                <form action="BackendAssets/mysqlcode/checkout.php" method="post" id="place_order_form">
                     <label for="username">Name :</label><br>
                     <input type="text" name="username" placeholder="Enter your name" id="username" value=<?php echo $row['First_name'] . "&nbsp;" . $row['Last_name']; ?> onkeypress="return false" readonly required><br>
 
@@ -77,7 +75,7 @@ else if(isset($_GET["delete"]) && $_GET['delete'] === "false")
                     <div class="row">
                         <div class="col-sm-6">
                             <label for="pincode">Enter pin code</label>
-                            <input type="number" id="pincode" name="userpincode" oninput="checkPincode(this)" placeholder="Enter pin code here" required>
+                            <input type="number" id="pincode" name="userpincode" placeholder="Enter pin code here" required>
                         </div>
                         <div class="col-sm-6">
                             <div></div><br><br>
@@ -85,7 +83,7 @@ else if(isset($_GET["delete"]) && $_GET['delete'] === "false")
                         </div>
                     </div><br>
 
-                    <label for="useraddress">Home Address :</label><br>
+                    <label for="useraddress">Address :</label><br>
                     <textarea name="useraddress" placeholder="Flat/House no./Floor/Building" id="useraddress" required></textarea><br>
 
 
@@ -174,16 +172,16 @@ else if(isset($_GET["delete"]) && $_GET['delete'] === "false")
                 </div>
                 <div class="total-price">
                     <h5>Total Price :</h5>
-                    <h5 class="totalPrice"></h5>
+                    <h5 class="totalPrice" id="total_price_pay"></h5>
                 </div>
                 <?php
                 if (isset($_SESSION['user']) && count($productCount) > 0) {
                 ?>
-                    <button type="submit" class="order-button" name="place_order">Place Order</button>
+                    <button type="submit" class="order-button" id="rzp-button1" name="place_order">Place Order</button>
                 <?php
                 } else {
                 ?>
-                    <button type="submit" class="order-button" title="Button Disabled" disabled>Place Order</button>
+                    <button type="button" class="order-button" title="Button Disabled" disabled>Place Order</button>
                 <?php
                 }
                 ?>
@@ -203,41 +201,140 @@ else if(isset($_GET["delete"]) && $_GET['delete'] === "false")
     </div>
 </div>
 
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <script>
-    // pincode validation start from here
+    // this code for adding all product grand total price start from here
 
-    // const checkPincode=(e)=>{
-    //     let pincodeMsg=document.getElementsByClassName("pincodeMsg");
-    //     if(e.value.length === 6 && e.value.length <= 6)
-    //     {
-    //         fetch('http://www.postalpincode.in/api/pincode/'+e.value)
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok ' + response.statusText);
-    //             }
-    //             return response.json(); // or response.text() for non-JSON data
-    //         })
-    //         .then(data => {
-    //             console.log(data);
+    const totalpriceCalculation = () => {
+        let priceElement = document.querySelectorAll(".price");
+        let totalPriceEle = document.getElementsByClassName("totalPrice");
+        let totalPriceInputHiddinInputfield = document.getElementById("totalPrice");
+        let grandtotal = 0;
+        for (o = 0; o < priceElement.length; o++) {
+            grandtotal += parseInt(priceElement[o].innerText);
+        }
+        totalPriceEle[0].innerText = grandtotal;
+        totalPriceInputHiddinInputfield.value = grandtotal;
+    }
+    totalpriceCalculation();
 
-    //         })
-    //         .catch(error => {
-    //             console.error('There was a problem with the fetch operation:', error);
-    //         });  
-
-    //         pincodeMsg[0].innerText="Pincode valid";
-    //         pincodeMsg[0].setAttribute("style","color:green;");
-    //     }
-    //     else
-    //     {
-    //         e.value="";
-    //         pincodeMsg[0].innerText="Pincode not valid";
-    //         pincodeMsg[0].setAttribute("style","color:red;");
-    //     }
-    // }
+    // end here
 
 
-    // pincode validation end here
+    // payment gateway js code start from here
+
+    let username = "";
+    let useremail = "";
+    let usernumber = 0;
+    let country = "";
+    let states = "";
+    let city = "";
+    let pincode = "";
+    let useraddress = "";
+    let grand_total_price_amount = 0;
+
+    document.getElementById('rzp-button1').onclick = function(e) {
+        e.preventDefault();
+        username = document.getElementById("username").value;
+        useremail = document.getElementById("useremail").value;
+        usernumber = document.getElementById("usernumber").value;
+        country = document.getElementById("country").value;
+        states = document.getElementById("states").value;
+        city = document.getElementById("city").value;
+        pincode = document.getElementById("pincode").value;
+        useraddress = document.getElementById("useraddress").value;
+        grand_total_price_amount = Math.round(parseFloat(document.getElementById("total_price_pay").innerText) * 100);
+
+        const createOrderid = async (amount, currency, receipt) => {
+            const url = 'BackendAssets/Components/get_order_id.php'; // Replace with your PHP script URL
+
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Specify URL-encoded format
+                    },
+                    body: JSON.stringify({"amount":grand_total_price_amount}), // Send the URL-encoded data
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                // globalOrderid=data.order_id;
+                return data.order_id; // This contains the order details
+            } catch (error) {
+                console.error('Error creating order:', error);
+            }
+        };
+        
+        
+        if (username != "" && useremail != "" && usernumber != "" && country != "" && states != "" && city != "" && pincode != "" && useraddress != "" && grand_total_price_amount != "") {
+            let globalOrderid=createOrderid(grand_total_price_amount, 'INR', 'qwsaq1_001');
+            let orderidd;
+            orderidd=globalOrderid.then((orderid)=>{
+                orderidd=orderid;
+                JSON.stringify(orderidd);
+            });
+
+
+            var options = {
+                "key": "rzp_test_0jUrPHaw8Vl6Pi", // Enter the Key ID generated from the Dashboard
+                "amount": grand_total_price_amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "Beggars Corporation", //your business name
+                "description": "Test Transaction",
+                "image": "https://beggarscorporation.com/images/main/header-logo3.png",
+                "order_id": orderidd, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "callback_url": "https://beggarscorporation.com/order.php",
+                "handler": function(response) {
+                    console.log(response);
+                    alert(response.razorpay_payment_id);
+                    alert(response.razorpay_order_id);
+                    alert(response.razorpay_signature);
+                    document.getElementById("place_order_form").submit();
+                },
+                "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+                    // "name": username, //your customer's name
+                    "email": useremail,
+                    "contact": usernumber //Provide the customer's phone number for better conversion rates 
+                },
+                "notes": {
+                    "address": useraddress
+                },
+                "theme": {
+                    "color": "#b7730d"
+                }
+            };
+            // options.amount = grand_total_price_amount * 100;
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function(response) {
+                alert(response.error.code);
+                alert(response.error.description);
+                alert(response.error.source);
+                alert(response.error.step);
+                alert(response.error.reason);
+                alert(response.error.metadata.order_id);
+                alert(response.error.metadata.payment_id);
+            });
+            rzp1.open();
+        } else {
+            Swal.fire({
+                title: "All fields required",
+                icon: "warning"
+            })
+        }
+    }
+
+
+
+    // payment gateway js code end here
+
+
 
     // this code for insert country and states option according to user select start from here
 
@@ -388,24 +485,6 @@ else if(isset($_GET["delete"]) && $_GET['delete'] === "false")
     // end here
 
 
-    // this code for adding all product grand total price start from here
-
-    const totalpriceCalculation = () => {
-        let priceElement = document.querySelectorAll(".price");
-        let totalPriceEle = document.getElementsByClassName("totalPrice");
-        let totalPriceInputHiddinInputfield = document.getElementById("totalPrice");
-        let grandtotal = 0;
-        for (o = 0; o < priceElement.length; o++) {
-            grandtotal += parseInt(priceElement[o].innerText);
-        }
-        totalPriceEle[0].innerText = grandtotal;
-        totalPriceInputHiddinInputfield.value = grandtotal;
-    }
-    totalpriceCalculation();
-
-    // end here
-
-
     // count product quantity and product id start from here
 
 
@@ -440,9 +519,6 @@ else if(isset($_GET["delete"]) && $_GET['delete'] === "false")
 
 
     // count product quantity and product id end here
-
-    
-
 </script>
 <?php
 include("BackendAssets/Components/footer.php");
