@@ -6,9 +6,6 @@ include('../db.php');
 
 
 
-
-
-
     $name = $_POST["username"];
     $email = $_POST["useremail"];
     $number = $_POST["usernumber"];
@@ -19,9 +16,12 @@ include('../db.php');
     $userpincode = $_POST["userpincode"];
     $useraddress = $_POST["useraddress"];
     $totalPrice = $_POST["totalPrice"];
+    $razorpay_payment_id = $_POST['razorpay_payment_id'];
+    $razorpay_order_id = $_POST['razorpay_order_id'];
+    $razorpay_signature = $_POST['razorpay_signature'];
     $productidandquantity = $_POST['productidandquantity'];
 
-    if ($name != "" && $email != "" && $number != "" && $usercountry != "" && $userstate != "" && $usercity != "" && $userpincode != "" && $useraddress != ""  && $userid != "" && $userid != "" && $totalPrice != "" && $productidandquantity != "") {
+    if ($name != "" && $email != "" && $number != "" && $usercountry != "" && $userstate != "" && $usercity != "" && $userpincode != "" && $useraddress != ""  && $userid != "" && $userid != "" && $totalPrice != "" && $productidandquantity != "" && $razorpay_payment_id != "" && $razorpay_order_id != "" && $razorpay_signature != "") {
 
         $productId = explode(',', rtrim(json_decode($productidandquantity)->productid, ','));
 
@@ -34,12 +34,12 @@ include('../db.php');
             $proID = $productId[$pq];
             $proQTY = $productQty[$pq];
 
-            $stmt = $conn->prepare("INSERT INTO `orders` (`userid`, `productid`, `productquantity`, `username`, `usercountry`, `useremail`, `usernumber`, `userstate`, `usercity`, `userpincode`, `useraddress`, `totalprice`) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO `orders` (`userid`, `productid`, `productquantity`, `username`, `usercountry`, `useremail`, `usernumber`, `userstate`, `usercity`, `userpincode`, `useraddress`, `totalprice`, `razorpay_payment_id`, `razorpay_order_id`, `razorpay_signature`) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 // ON DUPLICATE KEY UPDATE `productquantity` = VALUES(`productquantity`)
 
-            $stmt->bind_param('iiisssissisi', $userid, $proID, $proQTY, $name,
-            $usercountry, $email, $number, $userstate, $usercity, $userpincode, $useraddress, $totalPrice);
+            $stmt->bind_param('iiisssissisisss', $userid, $proID, $proQTY, $name,
+            $usercountry, $email, $number, $userstate, $usercity, $userpincode, $useraddress, $totalPrice, $razorpay_payment_id, $razorpay_order_id, $razorpay_signature);
 
             if (!$stmt->execute()) {
                 $success = false;

@@ -172,7 +172,10 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true") {
                 </div>
                 <div class="total-price">
                     <h5>Total Price :</h5>
-                    <h5 class="totalPrice" id="total_price_pay"></h5>
+                    <div style="display:flex;">
+                        <h6>INR &nbsp;</h6>
+                        <h5 class="totalPrice" id="total_price_pay"></h5>
+                    </div>
                 </div>
                 <?php
                 if (isset($_SESSION['user']) && count($productCount) > 0) {
@@ -192,6 +195,9 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true") {
                 <!-- one input field bottom of if condition in foreach loop for storing userid               -->
                 <input type="hidden" name="totalPrice" id="totalPrice" value="">
                 <input type="hidden" name="productidandquantity" class="productidandquantity" value="">
+                <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id" value="">
+                <input type="hidden" name="razorpay_order_id" id="razorpay_order_id" value="">
+                <input type="hidden" name="razorpay_signature" id="razorpay_signature" value="">
 
                 <!-- // send input hidden data end here -->
 
@@ -239,7 +245,7 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true") {
         e.preventDefault();
         username = document.getElementById("username").value;
         useremail = document.getElementById("useremail").value;
-        usernumber = document.getElementById("usernumber").value;
+        usernumber = "+91"+document.getElementById("usernumber").value;
         country = document.getElementById("country").value;
         states = document.getElementById("states").value;
         city = document.getElementById("city").value;
@@ -247,81 +253,67 @@ if (isset($_GET["delete"]) && $_GET['delete'] === "true") {
         useraddress = document.getElementById("useraddress").value;
         grand_total_price_amount = Math.round(parseFloat(document.getElementById("total_price_pay").innerText) * 100);
 
-        const createOrderid = async (amount, currency, receipt) => {
-            const url = 'BackendAssets/Components/get_order_id.php'; // Replace with your PHP script URL
 
-
-            try {
-                const response = await fetch(url, {
+        if (username != "" && useremail != "" && usernumber != "" && country != "" && states != "" && city != "" && pincode != "" && useraddress != "" && grand_total_price_amount != "") {
+            fetch('BackendAssets/Components/get_order_id.php', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json', // Specify URL-encoded format
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({"amount":grand_total_price_amount}), // Send the URL-encoded data
+                    body: JSON.stringify({
+                        amount: grand_total_price_amount
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.order_id) {
+                        var options = {
+                            "key": "rzp_live_OyvHUvi3gQtHGd", // Enter the Key ID generated from the Dashboard
+                            "amount": grand_total_price_amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                            "currency": "INR",
+                            "name": "Beggars Corporation", //your business name
+                            "description": "Test Transaction",
+                            "image": "https://beggarscorporation.com/images/main/header-logo3.png",
+                            "order_id": data.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                            "callback_url": "https://beggarscorporation.com/order.php",
+                            "handler": function(response) {
+                                if (response.razorpay_payment_id && response.razorpay_order_id && response.razorpay_signature) {
+                                    document.getElementById("razorpay_payment_id").value = response.razorpay_payment_id;
+                                    document.getElementById("razorpay_order_id").value = response.razorpay_order_id;
+                                    document.getElementById("razorpay_signature").value = response.razorpay_signature;
+                                    document.getElementById("place_order_form").submit();
+                                } else {
+                                    Swal.fire({
+                                        title: "Not get response",
+                                        icon: "warning"
+                                    });
+                                }
+                            },
+                            "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
+                                "name": username, //your customer's name
+                                "email": useremail,
+                                "contact": usernumber.toString() //Provide the customer's phone number for better conversion rates 
+                            },
+                            "notes": {
+                                "address": useraddress
+                            },
+                            "theme": {
+                                "color": "#b7730d"
+                            }
+                        };
+
+                        var rzp1 = new Razorpay(options);
+                        rzp1.on('payment.failed', function(response) {
+                            alert(response.error.reason);
+                        });
+                        rzp1.open();
+                    } else {
+                        console.error("Order creation failed:", data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
                 });
-
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.status} ${response.statusText}`);
-                }
-
-                const data = await response.json();
-                // globalOrderid=data.order_id;
-                return data.order_id; // This contains the order details
-            } catch (error) {
-                console.error('Error creating order:', error);
-            }
-        };
-        
-        
-        if (username != "" && useremail != "" && usernumber != "" && country != "" && states != "" && city != "" && pincode != "" && useraddress != "" && grand_total_price_amount != "") {
-            let globalOrderid=createOrderid(grand_total_price_amount, 'INR', 'qwsaq1_001');
-            let orderidd;
-            orderidd=globalOrderid.then((orderid)=>{
-                orderidd=orderid;
-                JSON.stringify(orderidd);
-            });
-
-
-            var options = {
-                "key": "rzp_test_0jUrPHaw8Vl6Pi", // Enter the Key ID generated from the Dashboard
-                "amount": grand_total_price_amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-                "currency": "INR",
-                "name": "Beggars Corporation", //your business name
-                "description": "Test Transaction",
-                "image": "https://beggarscorporation.com/images/main/header-logo3.png",
-                "order_id": orderidd, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                "callback_url": "https://beggarscorporation.com/order.php",
-                "handler": function(response) {
-                    console.log(response);
-                    alert(response.razorpay_payment_id);
-                    alert(response.razorpay_order_id);
-                    alert(response.razorpay_signature);
-                    document.getElementById("place_order_form").submit();
-                },
-                "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-                    // "name": username, //your customer's name
-                    "email": useremail,
-                    "contact": usernumber //Provide the customer's phone number for better conversion rates 
-                },
-                "notes": {
-                    "address": useraddress
-                },
-                "theme": {
-                    "color": "#b7730d"
-                }
-            };
-            // options.amount = grand_total_price_amount * 100;
-            var rzp1 = new Razorpay(options);
-            rzp1.on('payment.failed', function(response) {
-                alert(response.error.code);
-                alert(response.error.description);
-                alert(response.error.source);
-                alert(response.error.step);
-                alert(response.error.reason);
-                alert(response.error.metadata.order_id);
-                alert(response.error.metadata.payment_id);
-            });
-            rzp1.open();
         } else {
             Swal.fire({
                 title: "All fields required",
