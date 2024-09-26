@@ -376,7 +376,7 @@ add_chatinline();</script>-->
                                                     echo $_SESSION['user'];
                                                 ?>
                                                     <a href="/BackendAssets/mysqlcode/logout.php" style="color:red !important;">Logout</a><br>
-                                                    <a href="/order.php" target="_blank">My orders</a>
+                                                    <a href="/dashboard.php" target="_blank" style="color:#fff;">My account</a>
                                                 <?php
                                                 } else {
                                                 ?>

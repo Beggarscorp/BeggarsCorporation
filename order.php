@@ -20,10 +20,11 @@ if (isset($_SESSION['user'])) {
     $result = mysqli_fetch_all(mysqli_query($conn, $sql), MYSQLI_ASSOC);
 
     if(isset($_GET['order']) && $_GET['order'] === 'successful')
-    {
+    {                     
         echo "<script>
             Swal.fire({
                 title:'Order Placed Successfully',
+                text:'Order details and tracking info will be shared via email/SMS on your registered contact details',
                 icon: 'success'
             })
         </script>";
@@ -85,7 +86,7 @@ if (isset($_SESSION['user'])) {
                                                     </div>
                                                     <div>
                                                         <h3>Price :</h3>
-                                                        <p class="change_text_format">INR - <?= $orders['price'] ?></p>
+                                                        <p class="change_text_format">INR  <?= $orders['price'] ?></p>
                                                     </div>
                                                     <div class="product_total_price_amt">
                                                         <h3>Total Price :</h3>
@@ -108,7 +109,7 @@ if (isset($_SESSION['user'])) {
                                                 <h4>Grand Total Price</h4>
                                             </div>
                                             <div class="col-md-6 col-sm-4 col-xs-6 col-6">
-                                                <h5 id="grand_total" class="change_text_format">-</h5>
+                                                <h5 id="grand_total" class="change_text_format"></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -146,6 +147,6 @@ if (isset($_SESSION['user'])) {
     {
         grand_total_price_array.push(parseInt(product_total_price_amt[$i].innerText.replace("INR","").trim(),10));
     }
-    grand_total_price="INR - "+ grand_total_price_array.reduce((a,c)=> a + c,0);
+    grand_total_price="INR  "+ grand_total_price_array.reduce((a,c)=> a + c,0);
     grand_total.innerText=grand_total_price;
 </script>

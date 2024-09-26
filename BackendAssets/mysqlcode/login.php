@@ -30,6 +30,7 @@ if($email != '' && $password != ""){
     
             {
                 $_SESSION["user"] = $userdata['First_name'];
+                $_SESSION["id"]= $userdata['id'];
     
                 header("Location: /shop.php");
     
