@@ -1,7 +1,9 @@
 <?php
+ob_start();
 include("BackendAssets/Components/header.php");
 include("./BackendAssets/db.php");
-
+if(isset($_SESSION['user']))
+{
 $userid = $_SESSION['id'];
 
 if (isset($_GET['msg'])) {
@@ -350,7 +352,15 @@ if (isset($_GET['msg'])) {
         </div>
     </div>
 </div>
-
+<?php
+}
+else
+{
+    header("Location: /login.php");
+    exit();
+}
+ob_end_flush();
+?>
 <script>
     let data_div = document.getElementsByClassName("data");
     let data_div_array = [];
