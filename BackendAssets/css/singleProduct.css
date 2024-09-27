@@ -89,3 +89,10 @@
     transform: translateX(10px);
     background-color: #ac7c34;
 }
+#quantityIncreaseDecrease
+{
+    width: 12%;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    padding: 0 10px;
+}

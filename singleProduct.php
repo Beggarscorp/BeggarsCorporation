@@ -1,7 +1,11 @@
 
 <?php
+ob_start();
 include 'BackendAssets/Components/header.php';
 include('./BackendAssets/db.php');
+if(isset($_SESSION['user']))
+{
+
 $id=$_GET['id'];
 $sql = "SELECT * FROM `products` WHERE id=$id";
 $Allproducts = $conn->query($sql);
@@ -54,6 +58,25 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             <p class="font-16"><?=$row['discription']?></p>
             </div>
             <h4 class="productPrice">Price: ₹ <?=$row['price']?></h4>
+            <?php
+            $productid=$row['id'];
+            $sqlForQty="SELECT MAX(product_qty) FROM `checkout` WHERE product_id=$productid";
+            $resultForQty=mysqli_fetch_assoc(mysqli_query($conn,$sqlForQty));
+            if($resultForQty['MAX(product_qty)'] > 0)
+            {
+                ?>
+                <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="<?=$resultForQty['MAX(product_qty)']?>" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>" onkeypress="return false" onchange="quantityTotal(this)"></h5>
+                <?php
+            }
+            else
+            {
+                ?>
+                <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="1" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>" onkeypress="return false" onchange="quantityTotal(this)"></h5>
+                <?php
+
+            }
+            
+            ?>
             <div class="buttons">
                 <a href="BackendAssets/mysqlcode/addtocart.php?id=<?= $row['id']?>&page=<?=$_SERVER['PHP_SELF']?>&cate=<?=$row['category']?>">
                     <button class="add-to-cart-btn">Add to Cart <span style="padding: 0 5px;"><i class="fa fa-shopping-bag" aria-hidden="true"></i>
@@ -132,6 +155,16 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
     </div>
     </div>
 </div>
+
+<?php
+}
+else
+{
+    header("Location: /login.php");
+    exit();
+}
+ob_end_flush();
+?>
 <script>
 
 
@@ -160,6 +193,31 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
         productImg[0].setAttribute("style","--imageurl:url("+tt+")");
     }
 
+    const quantityTotal = (e) => {
+    
+    data = {
+        "userid": e.getAttribute("userid"),
+        "procductid": e.getAttribute("productid"),
+        "productprice": e.getAttribute("productprice"),
+        "productQty": e.value
+    }
+    fetch("BackendAssets/mysqlcode/checkoutcart.php", {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            window.location.reload();
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
 
     
 </script>
