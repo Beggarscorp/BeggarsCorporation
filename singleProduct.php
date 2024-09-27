@@ -124,8 +124,9 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             <?php
             }
             ?>
-            <a href="/checkout.php?buy_now=true&buy_now_productid=<?=$row['id']?>"><button class="go_to_checkout">Proceed to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i>
-            </button></a>
+            <a href="/checkout.php?buy_now=true&buy_now_productid=<?=$row['id']?>">
+                <button class="go_to_checkout">Proceed to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </a>
         </div>
     </div>
     <div class="row">
