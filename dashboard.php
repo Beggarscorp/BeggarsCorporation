@@ -72,7 +72,7 @@ if (isset($_GET['msg'])) {
                                     <button type="button" data-toggle="modal" data-target="#address_third_modal">Add Gift Address</button>
                                 </div>
                                 <?php
-                                $profileSql = $conn->prepare("SELECT * FROM `user_default_address_table` as at JOIN user as u WHERE at.user_id=u.id");
+                                $profileSql = $conn->prepare("SELECT * FROM `user_default_address_table` WHERE user_id=$userid");
                                 if ($profileSql->execute()) {
                                     $profileResult = $profileSql->get_result();
                                     while ($row = $profileResult->fetch_assoc()) {

@@ -369,7 +369,7 @@ if (isset($_SESSION['user'])) {
 
                             if ($result) {
                                 foreach ($result as $val) {
-                                    if ($val['user_id'] === $userRow['id']) {
+                                    if ($val['user_id'] === $userid) {
 
                                         array_push($productCount, count($val));
                                 ?>

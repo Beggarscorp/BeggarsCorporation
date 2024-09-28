@@ -1,6 +1,6 @@
 <?php
 include("./BackendAssets/Components/forsession.php");
-$userid = $_SESSION['id'];
+$userid = isset($_SESSION['id']) ? $_SESSION['id'] : "";
 ?>
 <!DOCTYPE html>
 <html lang="en">

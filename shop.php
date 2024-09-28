@@ -105,7 +105,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                 <div class="pegination-div">
                     <ul>
                         <?php
-                        if($countnumber < 0)
+                        if($countnumber > 0)
                         {
                         for ($i = 1; $i <= $countnumber; $i++) {
                         ?>

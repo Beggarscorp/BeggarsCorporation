@@ -3,8 +3,7 @@
 ob_start();
 include 'BackendAssets/Components/header.php';
 include('./BackendAssets/db.php');
-if(isset($_SESSION['user']))
-{
+
 
 $id=$_GET['id'];
 $sql = "SELECT * FROM `products` WHERE id=$id";
@@ -127,6 +126,9 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             <a href="/checkout.php?buy_now=true&buy_now_productid=<?=$row['id']?>">
                 <button class="go_to_checkout">Proceed to Checkout <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
             </a>
+            <a href="/shop.php">
+                <button class="go_to_checkout">Continue Shopping <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            </a>
         </div>
     </div>
     <div class="row">
@@ -157,15 +159,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
     </div>
 </div>
 
-<?php
-}
-else
-{
-    header("Location: /login.php");
-    exit();
-}
-ob_end_flush();
-?>
+
 <script>
 
 
