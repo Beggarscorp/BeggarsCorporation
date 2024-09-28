@@ -184,17 +184,18 @@
         const cartIcon = document.getElementsByClassName("cart-icon");
         const blankArea = document.getElementsByClassName("blank-area");
         let mainAddtocart = document.getElementsByClassName("addtocart");
-        let removeAddtoCartDiv=document.getElementById("removeAddtoCartDiv");
+        let removeAddtoCartDiv = document.getElementById("removeAddtoCartDiv");
 
         blankArea[0].addEventListener("click", () => {
             mainAddtocart[0].classList.remove("addtocart-transfor-0");
             document.body.style.overflowY = "scroll";
         })
-        
-        removeAddtoCartDiv.addEventListener("click",()=>{
+
+        removeAddtoCartDiv.addEventListener("click", () => {
             mainAddtocart[0].classList.remove("addtocart-transfor-0");
             document.body.style.overflowY = "scroll";
         })
+
 
         cartIcon[0].addEventListener("click", () => {
             mainAddtocart[0].classList.toggle("addtocart-transfor-0");
@@ -204,6 +205,16 @@
                 document.body.style.overflowY = "scroll";
             }
         })
+
+        const url = new URL(window.location.href);
+        if (url.searchParams.get('show')) {
+            mainAddtocart[0].classList.add("addtocart-transfor-0");
+            if (mainAddtocart[0].classList.contains("addtocart-transfor-0")) {
+                document.body.style.overflowY = "hidden";
+            } else {
+                document.body.style.overflowY = "scroll";
+            }
+        }
 
         const usericon = document.getElementsByClassName("user-icon");
         const userdiv = document.getElementsByClassName("user-details");
@@ -218,8 +229,56 @@
         } else {
             cartcountElement[0].style.display = "none";
         }
+
+        // this code for storing quantity of the product and price accorint to quantity start from here 
+
+
+        const quantityTotal = (e) => {
+
+            data = {
+                "userid": e.getAttribute("userid"),
+                "procductid": e.getAttribute("productid"),
+                "productprice": e.getAttribute("productprice"),
+                "productQty": e.value
+            }
+            fetch("BackendAssets/mysqlcode/checkoutcart.php", {
+                    method: "POST",
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+
+                    window.location.href = window.location.pathname + "?show=cart";
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+        }
+
+
+        // end here
+
+        // calculate total price start from here
+
+        const totalpriceCalculation = () => {
+            const total_price_ele = document.getElementsByClassName("total_price");
+            const grand_total_price_ele = document.getElementsByClassName("grand_total_div_ele");
+            let grandtotal = 0;
+            for (o = 0; o < total_price_ele.length; o++) {
+                grandtotal += parseInt(total_price_ele[o].innerText);
+            }
+            grand_total_price_ele[0].innerText = "INR " + grandtotal;
+        }
+        totalpriceCalculation();
+
+
+        // end here
     })
-    
 </script>
 
 </html>

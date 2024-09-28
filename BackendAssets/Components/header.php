@@ -1,6 +1,6 @@
-
 <?php
 include("./BackendAssets/Components/forsession.php");
+$userid = $_SESSION['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -433,58 +433,91 @@ add_chatinline();</script>-->
                                     <?php
                                     include("./BackendAssets/db.php");
                                     if (isset($_SESSION["user"])) {
-                                    $user_name = $_SESSION["user"];
-                                    $sql = "SELECT * FROM `productscart` as pc INNER JOIN `products` as p WHERE pc.product_id=p.id";
-                                    $result = mysqli_query($conn, $sql);
-                                    $sqlTwo="SELECT `id` FROM `user` WHERE `First_name`='$user_name'";
-                                    $resultTwo = mysqli_query($conn, $sqlTwo);
-                                    $userRow= mysqli_fetch_array($resultTwo);
-                                    if ($result) {
-                                        foreach ($result as $val) {
-                                            if ($val['user_id'] == $userRow['id']) {
+                                        $user_name = $_SESSION["user"];
+                                        $sql = "SELECT * FROM `productscart` as pc INNER JOIN `products` as p WHERE pc.product_id=p.id";
+                                        $result = mysqli_query($conn, $sql);
+                                        if ($result) {
+                                            foreach ($result as $val) {
+                                                if ($val['user_id'] == $userid) {
                                     ?>
-                                                <div class="addtocart-card">
-                                                    <div class="row">
-                                                        <div class="col-sm-4">
-                                                            <img src="/BackendAssets/assets/images/ProductImages/<?= $val['productimage'] ?>" alt="">
-                                                        </div>
-                                                        <div class="col-sm-8">
-                                                            <h5><?=$val['productname']?>
-                                                            <a href="/BackendAssets/mysqlcode/removecart.php?id=<?=$val['cartid']?>&page=<?=$_SERVER['PHP_SELF']?>" style="color:gray !important;">
-                                                                <span class="remove_cart_cross_icon"><i class="fa fa-times-circle" style="font-size:20px;float:inline-end;"></i></span></h5>
-                                                            </a>
-                                                            <h5>Category : <?=$val['category']?></h5>
-                                                            <h5>Price : <?=$val['price']?></h5>
+                                                    <div class="addtocart-card">
+                                                        <div class="row">
+                                                            <div class="col-sm-4">
+                                                                <img src="/BackendAssets/assets/images/ProductImages/<?= $val['productimage'] ?>" alt="">
+                                                            </div>
+                                                            <div class="col-sm-8">
+                                                                <h5><?= $val['productname'] ?>
+                                                                    <a href="/BackendAssets/mysqlcode/removecart.php?id=<?= $val['cartid'] ?>&page=<?= $_SERVER['PHP_SELF'] ?>" style="color:gray !important;">
+                                                                        <span class="remove_cart_cross_icon"><i class="fa fa-times-circle" style="font-size:20px;float:inline-end;"></i></span>
+                                                                </h5>
+                                                                </a>
+                                                                <?php
+                                                                if ((int)$val['min_order'] === 0) {
+                                                                    $productid = $val['id'];
+                                                                    $forQtysql = $conn->prepare("SELECT MAX(product_qty) FROM `checkout` WHERE userid=$userid AND product_id=$productid");
+                                                                    if ($forQtysql->execute()) {
+                                                                        $forQtysql_result = $forQtysql->get_result();
+                                                                        $forQtysql_row = $forQtysql_result->num_rows;
+                                                                        $forQtysql_result_data = $forQtysql_result->fetch_assoc();
+
+                                                                        if ($forQtysql_row === 1 && $forQtysql_result_data['MAX(product_qty)'] != "") {
+                                                                ?>
+                                                                            <h5>Price : <i class="fa fa-rupee" style="padding:0 5px"></i><?= $val['price'] ?></h5>
+                                                                            <h5>QTY : <input type="number"
+                                                                                    class="qtycount"
+                                                                                    value="<?= $forQtysql_result_data['MAX(product_qty)'] ?>" min="1" userid="<?= $userid ?>" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" onchange="quantityTotal(this)"></h5>
+                                                                            <h5>Total price : <i class="fa fa-rupee" style="padding:0 5px"></i><span class="total_price"><?= $forQtysql_result_data['MAX(product_qty)'] * $val['price'] ?></span></h5>
+                                                                        <?php
+                                                                        } else {
+                                                                        ?>
+                                                                            <h5>Price : <i class="fa fa-rupee" style="padding:0 5px"></i><?= $val['price'] ?></h5>
+                                                                            <h5>QTY : <input type="number"
+                                                                                    class="qtycount"
+                                                                                    value="1" min="1" userid="<?= $userid ?>" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" onchange="quantityTotal(this)"></h5>
+                                                                            <h5>Total price : <i class="fa fa-rupee" style="padding:0 5px"></i><span class="total_price"><?= 1 * $val['price'] ?></span></h5>
+                                                                    <?php
+                                                                        }
+                                                                    }
+                                                                } else {
+                                                                    ?>
+                                                                    <h5>Price : <i class="fa fa-rupee" style="padding:0 5px"></i><span class="price"><?= $val['price'] ?></span></h5>
+                                                                    <h6>QTY :
+                                                                        <span class="quantityCount" quantity="<?= $val['min_order'] ?>" product_id="<?= $val['id'] ?>"><?= $val['min_order'] ?>&nbsp;&nbsp;<span style="color:red;">(Min order <?= $val['min_order'] ?> pices)</span></span>
+                                                                    </h6>
+                                                                    <h5>Total price : <i class="fa fa-rupee" style="padding:0 5px"></i><span class="total_price"><?= $val['price'] * $val['min_order'] ?></span></h5>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <!-- </div> -->
-                                    <?php
+                                                    <!-- </div> -->
+                                        <?php
+                                                }
                                             }
+                                        } else {
+                                            echo "Your cart empty";
                                         }
-                                    } 
-                                    else 
-                                    {
-                                        echo "Your cart empty";
-                                    }
-                                }
-                                else
-                                {
-                                    ?>
-                                    <a href="/login.php" style="color:#9c9c9c !important;">
-                                        <h4>Your are not logged in now <i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
-                                    </a>
+                                    } else {
+                                        ?>
+                                        <a href="/login.php" style="color:#9c9c9c !important;">
+                                            <h4>Your are not logged in now <i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+                                        </a>
                                     <?php
-                                }
+                                    }
                                     ?>
                                 </div>
                                 <div class="checkout-button">
                                     <?php
-                                    if(isset($_SESSION["user"])) {
+                                    if (isset($_SESSION["user"])) {
                                     ?>
-                                    <a href="/checkout.php" target="_blank">
-                                        <button>Checkout</button>
-                                    </a>
+                                        <div class="grand_total_div">
+                                            <h5>Grand Total Price</h5>
+                                            <h5 class="grand_total_div_ele">545622</h5>
+                                        </div>
+                                        <a href="/checkout.php" target="_blank">
+                                            <button>Checkout</button>
+                                        </a>
                                     <?php
                                     }
                                     ?>

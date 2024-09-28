@@ -1,3 +1,4 @@
+
 <?php
 include '../db.php';
 include '../Components/forsession.php';
@@ -9,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_submit']))
     $email=$_POST['email'];
     $password=$_POST['password'];
     
-    if(!isset($_SESSION['user']) && $fname != "" && $lname != "" && $email != "" && $fname != "")
+    if(!isset($_SESSION['user']) && $fname != "" && $lname != "" && $email != "" && $password != "")
     {
         $sql="SELECT * FROM `user` WHERE `email` = '$email'";
         $result=mysqli_query($conn, $sql);
@@ -36,13 +37,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_submit']))
     else
     {
         $msg="User already exists";
-        
+        header("Location: /signup.php?msg=$msg");
+        exit();
       }
       }
       else
       {
         $msg="User already Logged in";
+        header("Location: /signup.php?msg=$msg");
+        exit();
       }
+}
+else
+{
+    $msg="Not get user details";
+    header("Location: /signup.php?msg=$msg");
+    exit();
 }
 
 
