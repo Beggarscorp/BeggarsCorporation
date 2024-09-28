@@ -122,11 +122,45 @@ function Address_insert_function($name,$email,$phonenumber,$country,$state,$city
     }
 }
 
-// function Address_update_function($userid,$name,$email,$phonenumber,$country,$state,$city,$pincode){
+if(isset($_POST['make_default_address']))
+{
+    $active=1;
+    $unactive=0;
+    $table_name=$_POST['make_default_address'];
+    $userid=$_POST['userid'];
+    $tables=['user_default_address_table','user_second_address_table','user_third_address_table'];
+    $new_table_array=array_diff($tables,[$table_name]);
+    print_r($new_table_array);
 
-//     include("../db.php");
+    foreach($new_table_array as $key=>$val)
+    {
+        $update_unactive_sql=$conn->prepare("UPDATE `$val` SET `default_address`=? WHERE user_id=$userid");
+        $update_unactive_sql->bind_param('i',$unactive);
+        if($update_unactive_sql->execute())
+        {
 
-// }
+            echo "Active address";
+        }   
+        else
+        {
+            echo "Unactive address failed";
+        }    
+    }
 
+    $update_default_add=$conn->prepare("UPDATE `$table_name` SET `default_address`=? WHERE user_id=$userid");
+    $update_default_add->bind_param('i',$active);
+    if($update_default_add->execute())
+    {
+        $msg="Your address activated";
+        header("Location: /checkout.php?msg=$msg");
+        exit();
+    }
+    else
+    {
+        $msg="Address query failed";
+        header("Location: /checkout.php?msg=$msg");
+        exit();
+    }
+}
 
 ?>

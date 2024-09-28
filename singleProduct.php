@@ -65,13 +65,13 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             if($resultForQty['MAX(product_qty)'] > 0)
             {
                 ?>
-                <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="<?=$resultForQty['MAX(product_qty)']?>" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>" onkeypress="return false" onchange="quantityTotal(this)"></h5>
+                <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="<?=$resultForQty['MAX(product_qty)']?>" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>"  onchange="quantityTotal(this)"></h5>
                 <?php
             }
             else
             {
                 ?>
-                <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="1" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>" onkeypress="return false" onchange="quantityTotal(this)"></h5>
+                <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="1" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>"  onchange="quantityTotal(this)"></h5>
                 <?php
 
             }

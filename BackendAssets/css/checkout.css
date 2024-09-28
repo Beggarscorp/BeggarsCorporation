@@ -75,3 +75,37 @@ label
     text-align: center;
     padding: 0;
 }
+.address_element input
+{
+    box-shadow: none;
+}
+.add_new_address_btn
+{
+    border: none;
+    border-radius: 10px;
+    background: #b16f09;
+    color: #fff;
+    padding: 0 15px;
+    margin: 15px;
+}
+.inputs
+{
+    box-shadow: 0 2px 2px 2px lightgray;
+    border-radius: 12px;
+    padding: 0 10px;
+}
+.inputs h5
+{
+    border-bottom: 2px solid;
+    width: fit-content;
+    margin: 20px auto;
+}
+.active_address_span
+{
+    float: inline-end;
+    background-color: green;
+    color: #fff;
+    padding: 0 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}

@@ -7,7 +7,7 @@ if (isset($_SESSION['user'])) {
     $sql = "SELECT * FROM `user` WHERE `First_name` = '$username'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
-    $userid=$_SESSION['id'];
+    $userid = $_SESSION['id'];
     $sql2 = "SELECT * FROM `checkout` WHERE userid=$userid";
     $result2 = $conn->query($sql2);
     $cartdata = mysqli_fetch_all($result2);
@@ -34,40 +34,243 @@ if (isset($_SESSION['user'])) {
             icon: 'error'
         });
     </script>";
+    } else if (isset($_GET['msg'])) {
+        echo "<script>
+        Swal.fire({
+            title: 'Address activated',
+            icon: 'success'
+        });
+    </script>";
     }
+
+    $address_count = 0;
 
     ?>
     <div class="container">
+
+        <div class="row" style="margin:10px 0;">
+            <h3>Address :</h3>
+            <div class="col-sm-4">
+                <div class="address_element">
+                    <?php
+                    $default_address_sql = $conn->prepare("SELECT * FROM `user_default_address_table` WHERE user_id=$userid");
+                    if ($default_address_sql->execute()) {
+                        $default_add_res = $default_address_sql->get_result();
+                        if ($default_add_res->num_rows === 1) {
+                            $default_address_result = $default_add_res->fetch_assoc();
+                            $address_count = 1;
+                    ?>
+                            <div class="inputs">
+                                <h5>Address 1</h5>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label for="select_default_address">
+                                            <p><?= $default_address_result['country'] ?></p>
+                                            <p><?= $default_address_result['state'] ?></p>
+                                            <p><?= $default_address_result['city'] ?></p>
+                                            <p><?= $default_address_result['phonenumber'] ?></p>
+                                            <p><?= $default_address_result['address'] ?></p>
+                                        </label>
+                                        <?php
+                                        if ($default_address_result['default_address'] === 1) {
+                                        ?>
+                                            <span class="active_address_span">Active <i class="fa fa-check"></i></span>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="address_element">
+                    <?php
+                    $second_address_sql = $conn->prepare("SELECT * FROM `user_second_address_table` WHERE user_id=$userid");
+                    if ($second_address_sql->execute()) {
+                        $second_address_result = $second_address_sql->get_result();
+                        if ($second_address_result->num_rows === 1) {
+                            $second_address_result = $second_address_result->fetch_assoc();
+                            $address_count = 2;
+                    ?>
+                            <div class="inputs">
+                                <h5>Address 2</h5>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label for="select_second_address">
+                                            <p><?= $second_address_result['country'] ?></p>
+                                            <p><?= $second_address_result['state'] ?></p>
+                                            <p><?= $second_address_result['city'] ?></p>
+                                            <p><?= $second_address_result['phonenumber'] ?></p>
+                                            <p><?= $second_address_result['address'] ?></p>
+                                        </label>
+                                        <?php
+                                        if ($second_address_result['default_address'] === 1) {
+                                        ?>
+                                            <span class="active_address_span">Active <i class="fa fa-check"></i></span>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="address_element">
+                    <?php
+                    $third_address_sql = $conn->prepare("SELECT * FROM `user_third_address_table` WHERE user_id=$userid");
+                    if ($third_address_sql->execute()) {
+                        $third_address_result = $third_address_sql->get_result();
+                        if ($third_address_result->num_rows === 1) {
+                            $third_address_result = $third_address_result->fetch_assoc();
+                            $address_count = 3;
+                    ?>
+                            <div class="inputs">
+                                <h5>Address 3</h5>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <label for="select_third_address">
+                                            <p><?= $third_address_result['country'] ?></p>
+                                            <p><?= $third_address_result['state'] ?></p>
+                                            <p><?= $third_address_result['city'] ?></p>
+                                            <p><?= $third_address_result['phonenumber'] ?></p>
+                                            <p><?= $third_address_result['address'] ?></p>
+                                        </label>
+                                        <?php
+                                        if ($third_address_result['default_address'] === 1) {
+                                        ?>
+                                            <span class="active_address_span">Active <i class="fa fa-check"></i></span>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php
+                        }
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <?php
+            if ($address_count === 2) {
+            ?>
+                <div class="col-sm-4">
+                    <form action="BackendAssets/mysqlcode/dashboard.php" method="post" id="make_default_address">
+                        <select name="make_default_address" onchange="address_select(this)">
+                            <option value="0">Active your address</option>
+                            <option value="user_default_address_table">Address 1 </option>
+                            <option value="user_second_address_table">Address 2</option>
+                        </select>
+                        <input type="hidden" value="<?= $userid ?>" name="userid">
+                    </form>
+                </div>
+            <?php
+            } else if ($address_count === 3) {
+            ?>
+                <div class="col-sm-4">
+                    <form action="BackendAssets/mysqlcode/dashboard.php" method="post" id="make_default_address">
+                        <select name="make_default_address" onchange="address_select(this)">
+                            <option value="0">Active your address</option>
+                            <option value="user_default_address_table">Address 1 </option>
+                            <option value="user_second_address_table">Address 2</option>
+                            <option value="user_third_address_table">Address 3</option>
+                        </select>
+                        <input type="hidden" value="<?= $userid ?>" name="userid">
+                    </form>
+                </div>
+
+            <?php
+            }
+            ?>
+            <div class="col-sm-8">
+                <a href="/dashboard.php" target="_blank">
+                    <button class="add_new_address_btn">Add new address</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- default address data -->
+
+        <?php
+        $default_address_data_sql = $conn->prepare("SELECT * FROM `user_default_address_table` WHERE default_address=1 AND user_id=$userid UNION SELECT * FROM `user_second_address_table` WHERE default_address=1 AND user_id=$userid UNION SELECT * FROM `user_third_address_table` WHERE default_address=1 AND user_id=$userid LIMIT 1");
+        if ($default_address_data_sql->execute()) {
+            $address_result = $default_address_data_sql->get_result();
+            if ($address_result->num_rows === 1) {
+                $address_data = $address_result->fetch_assoc();
+            }
+        }
+        ?>
+
+        <!-- end here -->
+
         <div class="row">
             <div class="col-sm-8">
                 <h3></h3>
                 <div class="checkout-form">
                     <form action="BackendAssets/mysqlcode/checkout.php" method="post" id="place_order_form">
                         <label for="username">Name :</label><br>
-                        <input type="text" name="username" placeholder="Enter your name" id="username" value=<?php echo $row['First_name'] . "&nbsp;" . $row['Last_name']; ?> onkeypress="return false" readonly required><br>
+                        <input type="text" name="username" placeholder="Enter your name" id="username" value="<?= isset($address_data['name']) ? $address_data['name'] : "" ?>" required><br>
 
                         <label for="useremail">Email :</label><br>
-                        <input type="email" name="useremail" placeholder="Enter your email" value=<?= $row['email'] ?> id="useremail" onkeypress="return false" readonly required><br>
+                        <input type="email" name="useremail" placeholder="Enter your email" value="<?= isset($address_data['email']) ? $address_data['email'] : "" ?>" id="useremail" required><br>
 
                         <label for="usernumber">Number :</label><br>
-                        <input type="number" name="usernumber" placeholder="Enter your number" id="usernumber" required><br>
+                        <input type="number" name="usernumber" placeholder="Enter your number" id="usernumber" value="<?= isset($address_data['phonenumber']) ? $address_data['phonenumber'] : ""  ?>" required><br>
 
                         <div class="row">
                             <div class="col-sm-4">
                                 <label for="country">Selcet country</label>
                                 <select name="country" id="country" value="" onchange="fetchState(this)">
-                                    <option>Select country</option>
+                                    <?php
+                                    if (isset($address_data['country'])) {
+                                    ?>
+                                        <option value="<?= $address_data['country'] ?>"><?= isset($address_data['country']) ? $address_data['country'] : ""  ?></option>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <option>Select country</option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
 
                             <div class="col-sm-4">
                                 <label for="states">Select state</label><br>
-                                <select name="state" id="states" onchange="fetchCity(this)" required></select>
+                                <select name="state" id="states" onchange="fetchCity(this)" required>
+                                    <?php
+                                    if (isset($address_data['state'])) {
+                                    ?>
+                                        <option value="<?= $address_data['state'] ?>"><?= isset($address_data['state']) ? $address_data['state'] : ""  ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
                             </div>
 
                             <div class="col-sm-4">
                                 <label for="city">Select city</label>
                                 <select name="city" id="city" required>
+                                    <?php
+                                    if (isset($address_data['city'])) {
+                                    ?>
+                                        <option value="<?= $address_data['city'] ?>"><?= isset($address_data['city']) ? $address_data['city'] : "" ?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
                         </div>
@@ -75,7 +278,7 @@ if (isset($_SESSION['user'])) {
                         <div class="row">
                             <div class="col-sm-6">
                                 <label for="pincode">Enter pin code</label>
-                                <input type="number" id="pincode" name="userpincode" placeholder="Enter pin code here" required>
+                                <input type="number" id="pincode" name="userpincode" value="<?= isset($address_data['pincode']) ? $address_data['pincode'] : "" ?>" placeholder="Enter pin code here" required>
                             </div>
                             <div class="col-sm-6">
                                 <div></div><br><br>
@@ -84,7 +287,7 @@ if (isset($_SESSION['user'])) {
                         </div><br>
 
                         <label for="useraddress">Address :</label><br>
-                        <textarea name="useraddress" rows="5" placeholder="Flat/House no./Floor/Building" id="useraddress" required></textarea><br>
+                        <textarea name="useraddress" rows="5" placeholder="Flat/House no./Floor/Building" id="useraddress" required><?= isset($address_data['address']) ? $address_data['address'] : "" ?></textarea><br>
 
 
                 </div>
@@ -101,7 +304,7 @@ if (isset($_SESSION['user'])) {
                             $buy_now_sql = $conn->prepare("SELECT * FROM `products` WHERE id=$productid");
                             if ($buy_now_sql->execute()) {
                                 $buy_now_sql_result = $buy_now_sql->get_result()->fetch_assoc();
-                                array_push($productCount,1);
+                                array_push($productCount, 1);
                         ?>
                                 <div class="addtocart-card">
                                     <div class="row">
@@ -124,7 +327,7 @@ if (isset($_SESSION['user'])) {
                                                 $resultForQty = mysqli_fetch_assoc(mysqli_query($conn, $sqlForQty));
                                                 if ($resultForQty['MAX(product_qty)'] > 0) {
                                                 ?>
-                                                    <h5>QTY : <input type="number" name="quantityprice" id="quantityprice" value="<?= $resultForQty['MAX(product_qty)'] ?>" min="1" userid="<?= $_SESSION['id'] ?>" productid="<?= $buy_now_sql_result['id'] ?>" productprice="<?= $buy_now_sql_result['price'] ?>"  onchange="quantityTotal(this)" class="inputquantityCount"></h5>
+                                                    <h5>QTY : <input type="number" name="quantityprice" id="quantityprice" value="<?= $resultForQty['MAX(product_qty)'] ?>" min="1" userid="<?= $_SESSION['id'] ?>" productid="<?= $buy_now_sql_result['id'] ?>" productprice="<?= $buy_now_sql_result['price'] ?>" onchange="quantityTotal(this)" class="inputquantityCount"></h5>
                                                     <h5>Price :
                                                         <i class="fa fa-rupee" style="padding:0 5px"></i>
                                                         <span class="price"><?= $resultForQty['totalprice'] ?></span>
@@ -133,7 +336,7 @@ if (isset($_SESSION['user'])) {
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <h5>QTY : <input type="number" name="quantityprice" id="quantityprice" value="1" min="1" userid="<?= $_SESSION['id'] ?>" productid="<?= $buy_now_sql_result['id'] ?>" productprice="<?= $buy_now_sql_result['price'] ?>"  onchange="quantityTotal(this)" class="inputquantityCount"></h5>
+                                                    <h5>QTY : <input type="number" name="quantityprice" id="quantityprice" value="1" min="1" userid="<?= $_SESSION['id'] ?>" productid="<?= $buy_now_sql_result['id'] ?>" productprice="<?= $buy_now_sql_result['price'] ?>" onchange="quantityTotal(this)" class="inputquantityCount"></h5>
                                                     <h5>Price :
                                                         <i class="fa fa-rupee" style="padding:0 5px"></i>
                                                         <span class="price"><?= $buy_now_sql_result['price'] ?></span>
@@ -155,9 +358,7 @@ if (isset($_SESSION['user'])) {
                                 echo $buy_now_sql->error;
                             }
                             $buy_now_sql->close();
-                        } 
-                        else 
-                        {
+                        } else {
                             include("BackendAssets/db.php");
                             $user_name = $_SESSION["user"];
                             $sql = "SELECT * FROM `productscart` as pc INNER JOIN `products` as p WHERE pc.product_id=p.id";
@@ -199,9 +400,9 @@ if (isset($_SESSION['user'])) {
                                                             foreach ($cartdata as $value) {
 
                                                                 if ($val['id'] === $value[2]) {
-                                                    
+
                                                         ?>
-                                                                    <h6 class="d-flex">QTY : <input type="number" name="quantityprice" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" userid="<?= $val['user_id'] ?>" id="quantityprice" step="1" value="<?= $value[3] ?>" min="1" onchange="quantityTotal(this)"  class="inputquantityCount">
+                                                                    <h6 class="d-flex">QTY : <input type="number" name="quantityprice" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" userid="<?= $val['user_id'] ?>" id="quantityprice" step="1" value="<?= $value[3] ?>" min="1" onchange="quantityTotal(this)" class="inputquantityCount">
                                                                     </h6>
                                                                     <h5>Price :
                                                                         <i class="fa fa-rupee" style="padding:0 5px"></i>
@@ -212,7 +413,7 @@ if (isset($_SESSION['user'])) {
                                                                 }
                                                             }
                                                         } else { ?>
-                                                            <h6 class="d-flex">QTY : <input type="number" name="quantityprice" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" userid="<?= $val['user_id'] ?>" id="quantityprice" step="1" value="1" min="1" onchange="quantityTotal(this)"  class="inputquantityCount">
+                                                            <h6 class="d-flex">QTY : <input type="number" name="quantityprice" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" userid="<?= $val['user_id'] ?>" id="quantityprice" step="1" value="1" min="1" onchange="quantityTotal(this)" class="inputquantityCount">
                                                             </h6>
                                                             <h5>Price :
                                                                 <i class="fa fa-rupee" style="padding:0 5px"></i>
@@ -225,14 +426,14 @@ if (isset($_SESSION['user'])) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php
+                        <?php
                                     }
                                 }
                             } else {
                                 echo "Your cart empty";
                             }
                         }
-                        
+
                         ?>
                     </div>
                     <div class="total-price">
@@ -244,20 +445,20 @@ if (isset($_SESSION['user'])) {
                     </div>
                     <?php
                     if (isset($_SESSION['user']) && count($productCount) > 0) {
-                        ?>
+                    ?>
                         <button type="submit" class="order-button" id="rzp-button1" name="place_order">Place Order</button>
-                        <?php
+                    <?php
                     } else {
-                        ?>
+                    ?>
                         <button type="button" class="order-button" title="Button Disabled" disabled>Place Order</button>
-                        <?php
+                    <?php
                     }
                     ?>
 
-<!--  send input hidden data start from here -->
+                    <!--  send input hidden data start from here -->
 
 
-<!-- one input field bottom of if condition in foreach loop for storing userid               -->
+                    <!-- one input field bottom of if condition in foreach loop for storing userid               -->
                     <input type="hidden" name="useridforstoreindatabase" value="<?= $_SESSION['id'] ?>">
                     <input type="hidden" name="totalPrice" id="totalPrice" value="">
                     <input type="hidden" name="productidandquantity" class="productidandquantity" value="">
@@ -584,6 +785,10 @@ ob_end_flush();
 
 
     // count product quantity and product id end here
+
+    const address_select = (e) => {
+        document.getElementById(e.getAttribute("name")).submit();
+    }
 </script>
 <?php
 include("BackendAssets/Components/footer.php");

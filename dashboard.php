@@ -81,7 +81,7 @@ if (isset($_GET['msg'])) {
                                         <form action="BackendAssets/mysqlcode/dashboard.php" method="post">
                                             <div class="form_group">
                                                 <label for="name">Name :</label>
-                                                <input type="text" name="name" id="name" value="<?= $row['Name'] ?>">
+                                                <input type="text" name="name" id="name" value="<?= $row['name'] ?>">
                                             </div>
 
                                             <div class="form_group">
@@ -91,7 +91,7 @@ if (isset($_GET['msg'])) {
 
                                             <div class="form_group">
                                                 <label for="phonenumber">Number</label>
-                                                <input type="number" name="phonenumber" id="phonenumber" value="<?= $row['phone_number'] ?>">
+                                                <input type="number" name="phonenumber" id="phonenumber" value="<?= $row['phonenumber'] ?>">
                                             </div>
 
                                             <div class="form_group">
