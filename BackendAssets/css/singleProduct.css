@@ -45,12 +45,17 @@
     border-bottom: 1px solid lightgray;
     padding-bottom: 10px;
 }
+@media  (min-width:768px) {
+    .productImg
+    {
+        width: 500px;
+        height: 500px;
+        border: 50px solid transparent;
+    }
+}
 .productImg
 {
-    width: 500px;
-    height: 500px;
     position: relative;
-    border: 50px solid transparent;
 }
 .productImg img
 {

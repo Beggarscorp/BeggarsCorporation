@@ -147,23 +147,43 @@ if (isset($_GET['msg'])) {
                                                 </div>
                                                 <div class="col-sm-8">
                                                     <div class="content_line">
-                                                        <h4>Product Name :</h4>
+                                                        <h5>Product Name :</h5>
                                                         <h5><?= $order['productname'] ?></h5>
-                                                        <a class="cancel_order_icon" href="BackendAssets/mysqlcode/cancelorder.php?id=<?= $order['orderid'] ?>&pa=<?= $_SERVER['PHP_SELF'] ?>">
-                                                            <div><i class="fa fa-close" style="font-size:15px"></i></div>
-                                                        </a>
                                                     </div>
                                                     <div class="content_line">
-                                                        <h4>Price :</h4>
+                                                        <h5>Price :</h5>
                                                         <h5><?= $order['price'] ?></h5>
                                                     </div>
                                                     <div class="content_line">
-                                                        <h4>QTY :</h4>
+                                                        <h5>QTY :</h5>
                                                         <h5><?= $order['productquantity'] ?></h5>
                                                     </div>
                                                     <div class="content_line">
-                                                        <h4>Total Price</h4>
+                                                        <h5>Total Price</h5>
                                                         <h5><?= $order['productquantity'] * $order['price'] ?></h5>
+                                                    </div>
+                                                    <div class="order_status">
+                                                        <?php
+                                                        if((int)$order['order_status'] === 0)
+                                                        {
+                                                            ?>
+                                                            <div class="content_line">
+                                                                <h5>Order Status</h5>
+                                                                <h5 class="order_pending">Pending...</h5>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                        else
+                                                        {
+                                                            ?>
+                                                            <div class="content_line">
+                                                                <h5>Order Status</h5>
+                                                                <h5 class="order_approve">Approved <i class="fa fa-check"></i></h5>
+                                                            </div>
+                                                            <span class="font-13">Estimated Delivery: 8 -12 working days from booking.</span>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </div>
                                                 </div>
                                             </div>

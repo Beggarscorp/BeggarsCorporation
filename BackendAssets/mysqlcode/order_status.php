@@ -27,7 +27,7 @@ function cancel_order()
         exit();
     }
 }
-if (isset($_GET['conform'])) {
+if (isset($_GET['approve'])) {
     conform_order();
 }
 if (isset($_GET['cancel'])) {

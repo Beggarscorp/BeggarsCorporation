@@ -54,9 +54,10 @@ button
 .small_signup_div
 {
     margin: 80px 10px;
-    background-color: rgb(169 103 4 / 76%);
+    background-color: rgb(169 103 4 / 67%);
     padding: 15px 25px;
     border-radius: 10px;
+    backdrop-filter: blur(10px);
 }
 .forgot_password
 {

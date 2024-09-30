@@ -1,7 +1,7 @@
 
 <?php
 ob_start();
-include 'BackendAssets/Components/header.php';
+include('BackendAssets/Components/header.php');
 include('./BackendAssets/db.php');
 
 
@@ -59,7 +59,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             <h4 class="productPrice">Price: ₹ <?=$row['price']?></h4>
             <?php
             $productid=$row['id'];
-            $sqlForQty="SELECT MAX(product_qty) FROM `checkout` WHERE product_id=$productid";
+            $sqlForQty="SELECT MAX(product_qty) FROM `checkout` WHERE product_id=$productid AND userid=$userid";
             $resultForQty=mysqli_fetch_assoc(mysqli_query($conn,$sqlForQty));
             if($resultForQty['MAX(product_qty)'] > 0)
             {

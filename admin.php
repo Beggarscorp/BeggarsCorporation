@@ -26,6 +26,13 @@ if($usercountresult)
 
 // user count code end here
 
+$ordercount="SELECT COUNT(*) FROM `orders`";
+$order_count_result=mysqli_fetch_assoc(mysqli_query($conn,$ordercount));
+$order_count_val;
+if($order_count_result)
+{
+    $order_count_val=$order_count_result['COUNT(*)'];
+}
 
 ?>
 
@@ -88,7 +95,7 @@ if($usercountresult)
                     <a href="/orders.php">
                         <h3>Orders</h3>
                         <div class="productcount">
-                            0
+                            <?=$order_count_val?>
                         </div>
                     </a>
                 </div>

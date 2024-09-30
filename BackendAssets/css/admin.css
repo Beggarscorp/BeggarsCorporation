@@ -90,20 +90,24 @@ a{
 .products-box
 {
   padding: 40px;
-  box-shadow: inset 0 0 6px 6px var(--color-4);
   border-radius: 50%;
   width: 75%;
+  background: #021526bd;
+  backdrop-filter: blur(20px);
 }
 .productcount
 {
   border-radius: 50%;
   color: #fff;
-  background-color: var(--color-2);
-  width: fit-content;
+  background-color: #03346e99;
+  width: 50px;
+  height: 50px;
   margin: auto;
-  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .products-box a
 {
-  color: var(--color-1) !important;
+  color: var(--color-5) !important;
 }

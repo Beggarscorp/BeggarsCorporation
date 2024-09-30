@@ -46,21 +46,29 @@ $result=mysqli_fetch_all(mysqli_query($conn,$sql));
                     <input type="number" id="price" name="price" value="<?=$_GET['productPrice']?>"><br>
 
                     <label for="category">Category:</label><br>
+                    <select name="category" id="category">
                     <?php
-                    if(isset($_GET['productCategory']))
-                    {
+                        if(isset($_GET['productCategory']))
+                        {
+                            ?>
+                            <input type="hidden" id="category" name="category" value="<?=$_GET['productCategory']?>">
+                            <?php
+                        }
+                        
+                            $fetchCategory=$conn->prepare("SELECT * FROM `category`");
+                            if($fetchCategory->execute())
+                            {
+                                $fetchCategory_result=$fetchCategory->get_result();
+                            while($fetchCategory_result_data=$fetchCategory_result->fetch_assoc())
+                            {
+                                ?>
+                                    <option value="<?=$fetchCategory_result_data['category']?>"><?=$fetchCategory_result_data['category']?></option>
+                                <?php
+                            }
+                        }
+                    // }
                     ?>
-                    <?php
-                    }
-                    else
-                    {
-                        ?>
-                        <select name="" id=""></select>
-                        <?php
-                    }
-                    // <?=$result[$p][1]?>
-                        ?>
-                    <input type="text" id="category" name="category" value="<?=$_GET['productCategory']?>"><br>
+                    </select><br>
 
                     <label for="stock">Stock:</label><br>
                     <input type="number" id="stock" name="stock" value="<?=$_GET['productStock']?>"><br>

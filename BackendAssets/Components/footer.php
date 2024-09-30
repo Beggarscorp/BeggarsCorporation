@@ -219,6 +219,7 @@
         const usericon = document.getElementsByClassName("user-icon");
         const userdiv = document.getElementsByClassName("user-details");
         usericon[0].addEventListener("click", () => {
+            debugger
             userdiv[0].classList.toggle("user-details-show");
         })
 
