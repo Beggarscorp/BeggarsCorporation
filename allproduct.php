@@ -30,6 +30,7 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 <td>Price</td>
                                 <td>Stock</td>
                                 <td>Description</td>
+                                <td>Product Color</td>
                                 <td>Size & Fit</td>
                                 <td>Material and Care</td>
                                 <td>Spacification</td>
@@ -53,6 +54,7 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 <td>INR <?=$row['price']?></td>
                                 <td><?=$row['stock']?></td>
                                 <td><?=$row['discription']?></td>
+                                <td><?=$row['product_color']?></td>
                                 <td><?=$row['sizeandfit']?></td>
                                 <td><?=$row['materialandcare']?></td>
                                 <td><?=$row['spacification']?></td>
@@ -64,6 +66,7 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 $price=$row['price'];
                                 $stock=$row['stock'];
                                 $discription=$row['discription'];
+                                $color=$row['product_color'];
                                 $sizeandfit=$row['sizeandfit'];
                                 $materialandcare=$row['materialandcare'];
                                 $specification=$row['spacification'];
@@ -84,6 +87,7 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 data-productprice="<?= $price ?>"
                                 data-productstock="<?= $stock ?>"
                                 data-productdis="<?= $discription?>"
+                                data-productcolor="<?=$color?>";
                                 data-productsizeandfit="<?= $sizeandfit ?>"
                                 data-productmaterialandcare="<?= $materialandcare ?>"
                                 data-productspecification="<?= $specification ?>"
@@ -131,6 +135,7 @@ include('BackendAssets/mysqlcode/allproducts.php');
             +'&productPrice='+encodeURIComponent(data.productprice)
             +'&productStock='+encodeURIComponent(data.productstock)
             +'&productDiscription='+encodeURIComponent(data.productdis)
+            +'&product_color='+encodeURIComponent(data.productcolor)
             +'&sizeandfit='+encodeURIComponent(data.productsizeandfit)
             +'&materialandcare='+encodeURIComponent(data.productmaterialandcare)
             +'&spacification='+encodeURIComponent(data.productspecification)

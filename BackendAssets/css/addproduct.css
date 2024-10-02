@@ -1,11 +1,11 @@
 @import url('admin.css');
 
-input:focus-visible,textarea:focus-visible,.addcate-select:focus-visible
+input:focus-visible,textarea:focus-visible,.addcate-select:focus-visible,#product_color:focus-visible,#category:focus-visible
 {
     border: none;
     outline: 0;
 }
-input,textarea,.addcate-select
+input,textarea,.addcate-select,#product_color,#category
 {
     border: none;
     width: 50%;

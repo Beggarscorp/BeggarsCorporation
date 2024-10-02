@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   $materialAndCare = $_POST['materialAndCare'];
   $spacification = $_POST['spacification'];
   $min_order = $_POST['min_order'];
+  $color=$_POST['product_color'];
 
   // Check if file was uploaded without errors
   if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK && isset($_FILES["productGallery"])) {
@@ -31,8 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 
     // Insert data into the database
-    $sql = $conn->prepare("INSERT INTO products (productname, discription, price, category, stock, productimage, sizeandfit, materialandcare, spacification, productimagegallery, min_order) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $sql = $conn->prepare("INSERT INTO products (productname, discription,product_color, price, category, stock, productimage, sizeandfit, materialandcare, spacification, productimagegallery, min_order) 
+                VALUES (?, ?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
 
     if ($sql === false)
@@ -40,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
       die("Prepare failed". $conn->error);
     }
 
-  $sql->bind_param("ssisisssssi", $proname, $prodis, $proprice, $procategory, $prostock, $imageName, $sizeAndfit, $materialAndCare, $spacification, $imagesNames, $min_order);
+  $sql->bind_param("sssisisssssi", $proname, $prodis,$color, $proprice, $procategory, $prostock, $imageName, $sizeAndfit, $materialAndCare, $spacification, $imagesNames, $min_order);
 
   $sql->execute(); 
 

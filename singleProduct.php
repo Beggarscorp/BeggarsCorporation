@@ -83,6 +83,9 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                 </span>
                 </button>
             </div>
+            <div class="product_colors">
+                <div class="color_ele" style="background:red;"></div>
+            </div>
             <?php
             if($row['sizeandfit'] != "")
             {

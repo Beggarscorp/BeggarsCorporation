@@ -51,6 +51,23 @@ $result=mysqli_query($conn,$sql);
                         <label for="spacification">Spacification:</label><br>
                         <textarea id="spacification" rows="10" oninput="convertText(this)" placeholder="Enter prouduct spacification here" name="spacification" required></textarea><br>
 
+                        <label for="product_color">Product color</label><br>
+                        <select name="product_color" id="product_color">
+                            <option value="Default">Select Product Color</option>
+                            <?php
+                            $product_color_sql="SELECT * FROM `product_color`";
+                            $product_color_result=mysqli_fetch_all(mysqli_query($conn,$product_color_sql),MYSQLI_ASSOC);
+                            foreach($product_color_result as $color_data)
+                            {
+                            ?>
+                                <option value="<?=$color_data['color']?>"><?=$color_data['color']?></option>
+                            <?php
+                            }
+                            ?>
+                        </select><br>
+                        <button class="add_color" data-bs-toggle="modal" data-bs-target="#product-color">Add color</button>
+                        <br>
+
                         <label for="price">Price:</label><br>
                         <input type="number" id="price" placeholder="Enter product price here" name="price" step="0.01" required><br>
 
@@ -108,6 +125,31 @@ $result=mysqli_query($conn,$sql);
                     </div>
 
                     <!-- category add form end here -->
+
+                    <!-- product color add form start from here -->
+
+                    <div class="modal fade" id="product-color" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/BackendAssets/mysqlcode/addcolor.php" method="POST">
+                                        <label for="product-color">Product Color:</label><br>
+                                        <input type="text" name="product-color" placeholder="Enter product color here" class="w-100">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary px-2" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" name="product_color_submit" class="btn btn-primary">Submit</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- end here -->
 
                     <?php
                     if (isset($_GET['uploaded'])) 

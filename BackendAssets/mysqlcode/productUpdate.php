@@ -5,6 +5,7 @@ if (isset($_POST['submit'])) {
     $productId = $_POST['id'];
     $productName = $_POST['name'];
     $productDescription = $_POST['description'];
+    $color=$_POST['product_color'];
     $sizeAndfit=$_POST['sizeAndfit'];
     $materialandcare=$_POST['materialAndCare'];
     $spacification=$_POST['spacification'];
@@ -51,7 +52,7 @@ if (isset($_POST['submit'])) {
 
     $sql =$conn->prepare("UPDATE products SET productname=?,
 
-    discription=?,price=?,category=?,
+    discription=?,product_color=?,price=?,category=?,
 
     stock=?,productimage=?,sizeandfit=?,
 
@@ -66,7 +67,7 @@ if (isset($_POST['submit'])) {
     else
     {
 
-        $sql->bind_param('ssisisssssii',$productName,$productDescription,$productPrice,$productCategory,$productStock,$productImage,$sizeAndfit,$materialandcare,$spacification,$productImageGallery,$min_order,$productId);
+        $sql->bind_param('sssisisssssii',$productName,$productDescription,$color,$productPrice,$productCategory,$productStock,$productImage,$sizeAndfit,$materialandcare,$spacification,$productImageGallery,$min_order,$productId);
     
         if ($sql->execute()) {
             header("Location: /allproduct.php?msg=product updated");

@@ -42,31 +42,45 @@ $result=mysqli_fetch_all(mysqli_query($conn,$sql));
                     <label for="spacification">Spacification:</label><br>
                     <textarea id="spacification" rows="10" oninput="convertText(this)" name="spacification"><?=$_GET['spacification']?></textarea><br>
 
+                    <label for="product_color">Product color</label><br>
+                        <select name="product_color" id="product_color">
+                            <option value="<?=$_GET['product_color']?>"><?=$_GET['product_color']?></option>
+                            <?php
+                            $product_color_sql="SELECT * FROM `product_color`";
+                            $product_color_result=mysqli_fetch_all(mysqli_query($conn,$product_color_sql),MYSQLI_ASSOC);
+                            foreach($product_color_result as $color_data)
+                            {
+                            ?>
+                                <option value="<?=$color_data['color']?>"><?=$color_data['color']?></option>
+                            <?php
+                            }
+                            ?>
+                        </select><br>
+
                     <label for="price">Price:</label><br>
                     <input type="number" id="price" name="price" value="<?=$_GET['productPrice']?>"><br>
 
                     <label for="category">Category:</label><br>
                     <select name="category" id="category">
+                        <option value="<?=$_GET['productCategory']?>"><?=$_GET['productCategory']?></option>
                     <?php
-                        if(isset($_GET['productCategory']))
+                    
+                        $fetchCategory=$conn->prepare("SELECT * FROM `category`");
+                        if($fetchCategory->execute())
+                        {
+                            $fetchCategory_result=$fetchCategory->get_result();
+                        while($fetchCategory_result_data=$fetchCategory_result->fetch_assoc())
                         {
                             ?>
-                            <input type="hidden" id="category" name="category" value="<?=$_GET['productCategory']?>">
+                                <option value="<?=$fetchCategory_result_data['category']?>"><?=$fetchCategory_result_data['category']?></option>
                             <?php
                         }
-                        
-                            $fetchCategory=$conn->prepare("SELECT * FROM `category`");
-                            if($fetchCategory->execute())
-                            {
-                                $fetchCategory_result=$fetchCategory->get_result();
-                            while($fetchCategory_result_data=$fetchCategory_result->fetch_assoc())
-                            {
-                                ?>
-                                    <option value="<?=$fetchCategory_result_data['category']?>"><?=$fetchCategory_result_data['category']?></option>
-                                <?php
-                            }
                         }
-                    // }
+                        else
+                        {
+                            echo "Failed to load category";
+                        }                      
+                      
                     ?>
                     </select><br>
 
