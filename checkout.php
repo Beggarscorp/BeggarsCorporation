@@ -436,11 +436,20 @@ if (isset($_SESSION['user'])) {
 
                         ?>
                     </div>
-                    <div class="total-price">
-                        <h5>Total Price :</h5>
-                        <div style="display:flex;">
-                            <h6>INR &nbsp;</h6>
-                            <h5 class="totalPrice" id="total_price_pay"></h5>
+                    <div class="charges_div">
+                        <div class="delivery_charge">
+                            <h5>Delivery Charge</h5>
+                            <div style="display:flex;">
+                                <h6><i class="fa fa-rupee"></i> &nbsp;</h6>
+                                <h5>45</h5>
+                            </div>
+                        </div>
+                        <div class="total-price">
+                            <h5>Total Price :</h5>
+                            <div style="display:flex;">
+                                <h6><i class="fa fa-rupee"></i> &nbsp;</h6>
+                                <h5 class="totalPrice" id="total_price_pay"></h5>
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -494,10 +503,17 @@ ob_end_flush();
         for (o = 0; o < priceElement.length; o++) {
             grandtotal += parseInt(priceElement[o].innerText);
         }
+        if(grandtotal < 500)
+        {
+            grandtotal+=45;
+            document.getElementsByClassName("delivery_charge")[0].style.opacity="1";
+            document.getElementsByClassName("delivery_charge")[0].style.position="static";
+        }
         totalPriceEle[0].innerText = grandtotal;
         totalPriceInputHiddinInputfield.value = grandtotal;
     }
     totalpriceCalculation();
+
 
     // end here
 
