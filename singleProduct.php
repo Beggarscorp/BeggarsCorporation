@@ -1,10 +1,9 @@
 
 <?php
-ob_start();
 include('BackendAssets/Components/header.php');
 include('./BackendAssets/db.php');
 
-
+$userid=isset($_SESSION['id']) ? $_SESSION['id'] : "";
 $id=$_GET['id'];
 $sql = "SELECT * FROM `products` WHERE id=$id";
 $Allproducts = $conn->query($sql);
@@ -58,6 +57,8 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             </div>
             <h4 class="productPrice">Price: ₹ <?=$row['price']?></h4>
             <?php
+            if($userid != "" && isset($_SESSION['id']))
+            {
             $productid=$row['id'];
             $sqlForQty="SELECT MAX(product_qty) FROM `checkout` WHERE product_id=$productid AND userid=$userid";
             $resultForQty=mysqli_fetch_assoc(mysqli_query($conn,$sqlForQty));
@@ -74,7 +75,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                 <?php
 
             }
-            
+            }
             ?>
             <div class="buttons">
                 <a href="BackendAssets/mysqlcode/addtocart.php?id=<?= $row['id']?>&page=<?=$_SERVER['PHP_SELF']?>&cate=<?=$row['category']?>">
@@ -83,8 +84,11 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                 </span>
                 </button>
             </div>
+
             <div class="product_colors">
                 <div class="color_ele" style="background:red;"></div>
+                <div class="color_ele" style="background:yellow;"></div>
+                <div class="color_ele" style="background:black;"></div>
             </div>
             <?php
             if($row['sizeandfit'] != "")
@@ -222,5 +226,4 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
 
 <?php
 include 'BackendAssets/Components/footer.php';
-
 ?>

@@ -295,12 +295,11 @@ if (isset($_SESSION['user'])) {
             <div class="col-sm-4">
                 <div style="border:1px solid lightgray;margin:10px;padding:10px;border-radius:10px;">
                     <!-- <h3>Product details here</h3> -->
-                    <div class="product-div">
+                    <d  iv class="product-div">
                         <?php
                         $productCount = [];
                         if (isset($_GET['buy_now'])) {
                             $productid = $_GET['buy_now_productid'];
-                            echo $userid;
                             $buy_now_sql = $conn->prepare("SELECT * FROM `products` WHERE id=$productid");
                             if ($buy_now_sql->execute()) {
                                 $buy_now_sql_result = $buy_now_sql->get_result()->fetch_assoc();
@@ -358,7 +357,8 @@ if (isset($_SESSION['user'])) {
                                 echo $buy_now_sql->error;
                             }
                             $buy_now_sql->close();
-                        } else {
+                        } 
+                        else {
                             include("BackendAssets/db.php");
                             $user_name = $_SESSION["user"];
                             $sql = "SELECT * FROM `productscart` as pc INNER JOIN `products` as p WHERE pc.product_id=p.id";

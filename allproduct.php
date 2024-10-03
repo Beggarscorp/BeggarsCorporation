@@ -87,7 +87,7 @@ include('BackendAssets/mysqlcode/allproducts.php');
                                 data-productprice="<?= $price ?>"
                                 data-productstock="<?= $stock ?>"
                                 data-productdis="<?= $discription?>"
-                                data-productcolor="<?=$color?>";
+                                data-productcolor="<?=$color?>"
                                 data-productsizeandfit="<?= $sizeandfit ?>"
                                 data-productmaterialandcare="<?= $materialandcare ?>"
                                 data-productspecification="<?= $specification ?>"
