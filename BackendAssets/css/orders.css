@@ -74,5 +74,4 @@ thead tr td,tbody tr td
 .operation_approve_btn:hover,.operation_cancel_btn:hover,.view_more:hover
 {
     border-radius: 15px;
-    transform: translateX(10px);
 }
