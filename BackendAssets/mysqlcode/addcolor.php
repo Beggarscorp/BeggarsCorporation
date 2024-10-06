@@ -15,25 +15,25 @@ if(isset($_POST['product_color_submit']))
             if($sql->execute())
             {
                 $msg="Color inserted in a table";
-                header("Location: /addproduct.php?msg=$msg");
+                header("Location: /add.php?msg=$msg");
             }
             else
             {
                 $msg="Color not inserted in a table";
-                header("Location: /addproduct.php?msg=$msg");
+                header("Location: /add.php?msg=$msg");
             }
 
         }
         else
         {
             $msg="Color already in table";
-            header("Location: /addproduct.php?msg=$msg");
+            header("Location: /add.php?msg=$msg");
         }
     }
     else
     {
         $msg="color query not work";
-        header("Location: /addproduct.php?msg=$msg");
+        header("Location: /add.php?msg=$msg");
     }
 }
 ?>

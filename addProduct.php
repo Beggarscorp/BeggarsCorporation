@@ -65,8 +65,6 @@ $result=mysqli_query($conn,$sql);
                             }
                             ?>
                         </select><br>
-                        <button class="add_color" data-bs-toggle="modal" data-bs-target="#product-color">Add color</button>
-                        <br>
 
                         <label for="price">Price:</label><br>
                         <input type="number" id="price" placeholder="Enter product price here" name="price" step="0.01" required><br>
@@ -83,7 +81,6 @@ $result=mysqli_query($conn,$sql);
                             ?>
                         </select>
                         <br>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add category</button><br>
 
                         <label for="stock">Stock:</label><br>
                         <input type="number" id="stock" placeholder="Enter product stock here" name="stock" value="0"><br>
@@ -100,56 +97,6 @@ $result=mysqli_query($conn,$sql);
 
                         <button type="submit" name="submit">Add Product</button>
                     </form>
-
-                    <!-- category add form start from here -->
-
-                    <div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="/BackendAssets/mysqlcode/addcategory.php" method="POST">
-                                        <label for="category">Category:</label><br>
-                                        <input type="text" name="category" placeholder="Enter your category here" class="w-100">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary px-2" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="cateSubmit" class="btn btn-primary">Submit</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- category add form end here -->
-
-                    <!-- product color add form start from here -->
-
-                    <div class="modal fade" id="product-color" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="/BackendAssets/mysqlcode/addcolor.php" method="POST">
-                                        <label for="product-color">Product Color:</label><br>
-                                        <input type="text" name="product-color" placeholder="Enter product color here" class="w-100">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary px-2" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" name="product_color_submit" class="btn btn-primary">Submit</button>
-                                </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- end here -->
 
                     <?php
                     if (isset($_GET['uploaded'])) 
