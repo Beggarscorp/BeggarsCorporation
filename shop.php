@@ -20,6 +20,9 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
 </div>";
 }
 ?>
+<button type="hidden" id="pop_up_btn" style="float: right;opacity:0;" class="btn btn-primary" data-toggle="modal" data-target="#shop_page_video_popup">
+  Launch demo modal
+</button>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2">
@@ -124,6 +127,46 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
         </div>
     </div>
 </div>
+
+ <!-- video popup model code start from here -->
+
+ <!-- Button trigger modal -->
+<!-- <button type="hidden" id="pop_up_btn" class="btn btn-primary" data-toggle="modal" data-target="#shop_page_video_popup">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+
+<div class="modal fade" id="shop_page_video_popup" tabindex="-1" role="dialog" aria-labelledby="shop_page_video_popup" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <h5 class="modal-title" id="shop_page_video_popup">Modal title</h5> -->
+        <button type="button"  data-dismiss="modal" aria-label="Close" 
+        style="float: right;border-radius: 50%;border: none;background-color: #b3700b;color: #fff;"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <a target="_blank" href="https://www.linkedin.com/posts/employonomics_beggarscorporation-activity-7246887980571729921-Pfwa?utm_source=share&utm_medium=member_android">
+                    <video controls autoplay loop muted width="100%" height="400">
+                        <source src="social_media_videos/the_sari_of_impact_video.mp4">
+                    </video>
+                </a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <!-- end here -->
+
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
 
@@ -163,7 +206,18 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
     const filter_container=document.getElementsByClassName("filter-container");
     filter_main_head[0].addEventListener("click",()=>{
         filter_container[0].classList.toggle("filter-container-show");
+        window.scrollTo(0,0);
     })
+
+    // end here
+
+    // video pop up open code start from here
+
+    window.addEventListener("load",()=>{
+        document.getElementById("pop_up_btn").click();
+        window.scrollTo(0,0);
+    })
+
 
     // end here
 
