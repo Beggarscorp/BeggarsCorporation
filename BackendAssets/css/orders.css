@@ -16,15 +16,10 @@ thead tr td,tbody tr td
     word-break: break-all;
     white-space: nowrap;
 }
-.order-product-details tr:nth-child(even)
+tbody tr:nth-child(even)
 {
     background-color: var(--color-2);
     color: var(--color-5);
-}
-.order-product-details tr td
-{
-    font-size: 13px;
-    padding: 5px 0;
 }
 .pending
 {
