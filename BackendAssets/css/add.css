@@ -19,13 +19,13 @@ button
     padding: 5px 15px;
     border-radius: 5px !important;
 }
-.category_show
+.category_show,.colors
 {
     padding: 10px 20px;
     box-shadow: 0 2px 5px 1px;
     border-radius: 10px;
 }
-.category_show h4
+.category_show h4,.colors h4
 {
     margin: 15px 0;
     padding: 5px;

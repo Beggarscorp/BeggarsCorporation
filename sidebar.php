@@ -22,6 +22,7 @@
                         <li><a href="/signup.php" >Sign up</a></li>
                         <li><a href="/orders.php" >Orders</a></li>
                         <li><a href="/addProduct.php" >Add Product</a></li>
+                        <li><a href="/add.php" >Add</a></li>
                         <li><a href="/allproduct.php" >All Product</a></li>
                         <li><a href="/login.php" >Login</a></li>
                     </ul>

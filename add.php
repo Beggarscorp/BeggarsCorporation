@@ -47,53 +47,72 @@ include("BackendAssets/Components/popup.php");
                         <div class="category_show">
                             <h4>Categories & Subcategories</h4>
                             <ul class="list-unstyled">
-                            <?php
-                            $cateid;
-                            $allCategory=$conn->prepare("SELECT * FROM `category`");
-                            if($allCategory->execute())
-                            {
-                                $allCategory_result=$allCategory->get_result();
-                                foreach($allCategory_result->fetch_all(MYSQLI_ASSOC) as $cates)
-                                {
-                                    $cateid=$cates['id'];
-                                    ?>
-                                    <li><?=$cates['category']?></li>
-                                    
-                                    <?php
-                                    $sub_allCategories=$conn->prepare("SELECT subcategory FROM `subcategory` WHERE cate_id=$cateid");
-                                    if($sub_allCategories->execute())
-                                    {
-                                        $sub_allCategories_result=$sub_allCategories->get_result();
-                                        if($sub_allCategories_result->num_rows > 0)
-                                        {
-                                        ?>
-                                            <ol>
+                                <?php
+                                $cateid;
+                                $allCategory = $conn->prepare("SELECT * FROM `category`");
+                                if ($allCategory->execute()) {
+                                    $allCategory_result = $allCategory->get_result();
+                                    foreach ($allCategory_result->fetch_all(MYSQLI_ASSOC) as $cates) {
+                                        $cateid = $cates['id'];
+                                ?>
+                                        <li><?= $cates['category'] ?></li>
+
                                         <?php
-                                        foreach($sub_allCategories_result->fetch_all(MYSQLI_ASSOC) as $all_SubCates)
-                                        {
-                                            ?>
-                                                <li><?=$all_SubCates['subcategory']?></li>
-                                            <?php
+                                        $sub_allCategories = $conn->prepare("SELECT subcategory FROM `subcategory` WHERE cate_id=$cateid");
+                                        if ($sub_allCategories->execute()) {
+                                            $sub_allCategories_result = $sub_allCategories->get_result();
+                                            if ($sub_allCategories_result->num_rows > 0) {
+                                        ?>
+                                                <ol>
+                                                    <?php
+                                                    foreach ($sub_allCategories_result->fetch_all(MYSQLI_ASSOC) as $all_SubCates) {
+                                                    ?>
+                                                        <li><?= $all_SubCates['subcategory'] ?></li>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </ol>
+                                <?php
+                                            }
                                         }
-                                        ?>
-                                            </ol>
-                                        <?php
-                                      }
                                     }
                                 }
-                            }
-                            ?>
+                                ?>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="product_color">
                     <h4 class="py-2">Add Products Colors from here</h4>
-                    <form action="/BackendAssets/mysqlcode/addcolor.php" method="POST">
-                        <label for="product-color">Add Product Color :</label><br>
-                        <input type="text" name="product-color" placeholder="Enter product color here"><br>
-                        <button type="submit" name="product_color_submit">Add Color</button>
-                    </form>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <form action="/BackendAssets/mysqlcode/addcolor.php" method="POST">
+                                <label for="product-color">Add Product Color :</label><br>
+                                <input type="text" name="product-color" placeholder="Enter product color here"><br>
+                                <button type="submit" name="product_color_submit">Add Color</button>
+                            </form>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="colors">
+                                <h4>Colors</h4>
+                                <ul>
+                                <?php
+                                $colors=$conn->prepare("SELECT * FROM `product_color`");
+                                if($colors->execute())
+                                {
+                                    $colors_result=$colors->get_result();
+                                    foreach($colors_result->fetch_all(MYSQLI_ASSOC) as $all_colors)
+                                    {
+                                        ?>
+                                        <li><?=$all_colors['color']?></li>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
