@@ -73,12 +73,33 @@ $result=mysqli_query($conn,$sql);
                         <select name="category" id="category" class="addcate-select" required>
                             <option value="default" disabled selected>Select product category</option>
                             <?php
-                            foreach ($result as $row) {
-                            ?>
-                                <option value="<?=$row['category']?>"><?=$row['category']?></option> 
-                            <?php
-                            }
-                            ?>
+                                $cateid;
+                                $allCategory = $conn->prepare("SELECT * FROM `category`");
+                                if ($allCategory->execute()) {
+                                    $allCategory_result = $allCategory->get_result();
+                                    foreach ($allCategory_result->fetch_all(MYSQLI_ASSOC) as $cates) {
+                                        $cateid = $cates['id'];
+                                ?>
+                                        <option value="<?= $cates['category'] ?>"><?= $cates['category'] ?></option>
+                                        <?php
+                                        $sub_allCategories = $conn->prepare("SELECT subcategory,subcategory_id FROM `subcategory` WHERE cate_id=$cateid");
+                                        if ($sub_allCategories->execute()) {
+                                            $sub_allCategories_result = $sub_allCategories->get_result();
+                                            if ($sub_allCategories_result->num_rows > 0) {
+                                        ?>
+                                                    <?php
+                                                    foreach ($sub_allCategories_result->fetch_all(MYSQLI_ASSOC) as $all_SubCates) {
+                                                    ?>
+                                                        <option value="<?= $all_SubCates['subcategory'] ?>"><h5>Subcategory :</h5> <?= $all_SubCates['subcategory'] ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                <?php
+                                            }
+                                        }
+                                    }
+                                }
+                                ?>
                         </select>
                         <br>
 

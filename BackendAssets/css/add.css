@@ -39,3 +39,9 @@ button
 {
     margin: 10px 0;
 }
+.operation_link a 
+{
+    color: green !important;
+    margin: 0 10px;
+    float: inline-end;
+}

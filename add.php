@@ -10,6 +10,15 @@ include("BackendAssets/Components/popup.php");
         </div>
         <div class="col-sm-10">
             <div class="content vh-100 overflowY-visible p-3">
+                <div class="msg">
+                    <?php
+                    if (isset($_GET['msg'])) {
+                        echo "<div class='alert alert-success' role='alert'>
+                      " . $_GET['msg'] . "
+                    </div>";
+                    }
+                    ?>
+                </div>
                 <h3 class="py-2">Add additional things from here</h3>
                 <div class="row">
                     <div class="col-sm-6">
@@ -18,7 +27,7 @@ include("BackendAssets/Components/popup.php");
                             <form action="/BackendAssets/mysqlcode/addcategory.php" method="POST">
                                 <label for="category">Add Category :</label><br>
                                 <input type="text" name="category" placeholder="Enter your category here"><br>
-                                <button type="submit">Add Category</button>
+                                <button type="submit" name="cateSubmit">Add Category</button>
                             </form>
                             <h5 class="py-2">Add subcategory</h5>
                             <form action="/BackendAssets/mysqlcode/addcategory.php" method="post">
@@ -55,10 +64,14 @@ include("BackendAssets/Components/popup.php");
                                     foreach ($allCategory_result->fetch_all(MYSQLI_ASSOC) as $cates) {
                                         $cateid = $cates['id'];
                                 ?>
-                                        <li><?= $cates['category'] ?></li>
-
+                                        <li><?= $cates['category'] ?>
+                                            <span class="operation_link">
+                                                <a href="/BackendAssets/mysqlcode/addcategory.php?function=update_category_and_subcategory&table=category&id=<?= $cates['id'] ?>"><i class="bi bi-pencil-square"></i></a>
+                                                <a href="/BackendAssets/mysqlcode/addcategory.php?function=delete_category_and_subcategory&table=category&id=<?= $cates['id'] ?>"><i class="bi bi-x-square" style="color:red !important;"></i></a>
+                                            </span>
+                                        </li>
                                         <?php
-                                        $sub_allCategories = $conn->prepare("SELECT subcategory FROM `subcategory` WHERE cate_id=$cateid");
+                                        $sub_allCategories = $conn->prepare("SELECT subcategory,subcategory_id FROM `subcategory` WHERE cate_id=$cateid");
                                         if ($sub_allCategories->execute()) {
                                             $sub_allCategories_result = $sub_allCategories->get_result();
                                             if ($sub_allCategories_result->num_rows > 0) {
@@ -67,7 +80,12 @@ include("BackendAssets/Components/popup.php");
                                                     <?php
                                                     foreach ($sub_allCategories_result->fetch_all(MYSQLI_ASSOC) as $all_SubCates) {
                                                     ?>
-                                                        <li><?= $all_SubCates['subcategory'] ?></li>
+                                                        <li><?= $all_SubCates['subcategory'] ?>
+                                                            <span class="operation_link">
+                                                                <a href="/BackendAssets/mysqlcode/addcategory.php?function=update_category_and_subcategory&table=subcategory&id=<?= $all_SubCates['subcategory_id'] ?>"><i class="bi bi-pencil-square"></i></a>
+                                                                <a href="/BackendAssets/mysqlcode/addcategory.php?function=delete_category_and_subcategory&table=subcategory&id=<?= $all_SubCates['subcategory_id'] ?>"><i class="bi bi-x-square" style="color:red !important;"></i></a>
+                                                            </span>
+                                                        </li>
                                                     <?php
                                                     }
                                                     ?>
@@ -96,19 +114,22 @@ include("BackendAssets/Components/popup.php");
                             <div class="colors">
                                 <h4>Colors</h4>
                                 <ul>
-                                <?php
-                                $colors=$conn->prepare("SELECT * FROM `product_color`");
-                                if($colors->execute())
-                                {
-                                    $colors_result=$colors->get_result();
-                                    foreach($colors_result->fetch_all(MYSQLI_ASSOC) as $all_colors)
-                                    {
-                                        ?>
-                                        <li><?=$all_colors['color']?></li>
-                                        <?php
+                                    <?php
+                                    $colors = $conn->prepare("SELECT * FROM `product_color`");
+                                    if ($colors->execute()) {
+                                        $colors_result = $colors->get_result();
+                                        foreach ($colors_result->fetch_all(MYSQLI_ASSOC) as $all_colors) {
+                                    ?>
+                                            <li><?= $all_colors['color'] ?>
+                                                <span class="operation_link">
+                                                    <a href="/BackendAssets/mysqlcode/addcolor.php?function=update_color&id=<?=$all_colors['color_id']?>&color=<?= $all_colors['color'] ?>"><i class="bi bi-pencil-square"></i></a>
+                                                    <a href="/BackendAssets/mysqlcode/addcolor.php?function=delete_color&id=<?=$all_colors['color_id']?>"><i class="bi bi-x-square" style="color:red !important;"></i></a>
+                                                </span>
+                                            </li>
+                                    <?php
+                                        }
                                     }
-                                }
-                                ?>
+                                    ?>
                                 </ul>
                             </div>
                         </div>
