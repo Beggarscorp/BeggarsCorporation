@@ -59,21 +59,30 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             <?php
             if($userid != "" && isset($_SESSION['id']))
             {
-            $productid=$row['id'];
-            $sqlForQty="SELECT MAX(product_qty) FROM `checkout` WHERE product_id=$productid AND userid=$userid";
-            $resultForQty=mysqli_fetch_assoc(mysqli_query($conn,$sqlForQty));
-            if($resultForQty['MAX(product_qty)'] > 0)
-            {
-                ?>
-                <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="<?=$resultForQty['MAX(product_qty)']?>" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>"  onchange="quantityTotal(this)"></h5>
-                <?php
-            }
-            else
-            {
-                ?>
-                <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="1" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>"  onchange="quantityTotal(this)"></h5>
-                <?php
-
+                if($row['min_order'] > 0)
+                {
+                    ?>
+                    <h5>QTY : <?=$row['min_order']?> <span style="color:red;font-size:12px;">(Min order <?=$row['min_order']?> pices)</span></h5>
+                    <?php
+                }
+                else
+                {              
+                $productid=$row['id'];
+                $sqlForQty="SELECT MAX(product_qty) FROM `checkout` WHERE product_id=$productid AND userid=$userid";
+                $resultForQty=mysqli_fetch_assoc(mysqli_query($conn,$sqlForQty));
+                if($resultForQty['MAX(product_qty)'] > 0)
+                {
+                    ?>
+                    <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="<?=$resultForQty['MAX(product_qty)']?>" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>"  onchange="quantityTotal(this)"></h5>
+                    <?php
+                }
+                else
+                {
+                    ?>
+                    <h5>QTY : <input type="number" name="quantityIncreaseDecrease" id="quantityIncreaseDecrease" value="1" min="1" userid="<?=$_SESSION['id']?>" productid="<?=$row['id']?>" productprice="<?=$row['price']?>"  onchange="quantityTotal(this)"></h5>
+                    <?php
+    
+                }
             }
             }
             ?>
