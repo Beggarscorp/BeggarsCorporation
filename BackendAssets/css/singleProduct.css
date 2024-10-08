@@ -23,6 +23,15 @@
     transform: translateX(10px);
 
 }
+.related_pro_add_to_cart_btn
+{
+    border: 1px solid #fff;
+    border-radius: 10px;
+    color: #ba760f !important;
+    background: none;
+    margin: 10px 0;
+    padding: 0 10px;
+}
 .multipleImg img
 {
   border: 1px solid gray;

@@ -164,6 +164,9 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                     </a>
                     <h5><?=$row2['productname']?></h5>
                     <h5>Rs . <?=$row2['price']?></h5>
+                    <a href="BackendAssets/mysqlcode/addtocart.php?id=<?= $row2['id']?>&page=<?=$_SERVER['PHP_SELF']?>&cate=<?=$row2['category']?>">
+                        <button class="related_pro_add_to_cart_btn">Add to Cart <span style="padding: 0 5px;"><i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
             <?php
