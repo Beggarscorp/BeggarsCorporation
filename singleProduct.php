@@ -41,8 +41,8 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                 <div class="col-sm-9">
                     <div class="productImg" style="
                     --display:'none';
-                    --zoom-x:0%;
-                    --zoom-y:0%;
+                    --zoom-x:50%;
+                    --zoom-y:50%;
                     --imageurl:url('/BackendAssets/assets/images/ProductImages/<?=$row['productimage']?>');
 ;                    ">
                         <img src="BackendAssets/assets/images/ProductImages/<?=$row['productimage']?>" alt="">
