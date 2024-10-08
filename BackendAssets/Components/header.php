@@ -504,9 +504,12 @@ add_chatinline();</script>-->
                                         }
                                     } else {
                                         ?>
-                                        <a href="/login.php" style="color:#9c9c9c !important;">
-                                            <h4>Your are not logged in now <i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
-                                        </a>
+                                        <div class="login_now_on_cart">
+                                            <h4 style="text-align:center;">Your are not logged in now</h4>
+                                            <a href="/login.php" style="color:#9c9c9c !important;">
+                                                <button>Login now <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                                            </a>
+                                        </div>
                                     <?php
                                     }
                                     ?>
