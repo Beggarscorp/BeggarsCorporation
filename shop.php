@@ -142,17 +142,17 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
     <div class="modal-content">
       <div class="modal-header">
         <!-- <h5 class="modal-title" id="shop_page_video_popup">Modal title</h5> -->
-        <button type="button"  data-dismiss="modal" aria-label="Close" 
+        <button onclick="close_video(this)" type="button"  data-dismiss="modal" aria-label="Close" 
         style="float: right;border-radius: 50%;border: none;background-color: #b3700b;color: #fff;"
         >
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body">                          
         <div class="row">
             <div class="col-sm-12">
                 <a target="_blank" href="https://www.linkedin.com/posts/employonomics_beggarscorporation-activity-7246887980571729921-Pfwa?utm_source=share&utm_medium=member_android">
-                    <video controls autoplay loop muted width="100%" height="400">
+                    <video controls autoplay loop muted width="100%" height="400" id="our_product_show_video">
                         <source src="social_media_videos/the_sari_of_impact_video.mp4">
                     </video>
                 </a>
@@ -218,6 +218,14 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
         window.scrollTo(0,0);
     })
 
+    // end here
+
+    // video pop up close video code start from here
+
+    const close_video=(e)=>{
+        let video_tag=document.getElementById("our_product_show_video");
+        video_tag.pause();
+    }
 
     // end here
 
