@@ -60,29 +60,38 @@ $result=mysqli_fetch_all(mysqli_query($conn,$sql));
                     <label for="price">Price:</label><br>
                     <input type="number" id="price" name="price" value="<?=$_GET['productPrice']?>"><br>
 
-                    <label for="category">Category:</label><br>
+                    <label for="category">Select Category & Subcategory:</label><br>
                     <select name="category" id="category">
-                        <option value="<?=$_GET['productCategory']?>"><?=$_GET['productCategory']?></option>
-                    <?php
-                    
-                        $fetchCategory=$conn->prepare("SELECT * FROM `category`");
-                        if($fetchCategory->execute())
-                        {
-                            $fetchCategory_result=$fetchCategory->get_result();
-                        while($fetchCategory_result_data=$fetchCategory_result->fetch_assoc())
-                        {
-                            ?>
-                                <option value="<?=$fetchCategory_result_data['category']?>"><?=$fetchCategory_result_data['category']?></option>
                             <?php
-                        }
-                        }
-                        else
-                        {
-                            echo "Failed to load category";
-                        }                      
-                      
-                    ?>
-                    </select><br>
+                                $cateid;
+                                $allCategory = $conn->prepare("SELECT * FROM `category`");
+                                if ($allCategory->execute()) {
+                                    $allCategory_result = $allCategory->get_result();
+                                    foreach ($allCategory_result->fetch_all(MYSQLI_ASSOC) as $cates) {
+                                        $cateid = $cates['id'];
+                                ?>
+                                        <option value="<?= $cates['category'] ?>"><?= $cates['category'] ?></option>
+                                        <?php
+                                        $sub_allCategories = $conn->prepare("SELECT subcategory,subcategory_id FROM `subcategory` WHERE cate_id=$cateid");
+                                        if ($sub_allCategories->execute()) {
+                                            $sub_allCategories_result = $sub_allCategories->get_result();
+                                            if ($sub_allCategories_result->num_rows > 0) {
+                                        ?>
+                                                    <?php
+                                                    foreach ($sub_allCategories_result->fetch_all(MYSQLI_ASSOC) as $all_SubCates) {
+                                                    ?>
+                                                        <option value="<?= $all_SubCates['subcategory'] ?>"><h5>Subcategory :</h5> <?= $all_SubCates['subcategory'] ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                <?php
+                                            }
+                                        }
+                                    }
+                                }
+                                ?>
+                        </select>
+                    <br>
 
                     <label for="stock">Stock:</label><br>
                     <input type="number" id="stock" name="stock" value="<?=$_GET['productStock']?>"><br>

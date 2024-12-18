@@ -216,10 +216,13 @@
             }
         }
 
-        const usericon = document.getElementsByClassName("user-icon");
+        const usericon = document.querySelector(".user-icon i");
         const userdiv = document.getElementsByClassName("user-details");
-        usericon[0].addEventListener("click", () => {
+        usericon.addEventListener("click", () => {
             userdiv[0].classList.toggle("user-details-show");
+        })
+        userdiv[0].addEventListener("click",(e)=>{
+            e.target.classList.remove("user-details-show");
         })
 
         const cartElement = document.querySelectorAll(".addtocart-main-card .addtocart-card");
@@ -230,54 +233,6 @@
             cartcountElement[0].style.display = "none";
         }
 
-        // this code for storing quantity of the product and price accorint to quantity start from here 
-
-
-        const quantityTotal = (e) => {
-
-            data = {
-                "userid": e.getAttribute("userid"),
-                "procductid": e.getAttribute("productid"),
-                "productprice": e.getAttribute("productprice"),
-                "productQty": e.value
-            }
-            fetch("BackendAssets/mysqlcode/checkoutcart.php", {
-                    method: "POST",
-                    headers: {
-                        'Content-type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-
-                    window.location.href = window.location.pathname + "?show=cart";
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        }
-
-
-        // end here
-
-        // calculate total price start from here
-
-        const totalpriceCalculation = () => {
-            const total_price_ele = document.getElementsByClassName("total_price");
-            const grand_total_price_ele = document.getElementsByClassName("grand_total_div_ele");
-            let grandtotal = 0;
-            for (o = 0; o < total_price_ele.length; o++) {
-                grandtotal += parseInt(total_price_ele[o].innerText);
-            }
-            grand_total_price_ele[0].innerText = "INR " + grandtotal;
-        }
-        totalpriceCalculation();
-
-
-        // end here
     })
 </script>
 

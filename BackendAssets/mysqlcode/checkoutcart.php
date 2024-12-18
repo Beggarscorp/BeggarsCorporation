@@ -22,7 +22,9 @@ if($productid != "" && $productQty != "" && $productprice != "" && $user != "")
     $result=$conn->query($sql);
     if($result)
     {
-        echo json_encode(["msg"=>"Data inserted"]);
+        $fetch_pro_qty="SELECT * FROM `checkout` WHERE userid=$user AND product_id=$productid";
+        $fetch_pro_qty_query=mysqli_fetch_assoc(mysqli_query($conn,$fetch_pro_qty));
+        echo json_encode(["msg"=>"Data inserted","data"=>$fetch_pro_qty_query]);
     }
     else
     {

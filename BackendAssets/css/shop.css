@@ -184,3 +184,20 @@
 {
     margin: 0 !important;
 }
+.out_of_stock
+{
+  color: white;
+    background: red;
+    width: fit-content;
+    margin: auto;
+    border-radius: 10px;
+    padding: 0 10px;
+    position: absolute;
+    top: -102px;
+    right: 0;
+    font-family: math;
+}
+.productCard a
+{
+    position: relative;
+}

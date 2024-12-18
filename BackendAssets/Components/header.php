@@ -469,7 +469,7 @@ add_chatinline();</script>-->
                                                                             <h5>Price : <i class="fa fa-rupee" style="padding:0 5px"></i><?= $val['price'] ?></h5>
                                                                             <h5>QTY : <input type="number"
                                                                                     class="qtycount"
-                                                                                    value="<?= $forQtysql_result_data['MAX(product_qty)'] ?>" min="1" userid="<?= $userid ?>" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" onchange="quantityTotal(this)"></h5>
+                                                                                    value="<?= $forQtysql_result_data['MAX(product_qty)'] ?>" min="1" userid="<?= $userid ?>" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" onchange="quantityTotal_for_cart(this)"></h5>
                                                                             <h5>Total price : <i class="fa fa-rupee" style="padding:0 5px"></i><span class="total_price"><?= $forQtysql_result_data['MAX(product_qty)'] * $val['price'] ?></span></h5>
                                                                         <?php
                                                                         } else {
@@ -477,7 +477,7 @@ add_chatinline();</script>-->
                                                                             <h5>Price : <i class="fa fa-rupee" style="padding:0 5px"></i><?= $val['price'] ?></h5>
                                                                             <h5>QTY : <input type="number"
                                                                                     class="qtycount"
-                                                                                    value="1" min="1" userid="<?= $userid ?>" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" onchange="quantityTotal(this)"></h5>
+                                                                                    value="1" min="1" userid="<?= $userid ?>" productid="<?= $val['id'] ?>" productprice="<?= $val['price'] ?>" onchange="quantityTotal_for_cart(this)"></h5>
                                                                             <h5>Total price : <i class="fa fa-rupee" style="padding:0 5px"></i><span class="total_price"><?= 1 * $val['price'] ?></span></h5>
                                                                     <?php
                                                                         }
@@ -525,7 +525,7 @@ add_chatinline();</script>-->
                                         <a href="/checkout.php" target="_blank">
                                             <button>Checkout</button>
                                         </a>
-                                    <?php
+                                        <?php
                                     }
                                     ?>
                                 </div>
@@ -535,3 +535,61 @@ add_chatinline();</script>-->
                 </div>
             </div>
         </div>
+        
+        <script>
+
+
+            // calculate total price start from here
+    
+            const totalpriceCalculation_for_cart = () => {
+                const total_price_ele = document.getElementsByClassName("total_price");
+                const grand_total_price_ele = document.getElementsByClassName("grand_total_div_ele");
+                let grandtotal = 0;
+                for (o = 0; o < total_price_ele.length; o++) {
+                    grandtotal += parseInt(total_price_ele[o].innerText);
+                }
+                grand_total_price_ele[0].innerText = "INR " + grandtotal;
+            }
+            totalpriceCalculation_for_cart();
+    
+    
+            // end here
+
+            // this code for storing quantity of the product and price accorint to quantity start from here 
+
+
+            const quantityTotal_for_cart = (e) => {
+
+                data = {
+                    "userid": e.getAttribute("userid"),
+                    "procductid": e.getAttribute("productid"),
+                    "productprice": e.getAttribute("productprice"),
+                    "productQty": e.value
+                }
+                fetch("BackendAssets/mysqlcode/checkoutcart.php", {
+                        method: "POST",
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => {
+                        return response.json();
+                    })
+                    .then(data => {
+                        let qtycount=document.getElementsByClassName("qtycount");
+                        const grand_total_price_ele = document.getElementsByClassName("grand_total_div_ele");
+                        e.value=data.data.product_qty;
+                        let parent=e.parentElement.nextElementSibling;
+                        parent.querySelector(".total_price").innerText=data.data.totalprice;
+                        totalpriceCalculation_for_cart();
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            }
+
+
+            // end here
+
+        </script>

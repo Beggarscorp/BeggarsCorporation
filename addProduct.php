@@ -69,9 +69,8 @@ $result=mysqli_query($conn,$sql);
                         <label for="price">Price:</label><br>
                         <input type="number" id="price" placeholder="Enter product price here" name="price" step="0.01" required><br>
 
-                        <label for="category">Category:</label><br>
+                        <label for="category">Select Category & Subcategory:</label><br>
                         <select name="category" id="category" class="addcate-select" required>
-                            <option value="default" disabled selected>Select product category</option>
                             <?php
                                 $cateid;
                                 $allCategory = $conn->prepare("SELECT * FROM `category`");

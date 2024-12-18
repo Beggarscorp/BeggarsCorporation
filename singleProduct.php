@@ -95,9 +95,9 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             </div>
 
             <div class="product_colors">
-                <div class="color_ele" style="background:red;"></div>
-                <div class="color_ele" style="background:yellow;"></div>
-                <div class="color_ele" style="background:black;"></div>
+                <a href="singleProduct.php?id=29&cate=Bag&color=<?=$row['product_color']?>">
+                    <div class="color_ele" style="background:<?=$row['product_color']?>;"></div>
+                </a>
             </div>
             <?php
             if($row['sizeandfit'] != "")
@@ -226,7 +226,7 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             return response.json();
         })
         .then(data => {
-            window.location.reload();
+            e.value=data.data.product_qty;
         })
         .catch(error => {
             console.log(error);

@@ -4,7 +4,8 @@ include("BackendAssets/Components/header.php");
 include('BackendAssets/mysqlcode/allproducts.php');
 include("BackendAssets/db.php");
 include("BackendAssets/Components/popup.php");
-// error_reporting(0);
+
+
 $sql = "SELECT * FROM `category`";
 $result = mysqli_query($conn, $sql);
 ?>
@@ -37,15 +38,39 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
             </div>
             <div class="filter-container">
                 <h4>Category</h4>
-                <?php
+                <ul class="list-unstyled">
+                    <?php
                 foreach ($result as $row) {
-                ?>
-                    <a href="?cate=<?= $row['category'] ?>">
-                        <h5 class="cate-heading"><?= $row['category'] ?></h5>
-                    </a>
-                <?php
+                    ?>
+                    <li>
+                        <a href="?cate=<?= $row['category'] ?>">
+                            <h5 class="cate-heading"><?= $row['category'] ?></h5>
+                        </a>
+                        <ul style="list-style: none;">
+                        <?php
+                        $cate_id=$row['id'];
+                        $subcategory_Sql="SELECT * FROM `subcategory` WHERE cate_id=$cate_id";
+                        $subcategory_result=mysqli_query($conn,$subcategory_Sql);
+                        if($subcategory_result)
+                        {
+                            foreach($subcategory_result as $subcategory)
+                            {
+                                ?>
+                                <li>
+                                    <a href="?subcate=<?=$subcategory['subcategory']?>">
+                                        <h5><?=$subcategory['subcategory']?></h5>
+                                    </a>
+                                </li>
+                                <?php
+                            }
+                        }
+                        ?>
+                        </ul>
+                    </li>
+                    <?php
                 }
                 ?>
+                </ul>
             </div>
         </div>
         <div class="col-sm-10">
@@ -59,7 +84,9 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                         $data = array_slice($data, $productCard - 10, $productCard);
                     }
                     $data = array_slice($data, 0, 10);
+                    $i=0;
                     foreach ($data as $row) {
+                        $i++;
                         if (isset($_GET['cate'])) {
                             if ($_GET['cate'] == $row['category']) {
                     ?>
@@ -67,6 +94,14 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                                     <div class="productCard text-center">
                                         <a href="/singleProduct.php?id=<?= $row['id'] ?>&cate=<?= $row['category'] ?>" target="_blank">
                                             <img src="/BackendAssets/assets/images/ProductImages/<?= $row['productimage'] ?>" alt="">
+                                            <?php
+                                            if((int)$row['min_order'] === 0)
+                                            {
+                                                ?>
+                                                    <div class="out_of_stock">Out of Stock</div>
+                                                <?php
+                                            }
+                                        ?>
                                         </a>
                                         <h5><?= $row['productname'] ?></h5>
                                         <h5>INR <?= $row['price'] ?></h5>
@@ -77,12 +112,56 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
                                 </div>
                             <?php
                             }
-                        } else {
+                        }
+                        else if(isset($_GET['subcate']))
+                        {
+                            if($_GET['subcate'] === $row['category'])
+                            {
+                                ?>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="productCard text-center">
+                                        <a href="/singleProduct.php?id=<?= $row['id'] ?>&cate=<?= $row['category'] ?>" target="_blank">
+                                            <img src="/BackendAssets/assets/images/ProductImages/<?= $row['productimage'] ?>" alt="">
+                                            <?php
+                                            if((int)$row['min_order'] === 0)
+                                            {
+                                                ?>
+                                                    <div class="out_of_stock">Out of Stock</div>
+                                                <?php
+                                            }
+                                        ?>
+                                        </a>
+                                        <h5><?= $row['productname'] ?></h5>
+                                        <h5>INR <?= $row['price'] ?></h5>
+                                        <a href="/BackendAssets/mysqlcode/addtocart.php?id=<?= $row['id'] ?>">
+                                            <button class="add-to-cart-btn">Add to cart</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            else
+                            {
+                                echo "<script>alert('No product available in this category');
+                                        window.location.href='/shop.php';
+                                </script>";
+                            }
+                        }
+                        else 
+                         {
                             ?>
                             <div class="col-sm-3">
                                 <div class="productCard text-center">
                                     <a href="/singleProduct.php?id=<?= $row['id'] ?>&cate=<?= $row['category'] ?>" target="_blank">
                                         <img src="/BackendAssets/assets/images/ProductImages/<?= $row['productimage'] ?>" alt="">
+                                        <?php
+                                            if((int)$row['min_order'] === 0)
+                                            {
+                                                ?>
+                                                    <div class="out_of_stock">Out of Stock</div>
+                                                <?php
+                                            }
+                                        ?>
                                     </a>
                                     <h5><?= $row['productname'] ?></h5>
                                     <h5>INR <?= $row['price'] ?></h5>
@@ -129,11 +208,6 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
 </div>
 
  <!-- video popup model code start from here -->
-
- <!-- Button trigger modal -->
-<!-- <button type="hidden" id="pop_up_btn" class="btn btn-primary" data-toggle="modal" data-target="#shop_page_video_popup">
-  Launch demo modal
-</button> -->
 
 <!-- Modal -->
 
@@ -213,10 +287,10 @@ if (isset($_GET["cart"]) && $_GET['cart'] == "updated") {
 
     // video pop up open code start from here
 
-    window.addEventListener("load",()=>{
-        document.getElementById("pop_up_btn").click();
-        window.scrollTo(0,0);
-    })
+    // window.addEventListener("load",()=>{
+    //     document.getElementById("pop_up_btn").click();
+    //     window.scrollTo(0,0);
+    // })
 
     // end here
 
